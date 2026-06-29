@@ -6,7 +6,7 @@ import { Baby, BookOpen, Microscope, Flame } from "lucide-react";
 const niveles = [
   {
     id: "kinder",
-    nombre: "Kínder",
+    nombre: "Preescolar",
     rango: "3 – 6 años",
     descripcion:
       "Un ambiente de amor y juego donde los más pequeños despiertan su curiosidad, creatividad y primeras habilidades sociales.",
@@ -42,7 +42,8 @@ export default function Niveles() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   return (
