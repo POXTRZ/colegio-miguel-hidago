@@ -43,7 +43,7 @@ const enlacesUtiles = [
 
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
-  { label: "Nosotros", href: "#nosotros" },
+  { label: "Quiénes somos", href: "#quienes-somos" },
   { label: "Niveles escolares", href: "#niveles" },
   { label: "Noticias", href: "#noticias" },
   { label: "Contacto", href: "/contacto" },

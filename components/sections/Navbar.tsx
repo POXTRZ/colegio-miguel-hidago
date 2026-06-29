@@ -22,7 +22,7 @@ export default function Navbar() {
   }, [modalOpen]);
 
   const navLinks = [
-    { label: "Nosotros", href: "#nosotros" },
+    { label: "Quiénes somos", href: "#quienes-somos" },
     { label: "Niveles", href: "#niveles" },
     { label: "Noticias", href: "#noticias" },
   ];

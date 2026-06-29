@@ -1,24 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-  weight: ["400", "600", "700", "800"],
-});
-
 export const metadata: Metadata = {
-  title: "Colegio Miguel Hidalgo | Formando líderes con valores",
+  title: "Colegio Miguel Hidalgo | Educación integral franciscana",
   description:
-    "Institución educativa de excelencia afiliada a la Provincia Cristo Rey – Hermanas Franciscanas de la Inmaculada Concepción. Kínder, Primaria, Secundaria y Preparatoria.",
+    "Sitio institucional del Colegio Miguel Hidalgo, comunidad educativa de las Hermanas Franciscanas de la Inmaculada Concepción, Provincia Cristo Rey.",
   keywords: [
     "Colegio Miguel Hidalgo",
     "educación",
@@ -31,7 +17,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Colegio Miguel Hidalgo",
-    description: "Formando líderes con valores desde hace décadas.",
+    description: "Educación integral con espíritu franciscano.",
     type: "website",
   },
 };
@@ -42,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="es">
       <body className="antialiased">{children}</body>
     </html>
   );

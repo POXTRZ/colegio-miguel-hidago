@@ -6,7 +6,7 @@ import { Languages, HeartHandshake, Dumbbell, Cpu } from "lucide-react";
 const diferenciadores = [
   {
     icono: Languages,
-    titulo: "Educación Bilingüe",
+    titulo: "Educación Integral",
     descripcion:
       "Programa de inglés integrado desde kínder, con metodología comunicativa para dominio real del idioma.",
   },
@@ -34,12 +34,13 @@ export default function Diferenciadores() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   return (
     <section
-      id="nosotros"
+      id="quienes-somos"
       className="py-32 lg:py-48 relative overflow-hidden"
       style={{
         background: "var(--color-noche)",

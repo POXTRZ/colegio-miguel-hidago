@@ -7,7 +7,8 @@ export default function Hero() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   return (
@@ -103,7 +104,7 @@ export default function Hero() {
           >
             {/* CTA principal */}
             <a
-              href="#nosotros"
+              href="#quienes-somos"
               className="group px-8 py-4 rounded-lg font-semibold text-sm tracking-wide transition-all duration-300 text-center"
               style={{
                 background: "linear-gradient(135deg, var(--color-guinda) 0%, #6e0028 100%)",
