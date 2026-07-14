@@ -38,7 +38,7 @@ export default function SiteHeader() {
         >
           <span className="flex h-12 w-10 shrink-0 items-center justify-center rounded-md bg-white p-1 shadow-sm ring-1 ring-[var(--color-linea)]">
             <Image
-              src="/cmh-escudo.gif"
+              src="/brand/shield.webp"
               alt=""
               width={396}
               height={508}

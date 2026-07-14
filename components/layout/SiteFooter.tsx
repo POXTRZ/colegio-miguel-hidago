@@ -19,7 +19,7 @@ export default function SiteFooter() {
           <div className="flex items-center gap-3">
             <span className="flex h-12 w-10 items-center justify-center rounded-md bg-white p-1">
               <Image
-                src="/cmh-escudo.gif"
+                src="/brand/shield.webp"
                 alt=""
                 width={396}
                 height={508}

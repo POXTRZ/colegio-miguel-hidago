@@ -51,7 +51,7 @@ export default function HeroSection() {
                 <div className="relative flex h-full flex-col justify-between">
                   <div className="flex items-start gap-5 rounded-lg border border-white/90 bg-white/90 p-6 shadow-sm backdrop-blur">
                     <Image
-                      src="/cmh-escudo.gif"
+                      src="/brand/shield.webp"
                       alt="Escudo del Colegio Miguel Hidalgo"
                       width={396}
                       height={508}

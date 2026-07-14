@@ -14,7 +14,7 @@ export default function ShieldMeaning() {
               Identidad grÃ¡fica con raÃ­z franciscana.
             </h2>
             <Image
-              src="/cmh-escudo.gif"
+              src="/brand/shield.webp"
               alt="Escudo del Colegio Miguel Hidalgo"
               width={396}
               height={508}

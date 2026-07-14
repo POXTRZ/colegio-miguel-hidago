@@ -26,7 +26,7 @@ export default function AboutHero() {
         <div className="rounded-lg border border-white/80 bg-white/90 p-7 shadow-[0_24px_70px_rgba(58,45,32,0.12)] backdrop-blur">
           <div className="flex items-start gap-5">
             <Image
-              src="/cmh-escudo.gif"
+              src="/brand/shield.webp"
               alt="Escudo del Colegio Miguel Hidalgo"
               width={396}
               height={508}
