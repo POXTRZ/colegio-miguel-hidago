@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import CalendarExperience from "@/components/calendar/CalendarExperience";
+import EventCalendar from "@/components/calendar/EventCalendar";
 
 export const metadata: Metadata = {
   title: "Calendario y eventos | Colegio Miguel Hidalgo",
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function CalendarioPage() {
-  return <CalendarExperience />;
+  return <EventCalendar />;
 }
