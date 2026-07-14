@@ -4,8 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChevronDown, ExternalLink, Menu, X } from "lucide-react";
-import { aboutAnchors, facebookUrl, primaryNav } from "@/data/site";
+import { ExternalLink, Menu, X } from "lucide-react";
+import MobileNavigation from "@/components/layout/MobileNavigation";
+import SiteNavigation from "@/components/layout/SiteNavigation";
+import { facebookUrl } from "@/data/site";
 
 export default function SiteHeader() {
   const pathname = usePathname();
@@ -54,67 +56,11 @@ export default function SiteHeader() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-1 lg:flex">
-          <div
-            className="relative"
-            onMouseEnter={() => setAboutOpen(true)}
-            onMouseLeave={() => setAboutOpen(false)}
-          >
-            <Link
-              href="/quienes-somos"
-              className={`flex items-center gap-1 rounded-full px-4 py-2 text-sm font-semibold transition ${
-                pathname === "/quienes-somos"
-                  ? "bg-[var(--color-hueso)] text-[var(--color-guinda)]"
-                  : "text-[var(--color-tinta)] hover:bg-[var(--color-hueso)]"
-              }`}
-              onClick={() => setAboutOpen(false)}
-              onFocus={() => setAboutOpen(true)}
-            >
-              Quiénes somos
-              <ChevronDown className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <div
-              className={`absolute left-0 top-12 w-72 rounded-lg border border-[var(--color-linea)] bg-white p-2 shadow-xl transition ${
-                aboutOpen
-                  ? "visible translate-y-0 opacity-100"
-                  : "invisible -translate-y-2 opacity-0"
-              }`}
-            >
-              {aboutAnchors.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="block rounded-md px-3 py-2 text-sm text-[var(--color-muted)] transition hover:bg-[var(--color-hueso)] hover:text-[var(--color-tinta)]"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {primaryNav
-            .filter((link) => link.label !== "Quiénes somos")
-            .map((link) => {
-              const active =
-                link.href === pathname ||
-                (link.href === "/" && pathname === "/") ||
-                (link.href === "/calendario" && pathname === "/calendario");
-
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                    active
-                      ? "bg-[var(--color-hueso)] text-[var(--color-guinda)]"
-                      : "text-[var(--color-tinta)] hover:bg-[var(--color-hueso)]"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-        </div>
+        <SiteNavigation
+          pathname={pathname}
+          aboutOpen={aboutOpen}
+          onAboutOpenChange={setAboutOpen}
+        />
 
         <a
           href={facebookUrl}
@@ -130,7 +76,7 @@ export default function SiteHeader() {
           type="button"
           className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-linea)] bg-white text-[var(--color-tinta)] lg:hidden"
           onClick={() => setMenuOpen((open) => !open)}
-          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-label={menuOpen ? "Cerrar menÃº" : "Abrir menÃº"}
         >
           {menuOpen ? (
             <X className="h-5 w-5" aria-hidden="true" />
@@ -140,45 +86,7 @@ export default function SiteHeader() {
         </button>
       </nav>
 
-      <div
-        className={`overflow-hidden border-t border-[var(--color-linea)] bg-white transition-[max-height] duration-300 lg:hidden ${
-          menuOpen ? "max-h-[760px]" : "max-h-0"
-        }`}
-      >
-        <div className="mx-auto max-w-7xl px-5 py-4">
-          {primaryNav.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="block rounded-md px-3 py-3 text-sm font-bold hover:bg-[var(--color-hueso)]"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <div className="my-2 grid gap-1 border-l border-[var(--color-linea)] pl-3">
-            {aboutAnchors.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="rounded-md px-3 py-2 text-sm text-[var(--color-muted)] hover:bg-[var(--color-hueso)]"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-          <a
-            href={facebookUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 flex items-center justify-center gap-2 rounded-full bg-[var(--color-guinda)] px-4 py-3 text-sm font-bold text-white"
-          >
-            Facebook
-            <ExternalLink className="h-4 w-4" aria-hidden="true" />
-          </a>
-        </div>
-      </div>
+      <MobileNavigation open={menuOpen} onClose={() => setMenuOpen(false)} />
     </header>
   );
 }
