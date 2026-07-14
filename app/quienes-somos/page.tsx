@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import AboutExperience from "@/components/about/AboutExperience";
+import AboutPage from "@/components/institution/AboutPage";
 
 export const metadata: Metadata = {
   title: "Quiénes somos | Colegio Miguel Hidalgo",
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function QuienesSomosPage() {
-  return <AboutExperience />;
+  return <AboutPage />;
 }
