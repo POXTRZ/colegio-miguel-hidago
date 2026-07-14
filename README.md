@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Colegio Miguel Hidalgo
 
-## Getting Started
+Sitio institucional del Colegio Miguel Hidalgo construido con Next.js, React y TypeScript.
 
-First, run the development server:
+## Scripts
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+En este entorno de Windows, si el wrapper de PowerShell de npm falla, usa:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cmd /c npm.cmd run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Estructura
 
-## Learn More
+```text
+app/                         Rutas de Next.js App Router
+components/
+  calendar/                  Calendario, filtros, vistas y agenda
+  history/                   Pagina y bloques de historia
+  home/                      Secciones de inicio
+  institution/               Secciones de Quienes somos
+  layout/                    Header, navegacion y footer
+config/                      Configuracion estable del sitio y navegacion
+data/
+  confirmed/                 Datos validados
+  demo/                      Datos de ejemplo
+  draft/                     Datos pendientes de validacion
+public/
+  brand/                     Escudo y marca institucional
+  documents/                 Documentos publicos
+  images/                    Imagenes por categoria
+types/                       Tipos compartidos por dominio
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Datos
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `config/site.ts`: nombre, lema y datos estables del sitio.
+- `config/navigation.ts`: navegacion principal y anclas institucionales.
+- `data/confirmed/contact.ts`: contacto y redes.
+- `data/confirmed/institution.ts`: mision, vision, valores, himno, escudo y organigrama.
+- `data/confirmed/education-levels.ts`: niveles educativos.
+- `data/confirmed/events.ts`: eventos del calendario.
+- `data/draft/timeline.ts`: linea de tiempo pendiente de validar.
+- `data/demo/news.ts`: noticias de demostracion.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Assets
 
-## Deploy on Vercel
+El escudo institucional vive en `public/brand/` como:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `shield.webp`
+- `shield.png`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notas para agentes
+
+Antes de modificar codigo de Next.js, leer `AGENTS.md` y la guia local en `node_modules/next/dist/docs/`.
