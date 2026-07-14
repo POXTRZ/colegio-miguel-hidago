@@ -1,4 +1,4 @@
-import type { CalendarEvent } from "@/data/site";
+import type { CalendarEvent } from "@/data/confirmed/events";
 
 export type ViewMode = "month" | "week";
 export type EventCategory = CalendarEvent["category"];

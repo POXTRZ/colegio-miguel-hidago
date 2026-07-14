@@ -1,5 +1,5 @@
 import { Mail, MapPin } from "lucide-react";
-import { contactInfo } from "@/data/site";
+import { contactInfo } from "@/data/confirmed/contact";
 
 export default function ContactPreview() {
   return (

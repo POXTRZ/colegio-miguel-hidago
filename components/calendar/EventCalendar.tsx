@@ -10,7 +10,7 @@ import CalendarMonthView from "@/components/calendar/CalendarMonthView";
 import CalendarWeekView from "@/components/calendar/CalendarWeekView";
 import EventAgenda from "@/components/calendar/EventAgenda";
 import EventPopover from "@/components/calendar/EventPopover";
-import { calendarEvents, type CalendarEvent } from "@/data/site";
+import { calendarEvents, type CalendarEvent } from "@/data/confirmed/events";
 import {
   eventDate,
   formatFullDate,

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CalendarDays } from "lucide-react";
-import { schoolMotto } from "@/data/site";
+import { schoolMotto } from "@/config/site";
 
 export default function HeroSection() {
   return (

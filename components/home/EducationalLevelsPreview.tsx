@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen, Cpu, Dumbbell, HeartHandshake, Sparkles } from "lucide-react";
-import { differentiators, levels } from "@/data/site";
+import { levels } from "@/data/confirmed/education-levels";
+import { differentiators } from "@/data/confirmed/institution";
 
 const featureIcons = [Sparkles, HeartHandshake, Dumbbell, Cpu];
 

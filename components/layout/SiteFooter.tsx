@@ -4,9 +4,9 @@ import { ExternalLink } from "lucide-react";
 import {
   contactInfo,
   facebookUrl,
-  primaryNav,
-  schoolMotto,
-} from "@/data/site";
+} from "@/data/confirmed/contact";
+import { primaryNav } from "@/config/navigation";
+import { schoolMotto } from "@/config/site";
 
 export default function SiteFooter() {
   return (

@@ -1,5 +1,5 @@
 import { CalendarDays, Clock, MapPin, Users } from "lucide-react";
-import type { CalendarEvent } from "@/data/site";
+import type { CalendarEvent } from "@/data/confirmed/events";
 import {
   categoryStyles,
   eventDate,

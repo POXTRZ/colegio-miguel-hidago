@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
-import { aboutAnchors, facebookUrl, primaryNav } from "@/data/site";
+import { aboutAnchors, primaryNav } from "@/config/navigation";
+import { facebookUrl } from "@/data/confirmed/contact";
 
 type MobileNavigationProps = {
   open: boolean;

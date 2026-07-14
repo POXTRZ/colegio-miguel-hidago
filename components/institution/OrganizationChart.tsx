@@ -1,5 +1,5 @@
 import { Network } from "lucide-react";
-import { organizationGroups } from "@/data/site";
+import { organizationGroups } from "@/data/confirmed/institution";
 
 export default function OrganizationChart() {
   return (

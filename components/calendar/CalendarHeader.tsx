@@ -1,4 +1,4 @@
-import { calendarEvents } from "@/data/site";
+import { calendarEvents } from "@/data/confirmed/events";
 import { categories } from "@/components/calendar/calendarUtils";
 
 export default function CalendarHeader() {

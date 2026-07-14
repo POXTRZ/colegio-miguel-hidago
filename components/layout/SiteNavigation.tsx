@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
-import { aboutAnchors, primaryNav } from "@/data/site";
+import { aboutAnchors, primaryNav } from "@/config/navigation";
 
 type SiteNavigationProps = {
   pathname: string;

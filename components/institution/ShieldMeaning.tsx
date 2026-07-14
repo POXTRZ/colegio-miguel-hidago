@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { shieldElements } from "@/data/site";
+import { shieldElements } from "@/data/confirmed/institution";
 
 export default function ShieldMeaning() {
   return (

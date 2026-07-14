@@ -1,5 +1,5 @@
 import { BookOpen } from "lucide-react";
-import { institutionalItems } from "@/data/site";
+import { institutionalItems } from "@/data/confirmed/institution";
 
 const philosophyCards = [
   {

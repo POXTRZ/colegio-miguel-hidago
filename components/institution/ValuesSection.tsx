@@ -1,4 +1,4 @@
-import { values } from "@/data/site";
+import { values } from "@/data/confirmed/institution";
 
 export default function ValuesSection() {
   return (

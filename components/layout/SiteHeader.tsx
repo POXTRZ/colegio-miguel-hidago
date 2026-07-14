@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { ExternalLink, Menu, X } from "lucide-react";
 import MobileNavigation from "@/components/layout/MobileNavigation";
 import SiteNavigation from "@/components/layout/SiteNavigation";
-import { facebookUrl } from "@/data/site";
+import { facebookUrl } from "@/data/confirmed/contact";
 
 export default function SiteHeader() {
   const pathname = usePathname();

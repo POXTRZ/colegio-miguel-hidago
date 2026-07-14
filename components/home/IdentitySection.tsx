@@ -1,4 +1,4 @@
-import { contactInfo } from "@/data/site";
+import { contactInfo } from "@/data/confirmed/contact";
 
 export default function IdentitySection() {
   return (

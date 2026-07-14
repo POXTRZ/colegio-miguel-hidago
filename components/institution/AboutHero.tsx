@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { schoolMotto } from "@/data/site";
+import { schoolMotto } from "@/config/site";
 
 export default function AboutHero() {
   return (

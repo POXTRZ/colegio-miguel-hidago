@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Calendar, ArrowRight } from "lucide-react";
-import noticias from "@/data/mockNoticias.json";
+import { demoNews as noticias } from "@/data/demo/news";
 
 function formatFecha(fechaStr: string) {
   const fecha = new Date(fechaStr + "T00:00:00");

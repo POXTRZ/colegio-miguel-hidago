@@ -1,4 +1,4 @@
-import { hymnStanzas } from "@/data/site";
+import { hymnStanzas } from "@/data/confirmed/institution";
 
 export default function HymnSection() {
   return (
