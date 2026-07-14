@@ -1,4 +1,4 @@
-import type { CalendarEvent } from "@/data/confirmed/events";
+import type { CalendarEvent } from "@/types/event";
 import { eventDate, formatFullDate } from "@/components/calendar/calendarUtils";
 
 type EventAgendaProps = {

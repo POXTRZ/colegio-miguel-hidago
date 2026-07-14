@@ -1,7 +1,6 @@
-import type { CalendarEvent } from "@/data/confirmed/events";
+import type { CalendarEvent, EventCategory } from "@/types/event";
 
 export type ViewMode = "month" | "week";
-export type EventCategory = CalendarEvent["category"];
 export type CategoryFilter = "Todos" | EventCategory;
 
 export const categories: CategoryFilter[] = [

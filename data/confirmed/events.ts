@@ -1,15 +1,4 @@
-export type CalendarEvent = {
-  id: string;
-  title: string;
-  category: "Acad\u00e9mico" | "Eventos" | "Admisiones" | "Pastoral" | "Deportivo";
-  date: string;
-  endDate?: string;
-  time: string;
-  location: string;
-  audience: string;
-  summary: string;
-  details: string[];
-};
+import type { CalendarEvent } from "@/types/event";
 
 export const calendarEvents: CalendarEvent[] = [
   {

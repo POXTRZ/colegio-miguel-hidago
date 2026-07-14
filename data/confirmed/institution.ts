@@ -1,4 +1,11 @@
-export const differentiators = [
+import type {
+  Differentiator,
+  InstitutionalItem,
+  OrganizationGroup,
+  ShieldElement,
+} from "@/types/institution";
+
+export const differentiators: Differentiator[] = [
   {
     title: "EducaciÃ³n integral",
     description:
@@ -21,7 +28,7 @@ export const differentiators = [
   },
 ];
 
-export const institutionalItems = [
+export const institutionalItems: InstitutionalItem[] = [
   {
     id: "resena",
     title: "ReseÃ±a histÃ³rica",
@@ -115,7 +122,7 @@ export const hymnStanzas = [
   ],
 ];
 
-export const organizationGroups = [
+export const organizationGroups: OrganizationGroup[] = [
   {
     title: "General",
     items: [
@@ -163,7 +170,7 @@ export const organizationGroups = [
   },
 ];
 
-export const shieldElements = [
+export const shieldElements: ShieldElement[] = [
   {
     title: "Sol naciente",
     text:

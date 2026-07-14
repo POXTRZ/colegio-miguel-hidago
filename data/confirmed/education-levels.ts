@@ -1,4 +1,6 @@
-export const levels = [
+import type { EducationLevel } from "@/types/institution";
+
+export const levels: EducationLevel[] = [
   {
     name: "Preescolar",
     detail: "Base inicial de hÃ¡bitos, convivencia y aprendizaje integral.",

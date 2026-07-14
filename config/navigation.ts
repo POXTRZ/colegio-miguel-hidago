@@ -1,4 +1,6 @@
-export const primaryNav = [
+import type { NavigationLink } from "@/types/navigation";
+
+export const primaryNav: NavigationLink[] = [
   { label: "Inicio", href: "/" },
   { label: "QuiÃ©nes somos", href: "/quienes-somos" },
   { label: "AcadÃ©mico", href: "/#academico" },
@@ -7,7 +9,7 @@ export const primaryNav = [
   { label: "Contacto", href: "/#contacto" },
 ];
 
-export const aboutAnchors = [
+export const aboutAnchors: NavigationLink[] = [
   { label: "ReseÃ±a histÃ³rica", href: "/quienes-somos#resena" },
   { label: "FilosofÃ­a", href: "/quienes-somos#filosofia" },
   { label: "MisiÃ³n", href: "/quienes-somos#mision" },
