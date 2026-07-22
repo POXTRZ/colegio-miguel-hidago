@@ -10,12 +10,12 @@ export default function ContactPreview() {
             Admisiones
           </p>
           <h2 className="mt-4 text-4xl font-bold leading-tight lg:text-5xl">
-            Una escuela cercana para crecer con propÃ³sito.
+            Una escuela cercana para crecer con propósito.
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-white/80">
             Para el ciclo escolar 2025-2026, el colegio conserva su compromiso
-            de ofrecer una educaciÃ³n integral con personal capacitado en cada
-            secciÃ³n.
+            de ofrecer una educación integral con personal capacitado en cada
+            sección.
           </p>
         </div>
         <div className="grid gap-3">
@@ -32,7 +32,7 @@ export default function ContactPreview() {
             rel="noopener noreferrer"
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-bold text-white"
           >
-            Ver ubicaciÃ³n
+            Ver ubicación
             <MapPin className="h-4 w-4" aria-hidden="true" />
           </a>
         </div>

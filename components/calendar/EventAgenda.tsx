@@ -10,7 +10,7 @@ export default function EventAgenda({ events, onSelectEvent }: EventAgendaProps)
   return (
     <div className="rounded-lg border border-[var(--color-linea)] bg-white p-6 shadow-sm">
       <p className="text-sm font-bold text-[var(--color-guinda)]">
-        PrÃ³ximos eventos
+        Próximos eventos
       </p>
       <div className="mt-4 grid gap-3">
         {events.map((event) => (

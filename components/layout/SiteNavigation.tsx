@@ -30,7 +30,7 @@ export default function SiteNavigation({
           onClick={() => onAboutOpenChange(false)}
           onFocus={() => onAboutOpenChange(true)}
         >
-          QuiÃ©nes somos
+          Quiénes somos
           <ChevronDown className="h-4 w-4" aria-hidden="true" />
         </Link>
         <div
@@ -53,7 +53,7 @@ export default function SiteNavigation({
       </div>
 
       {primaryNav
-        .filter((link) => link.label !== "QuiÃ©nes somos")
+        .filter((link) => link.label !== "Quiénes somos")
         .map((link) => {
           const active =
             link.href === pathname ||

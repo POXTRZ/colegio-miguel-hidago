@@ -9,10 +9,10 @@ export default function HymnSection() {
             Himno institucional
           </p>
           <h2 className="mt-4 text-4xl font-bold leading-tight lg:text-5xl">
-            Una identidad que tambiÃ©n se canta.
+            Una identidad que también se canta.
           </h2>
           <p className="mt-5 text-lg leading-8 text-[var(--color-muted)]">
-            Himno Colegios HFIC. Letra y mÃºsica: CÃ©sar Miranda BarragÃ¡n.
+            Himno Colegios HFIC. Letra y música: César Miranda Barragán.
           </p>
         </div>
         <div className="grid gap-4 rounded-lg border border-[var(--color-linea)] bg-[var(--color-fondo)] p-7">

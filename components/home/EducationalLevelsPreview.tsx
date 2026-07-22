@@ -19,8 +19,8 @@ export default function EducationalLevelsPreview() {
                 Lo esencial, ordenado para familias reales.
               </h2>
               <p className="mt-5 text-lg leading-8 text-[var(--color-muted)]">
-                El sitio ahora prioriza rutas claras: instituciÃ³n, calendario,
-                admisiones y contacto. Menos ruido, mÃ¡s decisiones.
+                El sitio ahora prioriza rutas claras: institución, calendario,
+                admisiones y contacto. Menos ruido, más decisiones.
               </p>
             </div>
 
@@ -62,7 +62,7 @@ export default function EducationalLevelsPreview() {
               href="/quienes-somos#filosofia"
               className="inline-flex min-h-12 w-fit items-center gap-2 rounded-full border border-[var(--color-linea)] bg-white px-5 py-3 text-sm font-bold transition hover:bg-[var(--color-hueso)]"
             >
-              Ver filosofÃ­a
+              Ver filosofía
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>

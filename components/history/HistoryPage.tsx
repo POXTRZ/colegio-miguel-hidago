@@ -12,7 +12,7 @@ export default function HistoryPage() {
             Historia
           </p>
           <h1 className="mt-5 max-w-4xl text-5xl font-bold leading-tight lg:text-6xl">
-            ReseÃ±a histÃ³rica del Colegio Miguel Hidalgo.
+            Reseña histórica del Colegio Miguel Hidalgo.
           </h1>
         </div>
       </section>

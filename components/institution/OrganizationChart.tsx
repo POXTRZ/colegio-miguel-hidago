@@ -10,7 +10,7 @@ export default function OrganizationChart() {
             Organigrama
           </p>
           <h2 className="mt-4 text-4xl font-bold leading-tight lg:text-5xl">
-            CoordinaciÃ³n por secciones y trabajo en equipo.
+            Coordinación por secciones y trabajo en equipo.
           </h2>
         </div>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">

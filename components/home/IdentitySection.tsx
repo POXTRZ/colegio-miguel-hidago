@@ -6,7 +6,7 @@ export default function IdentitySection() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-5 px-5 py-8 lg:grid-cols-3 lg:px-8">
         <div>
           <p className="text-sm font-bold text-[var(--color-guinda)]">
-            DirecciÃ³n
+            Dirección
           </p>
           <p className="mt-1 text-sm text-[var(--color-muted)]">
             {contactInfo.address}
@@ -25,7 +25,7 @@ export default function IdentitySection() {
             Identidad
           </p>
           <p className="mt-1 text-sm text-[var(--color-muted)]">
-            Hermanas Franciscanas de la Inmaculada ConcepciÃ³n
+            Hermanas Franciscanas de la Inmaculada Concepción
           </p>
         </div>
       </div>

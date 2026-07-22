@@ -13,7 +13,7 @@ export default function ValuesSection() {
               Virtudes que se vuelven vida escolar.
             </h2>
             <p className="mt-5 text-lg leading-8 text-white/70">
-              La formaciÃ³n HFIC busca que los valores no se queden en una
+              La formación HFIC busca que los valores no se queden en una
               lista, sino que atraviesen la convivencia, el aprendizaje y el
               servicio.
             </p>

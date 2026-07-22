@@ -7,7 +7,7 @@ export default function HistorySummary() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
         <div>
           <p className="text-sm font-bold text-[var(--color-guinda)]">
-            ReseÃ±a histÃ³rica
+            Reseña histórica
           </p>
           <h2 className="mt-4 text-4xl font-bold leading-tight lg:text-5xl">
             Desde 1907, una presencia educativa para San Luis de la Paz.
@@ -15,9 +15,9 @@ export default function HistorySummary() {
         </div>
         <div className="grid gap-6 text-lg leading-9 text-[var(--color-muted)]">
           <p>
-            El Colegio Miguel Hidalgo iniciÃ³ labores ininterrumpidamente desde
-            el aÃ±o de 1907, ofreciendo a la comunidad ludovicense una educaciÃ³n
-            integral a la niÃ±ez y juventud.
+            El Colegio Miguel Hidalgo inició labores ininterrumpidamente desde
+            el año de 1907, ofreciendo a la comunidad ludovicense una educación
+            integral a la niñez y juventud.
           </p>
           <Link
             href="/historia"

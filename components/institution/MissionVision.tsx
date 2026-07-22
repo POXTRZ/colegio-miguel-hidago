@@ -5,17 +5,17 @@ const philosophyCards = [
   {
     title: "Dignidad de la persona",
     text:
-      "Cada alumno es acompaÃ±ado desde su realidad, con paciencia, cercanÃ­a y sentido de vocaciÃ³n.",
+      "Cada alumno es acompañado desde su realidad, con paciencia, cercanía y sentido de vocación.",
   },
   {
     title: "Fraternidad educativa",
     text:
-      "Escuela y familia trabajan en una comunidad de respeto, alegrÃ­a, participaciÃ³n y corresponsabilidad.",
+      "Escuela y familia trabajan en una comunidad de respeto, alegría, participación y corresponsabilidad.",
   },
   {
     title: "Servicio y esperanza",
     text:
-      "La formaciÃ³n busca construir una sociedad mÃ¡s justa, fraterna y solidaria desde el Evangelio.",
+      "La formación busca construir una sociedad más justa, fraterna y solidaria desde el Evangelio.",
   },
 ];
 
@@ -29,7 +29,7 @@ export default function MissionVision() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="mb-12 max-w-3xl">
             <p className="text-sm font-bold text-[var(--color-guinda)]">
-              FilosofÃ­a institucional
+              Filosofía institucional
             </p>
             <h2 className="mt-4 text-4xl font-bold leading-tight lg:text-5xl">
               Una forma de educar que integra fe, cultura y vida.

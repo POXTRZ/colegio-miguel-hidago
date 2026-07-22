@@ -10,7 +10,7 @@ import CalendarMonthView from "@/components/calendar/CalendarMonthView";
 import CalendarWeekView from "@/components/calendar/CalendarWeekView";
 import EventAgenda from "@/components/calendar/EventAgenda";
 import EventPopover from "@/components/calendar/EventPopover";
-import { calendarEvents } from "@/data/confirmed/events";
+import { calendarEvents } from "@/data/demo/events";
 import type { CalendarEvent } from "@/types/event";
 import {
   eventDate,
@@ -123,7 +123,7 @@ export default function EventCalendar() {
               </div>
 
               <div className="grid grid-cols-7 border-b border-[var(--color-linea)] bg-[var(--color-fondo)] text-center text-xs font-black uppercase tracking-wide text-[var(--color-muted)]">
-                {["Lun", "Mar", "MiÃ©", "Jue", "Vie", "SÃ¡b", "Dom"].map(
+                {["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"].map(
                   (day) => (
                     <div key={day} className="px-2 py-3">
                       {day}

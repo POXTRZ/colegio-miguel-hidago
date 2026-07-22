@@ -11,7 +11,7 @@ export default function ShieldMeaning() {
               Escudo CMH
             </p>
             <h2 className="mt-3 text-3xl font-bold">
-              Identidad grÃ¡fica con raÃ­z franciscana.
+              Identidad gráfica con raíz franciscana.
             </h2>
             <Image
               src="/brand/shield.webp"

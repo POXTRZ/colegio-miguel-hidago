@@ -57,7 +57,7 @@ export default function CalendarMonthView({
               ))}
               {dayEvents.length > 2 ? (
                 <p className="text-[11px] font-bold text-[var(--color-guinda)]">
-                  +{dayEvents.length - 2} mÃ¡s
+                  +{dayEvents.length - 2} más
                 </p>
               ) : null}
             </div>

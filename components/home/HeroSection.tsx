@@ -15,11 +15,11 @@ export default function HeroSection() {
             {schoolMotto}
           </p>
           <h1 className="mt-7 max-w-4xl text-5xl font-bold leading-[0.95] tracking-tight text-[var(--color-tinta)] sm:text-6xl lg:text-7xl">
-            EducaciÃ³n integral con raÃ­z franciscana.
+            Educación integral con raíz franciscana.
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
-            Desde 1907, el Colegio Miguel Hidalgo acompaÃ±a a la niÃ±ez y
-            juventud ludovicense con formaciÃ³n acadÃ©mica, valores humanos y
+            Desde 1907, el Colegio Miguel Hidalgo acompaña a la niñez y
+            juventud ludovicense con formación académica, valores humanos y
             sentido de comunidad.
           </p>
 
@@ -28,7 +28,7 @@ export default function HeroSection() {
               href="/quienes-somos"
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[var(--color-guinda)] px-6 py-3 text-sm font-bold text-white shadow-[0_18px_45px_rgba(125,23,52,0.24)] transition hover:bg-[var(--color-guinda-oscuro)]"
             >
-              Conocer la instituciÃ³n
+              Conocer la institución
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link

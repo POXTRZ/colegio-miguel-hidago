@@ -1,4 +1,4 @@
-import { calendarEvents } from "@/data/confirmed/events";
+import { calendarEvents } from "@/data/demo/events";
 import { categories } from "@/components/calendar/calendarUtils";
 
 export default function CalendarHeader() {
@@ -16,16 +16,16 @@ export default function CalendarHeader() {
               Todo lo importante, en una vista clara.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
-              Explora actividades acadÃ©micas, pastorales, deportivas,
+              Explora actividades académicas, pastorales, deportivas,
               admisiones y eventos de comunidad. Cambia entre mes y semana,
-              filtra por categorÃ­a y abre cada evento para ver detalles.
+              filtra por categoría y abre cada evento para ver detalles.
             </p>
           </div>
 
           <div className="grid grid-cols-3 gap-3 rounded-lg border border-white/80 bg-white/90 p-5 shadow-[0_24px_70px_rgba(58,45,32,0.12)]">
             {[
               [String(calendarEvents.length), "Eventos"],
-              [String(categories.length - 1), "CategorÃ­as"],
+              [String(categories.length - 1), "Categorías"],
               ["2", "Vistas"],
             ].map(([value, label]) => (
               <div

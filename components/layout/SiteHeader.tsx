@@ -76,7 +76,7 @@ export default function SiteHeader() {
           type="button"
           className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-linea)] bg-white text-[var(--color-tinta)] lg:hidden"
           onClick={() => setMenuOpen((open) => !open)}
-          aria-label={menuOpen ? "Cerrar menÃº" : "Abrir menÃº"}
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
         >
           {menuOpen ? (
             <X className="h-5 w-5" aria-hidden="true" />

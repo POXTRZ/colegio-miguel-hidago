@@ -33,8 +33,6 @@ data/
   draft/                     Datos pendientes de validacion
 public/
   brand/                     Escudo y marca institucional
-  documents/                 Documentos publicos
-  images/                    Imagenes por categoria
 types/                       Tipos compartidos por dominio
 ```
 
@@ -45,7 +43,7 @@ types/                       Tipos compartidos por dominio
 - `data/confirmed/contact.ts`: contacto y redes.
 - `data/confirmed/institution.ts`: mision, vision, valores, himno, escudo y organigrama.
 - `data/confirmed/education-levels.ts`: niveles educativos.
-- `data/confirmed/events.ts`: eventos del calendario.
+- `data/demo/events.ts`: eventos provisionales del calendario.
 - `data/draft/timeline.ts`: linea de tiempo pendiente de validar.
 - `data/demo/news.ts`: noticias de demostracion.
 

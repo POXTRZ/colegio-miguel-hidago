@@ -9,17 +9,17 @@ export default function HistoryPreview() {
     >
       <Shield className="h-10 w-10 text-[var(--color-guinda)]" />
       <p className="mt-10 text-sm font-bold text-[var(--color-guinda)]">
-        QuiÃ©nes somos
+        Quiénes somos
       </p>
       <h2 className="mt-4 text-4xl font-bold leading-tight">
-        Historia, misiÃ³n, valores, himno y organigrama.
+        Historia, misión, valores, himno y organigrama.
       </h2>
       <p className="mt-5 max-w-xl text-sm leading-7 text-[var(--color-muted)]">
         Una vista editorial para conocer la identidad del colegio y su
         pertenencia al carisma HFIC.
       </p>
       <span className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-[var(--color-guinda)]">
-        Abrir pÃ¡gina
+        Abrir página
         <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
       </span>
     </Link>

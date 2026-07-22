@@ -14,11 +14,11 @@ export default function FacilitiesPreview() {
             </h2>
             <p className="mt-5 text-lg leading-8 text-[var(--color-muted)]">
               El layout queda listo para reemplazar estos bloques por
-              fotografÃ­as reales del Colegio Miguel Hidalgo.
+              fotografías reales del Colegio Miguel Hidalgo.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            {["Aulas", "Ãreas deportivas", "TecnologÃ­a", "Convivencia"].map(
+            {["Aulas", "Áreas deportivas", "Tecnología", "Convivencia"].map(
               (space) => (
                 <article
                   key={space}

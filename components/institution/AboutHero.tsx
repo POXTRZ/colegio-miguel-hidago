@@ -11,14 +11,14 @@ export default function AboutHero() {
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-end gap-12 px-5 pb-20 pt-14 lg:grid-cols-[1fr_0.82fr] lg:px-8">
         <div>
           <p className="inline-flex rounded-full border border-[var(--color-linea)] bg-white/80 px-4 py-2 text-sm font-bold text-[var(--color-guinda)] shadow-sm">
-            QuiÃ©nes somos
+            Quiénes somos
           </p>
           <h1 className="mt-7 max-w-4xl text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
             Una historia educativa escrita con fe, servicio y comunidad.
           </h1>
           <p className="mt-7 max-w-3xl text-xl leading-9 text-[var(--color-muted)]">
-            El Colegio Miguel Hidalgo reÃºne tradiciÃ³n, formaciÃ³n acadÃ©mica y
-            carisma franciscano para acompaÃ±ar a cada estudiante en su camino
+            El Colegio Miguel Hidalgo reúne tradición, formación académica y
+            carisma franciscano para acompañar a cada estudiante en su camino
             humano, espiritual y social.
           </p>
         </div>
