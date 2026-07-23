@@ -1,42 +1,83 @@
-import { Building2 } from "lucide-react";
+import { Container, Section, SectionHeader } from "@/components/ui";
+
+const facilities = [
+  "Aulas equipadas con proyector, bocinas y computadora",
+  "Dos canchas techadas",
+  "Una cancha con pasto sintético",
+  "Salón de cómputo con 40 equipos",
+  "Laboratorio de química",
+  "Salón de usos múltiples",
+  "Capilla",
+  "Espacio exclusivo de Preescolar",
+] as const;
+
+type PhotoPlaceholderProps = {
+  className?: string;
+  label: string;
+};
+
+function PhotoPlaceholder({ className = "", label }: PhotoPlaceholderProps) {
+  const isDevelopment = process.env.NODE_ENV === "development";
+
+  return (
+    <div
+      className={`relative flex min-h-52 items-end overflow-hidden border border-[var(--color-bordes)] bg-[var(--color-azul-marino)] p-6 text-white ${className}`}
+    >
+      <div
+        className="absolute inset-y-0 right-10 w-px rotate-12 bg-[var(--color-dorado-decorativo)]/70"
+        aria-hidden="true"
+      />
+      <div className="relative">
+        {isDevelopment ? (
+          <p className="mb-3 text-xs font-bold uppercase tracking-normal text-[var(--color-dorado-claro)]">
+            Fotografía actual pendiente
+          </p>
+        ) : null}
+        <p className="font-display text-2xl">{label}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function FacilitiesPreview() {
   return (
-    <section id="instalaciones" className="bg-white py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <p className="text-sm font-bold text-[var(--color-guinda)]">
-              Nuestras instalaciones
-            </p>
-            <h2 className="mt-4 text-4xl font-bold leading-tight lg:text-5xl">
-              Espacios para aprender, convivir y crecer.
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-[var(--color-muted)]">
-              El layout queda listo para reemplazar estos bloques por
-              fotografías reales del Colegio Miguel Hidalgo.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            {["Aulas", "Áreas deportivas", "Tecnología", "Convivencia"].map(
-              (space) => (
-                <article
-                  key={space}
-                  className="flex min-h-40 items-end rounded-lg border border-[var(--color-linea)] bg-[var(--color-fondo)] p-5"
-                >
-                  <div>
-                    <Building2
-                      className="mb-4 h-7 w-7 text-[var(--color-guinda)]"
-                      aria-hidden="true"
-                    />
-                    <h3 className="text-xl font-bold">{space}</h3>
-                  </div>
-                </article>
-              )
-            )}
+    <Section id="instalaciones">
+      <Container size="2xl">
+        <SectionHeader
+          eyebrow="Espacios para aprender"
+          title="Instalaciones pensadas para estudiar, convivir y crecer."
+          description="La infraestructura acompaña las actividades académicas, deportivas, tecnológicas y pastorales de cada sección."
+        />
+
+        <div className="grid gap-5 lg:grid-cols-[1.35fr_0.65fr]">
+          <PhotoPlaceholder
+            label="Aulas y tecnología"
+            className="min-h-[26rem] lg:min-h-[34rem]"
+          />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+            <PhotoPlaceholder label="Deporte y convivencia" />
+            <PhotoPlaceholder
+              label="Capilla y espacios formativos"
+              className="bg-[var(--color-guinda)]"
+            />
           </div>
         </div>
-      </div>
-    </section>
+
+        <div className="mt-12 grid gap-x-10 gap-y-4 border-t border-[var(--color-bordes)] pt-8 sm:grid-cols-2 lg:grid-cols-4">
+          {facilities.map((facility) => (
+            <p
+              key={facility}
+              className="flex gap-3 text-sm leading-6 text-[var(--color-texto-secundario)]"
+            >
+              <span
+                className="mt-2 h-1.5 w-1.5 shrink-0 bg-[var(--color-dorado-decorativo)]"
+                aria-hidden="true"
+              />
+              {facility}
+            </p>
+          ))}
+        </div>
+      </Container>
+    </Section>
   );
 }

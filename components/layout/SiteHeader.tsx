@@ -3,17 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { ExternalLink, Menu, X } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Menu } from "lucide-react";
 import MobileNavigation from "@/components/layout/MobileNavigation";
 import SiteNavigation from "@/components/layout/SiteNavigation";
-import { facebookUrl } from "@/data/confirmed/contact";
+import { admissionsCta } from "@/config/navigation";
 
 export default function SiteHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -22,71 +22,78 @@ export default function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const closeMobileMenu = useCallback(() => {
+    setMenuOpen(false);
+  }, []);
+
   return (
-    <header
-      className={`fixed left-0 right-0 top-0 z-50 border-b transition-all duration-300 ${
-        scrolled
-          ? "border-[var(--color-linea)] bg-white/92 shadow-[0_16px_45px_rgba(47,41,36,0.08)] backdrop-blur-xl"
-          : "border-transparent bg-white/72 backdrop-blur-lg"
-      }`}
-    >
-      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-5 lg:px-8">
-        <Link
-          href="/"
-          className="flex min-w-0 items-center gap-3"
-          aria-label="Colegio Miguel Hidalgo - Inicio"
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-[var(--z-sticky)] border-b border-t-[3px] border-b-[var(--color-bordes)] border-t-[var(--color-dorado-decorativo)] transition-[background-color,box-shadow] ${
+          scrolled
+            ? "bg-white/96 shadow-[var(--shadow-md)] backdrop-blur-xl"
+            : "bg-white/90 backdrop-blur-lg"
+        }`}
+      >
+        <nav
+          className="mx-auto flex h-[77px] max-w-[var(--container-2xl)] items-center gap-4 px-[var(--container-padding)]"
+          aria-label="Navegación principal"
         >
-          <span className="flex h-12 w-10 shrink-0 items-center justify-center rounded-md bg-white p-1 shadow-sm ring-1 ring-[var(--color-linea)]">
-            <Image
-              src="/brand/shield.webp"
-              alt=""
-              width={396}
-              height={508}
-              unoptimized
-              className="h-full w-auto object-contain"
-            />
-          </span>
-          <span className="min-w-0 leading-tight">
-            <span className="block text-sm font-bold text-[var(--color-tinta)]">
-              Colegio Miguel Hidalgo
+          <Link
+            href="/"
+            className="group flex min-w-0 shrink-0 items-center gap-3 rounded-[var(--radius-sm)]"
+            aria-label="Colegio Miguel Hidalgo - Inicio"
+          >
+            <span className="flex h-14 w-11 shrink-0 items-center justify-center border border-[var(--color-bordes)] bg-white p-1 shadow-[var(--shadow-sm)] transition-transform group-hover:-translate-y-0.5">
+              <Image
+                src="/brand/shield.webp"
+                alt=""
+                width={396}
+                height={508}
+                className="h-full w-auto object-contain"
+                priority
+              />
             </span>
-            <span className="block text-xs text-[var(--color-muted)]">
-              HFIC - Provincia Cristo Rey
+            <span className="min-w-0 leading-tight">
+              <span className="font-display block text-[1.05rem] font-semibold text-[var(--color-azul-marino)] sm:text-lg">
+                Colegio Miguel Hidalgo
+              </span>
+              <span className="mt-1 hidden text-[0.675rem] font-semibold uppercase tracking-normal text-[var(--color-texto-secundario)] sm:block">
+                HFIC - Provincia Cristo Rey
+              </span>
             </span>
-          </span>
-        </Link>
+          </Link>
 
-        <SiteNavigation
-          pathname={pathname}
-          aboutOpen={aboutOpen}
-          onAboutOpenChange={setAboutOpen}
-        />
+          <div className="ml-auto hidden items-center gap-3 lg:flex">
+            <SiteNavigation pathname={pathname} />
 
-        <a
-          href={facebookUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden items-center gap-2 rounded-full bg-[var(--color-guinda)] px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-[var(--color-guinda-oscuro)] xl:flex"
-        >
-          Facebook
-          <ExternalLink className="h-4 w-4" aria-hidden="true" />
-        </a>
+            <Link
+              href={admissionsCta.href}
+              className="inline-flex min-h-10 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-guinda)] px-4 text-sm font-bold text-white shadow-[var(--shadow-sm)] transition-colors hover:bg-[var(--color-guinda-oscuro)]"
+            >
+              {admissionsCta.label}
+            </Link>
+          </div>
 
-        <button
-          type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-linea)] bg-white text-[var(--color-tinta)] lg:hidden"
-          onClick={() => setMenuOpen((open) => !open)}
-          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-        >
-          {menuOpen ? (
-            <X className="h-5 w-5" aria-hidden="true" />
-          ) : (
+          <button
+            ref={menuButtonRef}
+            type="button"
+            className="ml-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-bordes)] bg-white text-[var(--color-azul-marino)] shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--color-dorado-decorativo)] hover:bg-[var(--color-crema)] lg:hidden"
+            onClick={() => setMenuOpen(true)}
+            aria-label="Abrir menú principal"
+            aria-controls="mobile-navigation"
+            aria-expanded={menuOpen}
+          >
             <Menu className="h-5 w-5" aria-hidden="true" />
-          )}
-        </button>
-      </nav>
-
-      <MobileNavigation open={menuOpen} onClose={() => setMenuOpen(false)} />
-    </header>
+          </button>
+        </nav>
+      </header>
+      <MobileNavigation
+        open={menuOpen}
+        pathname={pathname}
+        triggerRef={menuButtonRef}
+        onClose={closeMobileMenu}
+      />
+    </>
   );
 }

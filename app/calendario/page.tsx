@@ -1,12 +1,16 @@
-import type { Metadata } from "next";
 import EventCalendar from "@/components/calendar/EventCalendar";
+import { isEventDemoMode, visibleEvents } from "@/data/events";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Calendario y eventos | Colegio Miguel Hidalgo",
+export const metadata = createPageMetadata({
+  title: "Calendario y eventos",
   description:
-    "Calendario interactivo del Colegio Miguel Hidalgo con vista mensual, semanal, filtros por categoría y detalles de eventos.",
-};
+    "Agenda y calendario del Colegio Miguel Hidalgo con filtros y detalles de eventos confirmados.",
+  path: "/calendario",
+});
 
 export default function CalendarioPage() {
-  return <EventCalendar />;
+  return (
+    <EventCalendar events={visibleEvents} demoMode={isEventDemoMode} />
+  );
 }

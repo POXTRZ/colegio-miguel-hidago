@@ -1,6 +1,8 @@
 import type {
   Differentiator,
+  EducationalPrinciple,
   InstitutionalItem,
+  InstitutionalValue,
   OrganizationGroup,
   ShieldElement,
 } from "@/types/institution";
@@ -14,33 +16,34 @@ export const differentiators: Differentiator[] = [
   {
     title: "Formación en valores",
     description:
-      "Misericordia, libertad, oración, pureza, fraternidad, minoridad, armonía con la naturaleza, paz y alegría.",
+      "Misericordia, libertad, oración, pureza, fraternidad, minoridad, armonía con la naturaleza y paz.",
   },
   {
     title: "Instalaciones deportivas",
     description:
-      "Espacios para movimiento, disciplina y convivencia, pensados para fortalecer la salud y el trabajo en equipo.",
+      "Espacios para movimiento, disciplina y convivencia que fortalecen la salud y el trabajo en equipo.",
   },
   {
     title: "Tecnología e innovación",
     description:
-      "Computación, herramientas digitales y experiencias de aprendizaje que fortalecen el criterio y la preparación de los alumnos.",
+      "Herramientas digitales y experiencias de aprendizaje que fortalecen el criterio y la preparación de los alumnos.",
   },
 ];
 
 export const institutionalItems: InstitutionalItem[] = [
   {
     id: "resena",
-    title: "Reseña histórica",
+    title: "Presentación",
     body:
-      "El Colegio Miguel Hidalgo inició labores ininterrumpidamente desde 1907, ofreciendo a la comunidad ludovicense una educación integral para la niñez y juventud. Se ubica en Guerrero No. 215, Colonia Centro, y forma parte de la tradición educativa de las Hermanas Franciscanas de la Inmaculada Concepción.",
-    note: "Fuente: Reseña Colegio Miguel Hidalgo - Secundaria.",
+      "El Colegio Miguel Hidalgo forma parte de la tradición educativa de las Hermanas Franciscanas de la Inmaculada Concepción y acompaña a la comunidad de San Luis de la Paz desde una propuesta integral.",
+    note:
+      "Fuente: Reseña Colegio Miguel Hidalgo - Secundaria e Ideario de la Pastoral Educativa HFIC.",
   },
   {
     id: "filosofia",
     title: "Filosofía de la Institución",
     body:
-      "La institución se fundamenta en el Ideario de la Pastoral Educativa HFIC: una educación que integra fe, cultura y vida, reconoce la dignidad de la persona y promueve una comunidad fraterna, alegre, respetuosa y comprometida.",
+      "La institución integra fe, cultura y vida, reconoce la dignidad de cada persona y promueve una comunidad fraterna, respetuosa y comprometida.",
     note: "Fuente: Ideario de la Pastoral Educativa HFIC.",
   },
   {
@@ -48,21 +51,22 @@ export const institutionalItems: InstitutionalItem[] = [
     title: "Misión",
     body:
       "Ofrecer a la comunidad educativa una formación de calidad en las dimensiones espiritual, humana y académica, inspirada en los valores evangélicos, marianos y franciscanos, que le lleve a la realización de su vocación, comprometiéndose a reparar la viña del Señor, siendo miembros constructivos de una sociedad más justa en armonía con su entorno.",
-    note: "Fuente: Reseña Colegio Miguel Hidalgo - Secundaria.",
+    note: "Fuente: Ideario de la Pastoral Educativa HFIC, p. 8.",
   },
   {
     id: "vision",
     title: "Visión",
     body:
-      "Garantizar que nuestras instituciones mantengan el mismo nivel de calidad educativa, y lograr la autosuficiencia y rentabilidad necesaria para crecer en la Pastoral de la Educación.",
-    note: "Fuente: Reseña Colegio Miguel Hidalgo - Secundaria.",
+      "Mantener un mismo nivel de calidad educativa y asegurar la continuidad de las instituciones para crecer en la Pastoral de la Educación.",
+    note:
+      "Síntesis editorial de la visión incluida en la Reseña Colegio Miguel Hidalgo - Secundaria.",
   },
   {
     id: "valores",
     title: "Valores",
     body:
-      "En la práctica de las obras de misericordia y los valores franciscanos, el colegio promueve una vida escolar centrada en la dignidad de la persona, la convivencia fraterna y el servicio.",
-    note: "Fuente: Reseña e Ideario HFIC.",
+      "La vida escolar se orienta por ocho valores que ponen en el centro la dignidad de la persona, la convivencia fraterna y el servicio.",
+    note: "Fuente: Ideario de la Pastoral Educativa HFIC, pp. 7-8.",
   },
   {
     id: "himno",
@@ -74,21 +78,131 @@ export const institutionalItems: InstitutionalItem[] = [
     id: "organigrama",
     title: "Organigrama",
     body:
-      "La estructura general se organiza desde Dirección General y coordinaciones por sección: preescolar, primaria, secundaria y preparatoria, con apoyo administrativo, docente, intendencia, prefectura y mesa directiva según corresponda.",
+      "La estructura se organiza desde Dirección General, con coordinaciones para Preescolar, Primaria, Secundaria y Preparatoria, y equipos de apoyo por sección.",
     note: "Fuente: Organigramas ciclo escolar 2024-2025.",
   },
 ];
 
-export const values = [
-  "Misericordia",
-  "Libertad",
-  "Oración",
-  "Pureza",
-  "Fraternidad",
-  "Minoridad",
-  "Armonía con la naturaleza",
-  "Paz",
-  "Alegría",
+export const values: InstitutionalValue[] = [
+  {
+    id: "misericordia",
+    title: "Misericordia",
+    description:
+      "Escuchar y responder con amabilidad, generosidad, solidaridad, comprensión, perdón y reconciliación.",
+  },
+  {
+    id: "libertad",
+    title: "Libertad",
+    description:
+      "Tomar decisiones responsables, fundadas en la verdad y abiertas al bien.",
+  },
+  {
+    id: "oracion",
+    title: "Oración",
+    description:
+      "Encontrarse con Dios y traducir la fe, la esperanza y el amor en la vida cotidiana.",
+  },
+  {
+    id: "pureza",
+    title: "Pureza",
+    description:
+      "Vivir con transparencia, coherencia interior y un corazón orientado al bien.",
+  },
+  {
+    id: "fraternidad",
+    title: "Fraternidad",
+    description:
+      "Construir relaciones cercanas y alegres desde el reconocimiento de una misión común.",
+  },
+  {
+    id: "minoridad",
+    title: "Minoridad",
+    description:
+      "Servir con humildad y compartir con los demás los dones recibidos.",
+  },
+  {
+    id: "naturaleza",
+    title: "Armonía con la naturaleza",
+    description:
+      "Cuidar y defender la vida y la casa común con respeto y responsabilidad.",
+  },
+  {
+    id: "paz",
+    title: "Paz",
+    description:
+      "Establecer relaciones armónicas y trabajar por el bien y la prosperidad de los demás.",
+  },
+];
+
+// Referencias internas que requieren conciliación editorial antes de publicarse.
+export const valueTerminologyNotes = [
+  {
+    source: "Material institucional complementario",
+    wording: "Paz y Amor",
+    status: "pending",
+  },
+  {
+    source: "Reseña institucional",
+    wording: "Paz y Alegría",
+    status: "pending",
+  },
+] as const;
+
+export const educationalPrinciples: EducationalPrinciple[] = [
+  {
+    id: "pedagogia-jesus",
+    title: "Pedagogía de Jesús",
+    description:
+      "Educar desde el amor misericordioso, la realidad concreta y el testimonio personal.",
+  },
+  {
+    id: "dignidad",
+    title: "Dignidad de la persona",
+    description:
+      "Atender a todos en igualdad, con paciencia, sencillez, cercanía y respeto.",
+  },
+  {
+    id: "diversidad",
+    title: "Atención a la diversidad",
+    description:
+      "Adaptar medios y procesos a los ritmos, condiciones y talentos de cada estudiante.",
+  },
+  {
+    id: "fe-cultura-vida",
+    title: "Fe, cultura y vida",
+    description:
+      "Relacionar el Evangelio, las disciplinas académicas y la realidad social.",
+  },
+  {
+    id: "vocacion",
+    title: "Educación con vocación",
+    description:
+      "Vivir la tarea educativa como una oportunidad de servicio generoso.",
+  },
+  {
+    id: "ejemplo",
+    title: "Educación con el ejemplo",
+    description:
+      "Hacer del testimonio y de las obras una forma congruente de enseñar.",
+  },
+  {
+    id: "fraternidad-educativa",
+    title: "Fraternidad educativa",
+    description:
+      "Integrar la comunidad en un clima de alegría, respeto, amor, fe y participación.",
+  },
+  {
+    id: "naturaleza",
+    title: "Naturaleza",
+    description:
+      "Promover una cultura de amor, cuidado y conservación de la casa común.",
+  },
+  {
+    id: "familia-sociedad",
+    title: "Familia y sociedad",
+    description:
+      "Formar ciudadanos responsables y fortalecer a la familia como primera comunidad educativa.",
+  },
 ];
 
 export const hymnStanzas = [
@@ -124,21 +238,10 @@ export const hymnStanzas = [
 
 export const organizationGroups: OrganizationGroup[] = [
   {
-    title: "General",
+    id: "preescolar",
+    title: "Preescolar",
     items: [
-      "Dirección General",
-      "Coordinación Preescolar",
-      "Coordinación Primaria",
-      "Coordinación Secundaria",
-      "Coordinación Preparatoria",
-      "Personal administrativo, docente, auxiliar e intendencia",
-      "Sociedad de padres de familia",
-    ],
-  },
-  {
-    title: "Preescolar y Primaria",
-    items: [
-      "Coordinadora de sección",
+      "Coordinación de sección",
       "Auxiliar",
       "Personal administrativo",
       "Personal docente",
@@ -147,9 +250,22 @@ export const organizationGroups: OrganizationGroup[] = [
     ],
   },
   {
+    id: "primaria",
+    title: "Primaria",
+    items: [
+      "Coordinación de sección",
+      "Auxiliar",
+      "Personal administrativo",
+      "Personal docente",
+      "Mesa directiva",
+      "Personal de intendencia",
+    ],
+  },
+  {
+    id: "secundaria",
     title: "Secundaria",
     items: [
-      "Coordinadora Secundaria",
+      "Coordinación de sección",
       "Prefectura",
       "Personal administrativo",
       "Personal docente",
@@ -158,9 +274,10 @@ export const organizationGroups: OrganizationGroup[] = [
     ],
   },
   {
+    id: "preparatoria",
     title: "Preparatoria",
     items: [
-      "Coordinadora Preparatoria",
+      "Coordinación de sección",
       "Administrativo",
       "Prefectura",
       "Personal docente",
@@ -170,25 +287,55 @@ export const organizationGroups: OrganizationGroup[] = [
   },
 ];
 
+export const organizationSupport = [
+  "Personal administrativo",
+  "Personal docente",
+  "Sociedad de padres de familia",
+  "Personal auxiliar",
+  "Personal de intendencia",
+] as const;
+
 export const shieldElements: ShieldElement[] = [
   {
+    id: "sol",
     title: "Sol naciente",
     text:
-      "Representa la misión de iluminar la viña del Señor mediante una formación de calidad desde los valores del Evangelio.",
+      "Su luz expresa la misión de iluminar la viña del Señor mediante una formación de calidad y una vocación puesta al servicio de la familia y el entorno.",
   },
   {
-    title: "Libro y surcos",
+    id: "libro",
+    title: "Libro",
     text:
-      "El libro simboliza ciencia, conocimiento y sabiduría; los surcos recuerdan el campo donde se cultivan los valores del Reino.",
+      "Representa ciencia, conocimiento y sabiduría. Sus hojas aluden a las dimensiones humana, espiritual y académica de la formación integral.",
   },
   {
+    id: "vina",
+    title: "Viña o surcos",
+    text:
+      "Los surcos son el campo de formación y acción donde se cultivan los valores del Reino y el carisma HFIC, con la dignidad de la persona en el centro.",
+  },
+  {
+    id: "guinda",
+    title: "Fondo guinda",
+    text:
+      "Evoca la fragua donde se purifica y forja el ser humano, y destaca la formación de su interioridad.",
+  },
+  {
+    id: "cordon",
     title: "Cordón franciscano",
     text:
-      "Sus tres nudos evocan los valores evangélicos, marianos y franciscanos de la comunidad educativa HFIC.",
+      "Simboliza la comunión fraterna. Sus tres nudos representan los valores evangélicos, marianos y franciscanos.",
   },
   {
-    title: "Guinda, azul y dorado",
+    id: "azul",
+    title: "Fondo azul",
     text:
-      "El guinda alude a la interioridad forjada; el azul, a la espiritualidad mariana; el dorado, al honor, la lealtad y la dignidad humana.",
+      "Representa la espiritualidad mariana y virtudes como pureza, obediencia, humildad y sensibilidad ante las necesidades del otro.",
+  },
+  {
+    id: "dorado",
+    title: "Marco dorado",
+    text:
+      "Se asocia con los grandes ideales, el honor y la lealtad, y recuerda que educar enaltece la dignidad de la persona.",
   },
 ];

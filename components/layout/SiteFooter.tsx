@@ -11,7 +11,6 @@ import { schoolMotto } from "@/config/site";
 export default function SiteFooter() {
   return (
     <footer
-      id="contacto"
       className="border-t border-[var(--color-linea)] bg-[var(--color-tinta)] text-white"
     >
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
@@ -52,6 +51,12 @@ export default function SiteFooter() {
             <Link href="/calendario" className="hover:text-white">
               Calendario escolar
             </Link>
+            <Link href="/instalaciones" className="hover:text-white">
+              Instalaciones
+            </Link>
+            <Link href="/documentos" className="hover:text-white">
+              Documentos
+            </Link>
             <Link href="/quienes-somos#organigrama" className="hover:text-white">
               Organigrama
             </Link>
@@ -71,10 +76,11 @@ export default function SiteFooter() {
           <h3 className="font-bold">Contacto</h3>
           <div className="mt-4 grid gap-3 text-sm text-white/64">
             <p>{contactInfo.address}</p>
-            <a href={`mailto:${contactInfo.email}`} className="hover:text-white">
-              {contactInfo.email}
+            <p>{contactInfo.city}</p>
+            <a href={contactInfo.phoneHref} className="hover:text-white">
+              {contactInfo.phone}
             </a>
-            <p>{contactInfo.whatsapp}</p>
+            <p>{contactInfo.officeHours}</p>
           </div>
         </div>
       </div>

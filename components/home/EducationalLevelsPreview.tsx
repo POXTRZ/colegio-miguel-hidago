@@ -1,91 +1,68 @@
-import Link from "next/link";
-import { ArrowRight, BookOpen, Cpu, Dumbbell, HeartHandshake, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import {
+  Button,
+  Container,
+  Section,
+  SectionHeader,
+} from "@/components/ui";
 import { levels } from "@/data/confirmed/education-levels";
-import { differentiators } from "@/data/confirmed/institution";
 
-const featureIcons = [Sparkles, HeartHandshake, Dumbbell, Cpu];
+const levelPeriods = ["3 grados", "6 grados", "3 grados", "6 semestres"] as const;
 
 export default function EducationalLevelsPreview() {
   return (
-    <>
-      <section id="academico" className="py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.75fr_1.25fr]">
-            <div>
-              <p className="text-sm font-bold text-[var(--color-guinda)]">
-                Propuesta educativa
-              </p>
-              <h2 className="mt-4 text-4xl font-bold leading-tight lg:text-5xl">
-                Lo esencial, ordenado para familias reales.
-              </h2>
-              <p className="mt-5 text-lg leading-8 text-[var(--color-muted)]">
-                El sitio ahora prioriza rutas claras: institución, calendario,
-                admisiones y contacto. Menos ruido, más decisiones.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-              {differentiators.map((item, index) => {
-                const Icon = featureIcons[index];
-                return (
-                  <article
-                    key={item.title}
-                    className="group rounded-lg border border-[var(--color-linea)] bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(58,45,32,0.1)]"
-                  >
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-hueso)] text-[var(--color-guinda)]">
-                      <Icon className="h-6 w-6" aria-hidden="true" />
-                    </span>
-                    <h3 className="mt-6 text-2xl font-bold">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                      {item.description}
-                    </p>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="mb-12 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-            <div className="max-w-3xl">
-              <p className="text-sm font-bold text-[var(--color-guinda)]">
-                Niveles escolares
-              </p>
-              <h2 className="mt-4 text-4xl font-bold leading-tight lg:text-5xl">
-                Un recorrido formativo completo.
-              </h2>
-            </div>
-            <Link
-              href="/quienes-somos#filosofia"
-              className="inline-flex min-h-12 w-fit items-center gap-2 rounded-full border border-[var(--color-linea)] bg-white px-5 py-3 text-sm font-bold transition hover:bg-[var(--color-hueso)]"
-            >
-              Ver filosofía
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+    <Section id="academico">
+      <Container size="2xl">
+        <div className="grid gap-14 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <SectionHeader
+              eyebrow="Oferta educativa"
+              title="Un recorrido formativo completo."
+              description="Cada nivel acompaña una etapa distinta con formación académica, humana y espiritual."
+              className="mb-0"
+            />
           </div>
 
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {levels.map((level) => (
+          <div className="border-t border-[var(--color-bordes)]">
+            {levels.map((level, index) => (
               <article
                 key={level.name}
-                className="rounded-lg border border-[var(--color-linea)] bg-[var(--color-fondo)] p-6"
+                className={`grid gap-5 border-b border-[var(--color-bordes)] py-8 sm:grid-cols-[4rem_1fr_auto] sm:items-start ${
+                  index % 2 === 1 ? "lg:ml-12" : ""
+                }`}
               >
-                <BookOpen
-                  className="h-7 w-7 text-[var(--color-guinda)]"
+                <p
+                  className="font-display text-4xl text-[var(--color-dorado-texto)]"
                   aria-hidden="true"
-                />
-                <h3 className="mt-5 text-2xl font-bold">{level.name}</h3>
-                <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
-                  {level.detail}
+                >
+                  0{index + 1}
                 </p>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-normal text-[var(--color-guinda)]">
+                    {levelPeriods[index]}
+                  </p>
+                  <h3 className="mt-2 text-2xl font-bold text-[var(--color-azul-marino)]">
+                    {level.name}
+                  </h3>
+                  <p className="mt-3 max-w-xl text-sm leading-7 text-[var(--color-texto-secundario)]">
+                    {level.detail}
+                  </p>
+                </div>
+                <Button
+                  href={`/oferta-educativa#${level.name.toLowerCase()}`}
+                  variant="secondary"
+                  size="sm"
+                  className="sm:mt-5"
+                  aria-label={`Consultar ingreso a ${level.name}`}
+                >
+                  Consultar ingreso
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Button>
               </article>
             ))}
           </div>
         </div>
-      </section>
-    </>
+      </Container>
+    </Section>
   );
 }

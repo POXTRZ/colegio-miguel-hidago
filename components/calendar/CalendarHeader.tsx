@@ -1,48 +1,37 @@
-import { calendarEvents } from "@/data/demo/events";
-import { categories } from "@/components/calendar/calendarUtils";
+import { CalendarDays } from "lucide-react";
+import Container from "@/components/ui/Container";
+import Eyebrow from "@/components/ui/Eyebrow";
 
-export default function CalendarHeader() {
+type CalendarHeaderProps = {
+  demoMode: boolean;
+};
+
+export default function CalendarHeader({ demoMode }: CalendarHeaderProps) {
   return (
-    <section className="relative overflow-hidden pt-32">
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,#fffdf8_0%,#f4efe4_52%,#e8efed_100%)]" />
-      <div className="absolute right-0 top-28 h-72 w-28 bg-[var(--color-guinda)]" />
-      <div className="relative mx-auto max-w-7xl px-5 pb-16 pt-14 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <div>
-            <p className="inline-flex rounded-full border border-[var(--color-linea)] bg-white/80 px-4 py-2 text-sm font-bold text-[var(--color-guinda)] shadow-sm">
-              Calendario y eventos
-            </p>
-            <h1 className="mt-7 max-w-4xl text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
-              Todo lo importante, en una vista clara.
-            </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
-              Explora actividades académicas, pastorales, deportivas,
-              admisiones y eventos de comunidad. Cambia entre mes y semana,
-              filtra por categoría y abre cada evento para ver detalles.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-3 gap-3 rounded-lg border border-white/80 bg-white/90 p-5 shadow-[0_24px_70px_rgba(58,45,32,0.12)]">
-            {[
-              [String(calendarEvents.length), "Eventos"],
-              [String(categories.length - 1), "Categorías"],
-              ["2", "Vistas"],
-            ].map(([value, label]) => (
-              <div
-                key={label}
-                className="rounded-md border border-[var(--color-linea)] bg-[var(--color-fondo)] px-3 py-5 text-center"
-              >
-                <p className="text-3xl font-black text-[var(--color-guinda)]">
-                  {value}
-                </p>
-                <p className="mt-1 text-xs font-bold uppercase tracking-wide text-[var(--color-muted)]">
-                  {label}
-                </p>
-              </div>
-            ))}
-          </div>
+    <section className="bg-[var(--color-crema)] pt-28">
+      <Container className="grid gap-8 border-b border-[var(--color-linea)] pb-12 pt-12 lg:grid-cols-[1fr_auto] lg:items-end lg:pb-16">
+        <div className="max-w-3xl">
+          <Eyebrow>Calendario escolar</Eyebrow>
+          <h1 className="mt-4 text-5xl font-bold leading-tight sm:text-6xl">
+            Fechas para encontrarnos y participar.
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
+            Consulta actividades por fecha, categoría, estado y nivel
+            educativo.
+          </p>
         </div>
-      </div>
+        <div className="flex items-center gap-3 border-l-2 border-[var(--color-dorado)] pl-5 text-sm text-[var(--color-muted)]">
+          <CalendarDays
+            className="h-6 w-6 text-[var(--color-guinda)]"
+            aria-hidden="true"
+          />
+          <span>
+            {demoMode
+              ? "Vista de desarrollo con eventos demo"
+              : "Información institucional confirmada"}
+          </span>
+        </div>
+      </Container>
     </section>
   );
 }

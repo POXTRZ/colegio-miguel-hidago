@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen bg-[var(--color-fondo)] px-5 py-32 text-[var(--color-tinta)]">
+    <main id="main-content" className="min-h-screen bg-[var(--color-fondo)] px-5 py-32 text-[var(--color-tinta)]">
       <div className="mx-auto max-w-3xl">
         <p className="text-sm font-bold text-[var(--color-guinda)]">
           Página no encontrada

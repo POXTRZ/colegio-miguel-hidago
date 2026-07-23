@@ -1,59 +1,83 @@
-import { CalendarDays, Clock, MapPin, Users } from "lucide-react";
-import type { CalendarEvent } from "@/types/event";
+import { CalendarDays, Clock, MapPin, School } from "lucide-react";
+import Button from "@/components/ui/Button";
 import {
-  categoryStyles,
+  educationLevelLabels,
   eventDate,
   formatFullDate,
 } from "@/components/calendar/calendarUtils";
+import {
+  DemoBadge,
+  EventCategoryBadge,
+  EventStatusBadge,
+} from "@/components/calendar/EventLabels";
+import type { CalendarEvent } from "@/types/event";
 
 type EventPopoverProps = {
-  event: CalendarEvent;
+  event?: CalendarEvent;
 };
 
 export default function EventPopover({ event }: EventPopoverProps) {
+  if (!event) {
+    return (
+      <aside className="border border-[var(--color-linea)] bg-white p-6">
+        <p className="text-sm font-bold text-[var(--color-guinda)]">
+          Resumen del evento
+        </p>
+        <p className="mt-4 leading-7 text-[var(--color-muted)]">
+          Selecciona una actividad del calendario para consultar su información.
+        </p>
+      </aside>
+    );
+  }
+
   return (
-    <div className="rounded-lg border border-[var(--color-linea)] bg-white p-6 shadow-sm">
-      <span
-        className={`inline-flex rounded-full px-3 py-1 text-xs font-bold ${
-          categoryStyles[event.category]
-        }`}
-      >
-        {event.category}
-      </span>
-      <h3 className="mt-4 text-3xl font-bold leading-tight">{event.title}</h3>
-      <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
+    <aside className="border-t-4 border-[var(--color-guinda)] bg-white p-6 shadow-[var(--shadow-sm)]">
+      <div className="flex flex-wrap gap-2">
+        <EventStatusBadge status={event.status} />
+        <EventCategoryBadge category={event.category} />
+        {event.isDemo ? <DemoBadge /> : null}
+      </div>
+      <h2 className="mt-5 text-3xl font-bold leading-tight">{event.title}</h2>
+      <p className="mt-4 text-sm leading-7 text-[var(--color-muted)]">
         {event.summary}
       </p>
       <div className="mt-6 grid gap-3 text-sm text-[var(--color-muted)]">
         <p className="flex gap-3">
-          <CalendarDays className="h-5 w-5 text-[var(--color-guinda)]" />
-          {formatFullDate(eventDate(event))}
+          <CalendarDays
+            className="h-5 w-5 shrink-0 text-[var(--color-guinda)]"
+            aria-hidden="true"
+          />
+          <span className="capitalize">{formatFullDate(eventDate(event))}</span>
         </p>
         <p className="flex gap-3">
-          <Clock className="h-5 w-5 text-[var(--color-guinda)]" />
+          <Clock
+            className="h-5 w-5 shrink-0 text-[var(--color-guinda)]"
+            aria-hidden="true"
+          />
           {event.time}
         </p>
         <p className="flex gap-3">
-          <MapPin className="h-5 w-5 text-[var(--color-guinda)]" />
+          <MapPin
+            className="h-5 w-5 shrink-0 text-[var(--color-guinda)]"
+            aria-hidden="true"
+          />
           {event.location}
         </p>
         <p className="flex gap-3">
-          <Users className="h-5 w-5 text-[var(--color-guinda)]" />
-          {event.audience}
+          <School
+            className="h-5 w-5 shrink-0 text-[var(--color-guinda)]"
+            aria-hidden="true"
+          />
+          {event.educationLevel.map((level) => educationLevelLabels[level]).join(", ")}
         </p>
       </div>
-      <div className="mt-6 rounded-lg bg-[var(--color-fondo)] p-4">
-        <p className="text-sm font-bold text-[var(--color-tinta)]">
-          Detalles
-        </p>
-        <ul className="mt-3 grid gap-2 text-sm leading-6 text-[var(--color-muted)]">
-          {event.details.map((detail) => (
-            <li key={detail} className="border-l-2 border-[var(--color-linea)] pl-3">
-              {detail}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+      <Button
+        className="mt-7 w-full"
+        href={`/eventos/${event.slug}`}
+        variant="secondary"
+      >
+        Abrir página del evento
+      </Button>
+    </aside>
   );
 }

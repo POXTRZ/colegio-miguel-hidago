@@ -1,42 +1,109 @@
-import { Mail, MapPin } from "lucide-react";
-import { contactInfo } from "@/data/confirmed/contact";
+import { Clock3, ExternalLink, MapPin, Phone } from "lucide-react";
+import {
+  Button,
+  Container,
+  Eyebrow,
+  Section,
+} from "@/components/ui";
+import { contactInfo, facebookUrl } from "@/data/confirmed/contact";
 
 export default function ContactPreview() {
   return (
-    <section id="admisiones" className="bg-[var(--color-tinta)] py-24 text-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-5 lg:grid-cols-[1fr_0.8fr] lg:px-8">
-        <div>
-          <p className="text-sm font-bold text-[var(--color-dorado-claro)]">
-            Admisiones
-          </p>
-          <h2 className="mt-4 text-4xl font-bold leading-tight lg:text-5xl">
-            Una escuela cercana para crecer con propósito.
-          </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-white/80">
-            Para el ciclo escolar 2025-2026, el colegio conserva su compromiso
-            de ofrecer una educación integral con personal capacitado en cada
-            sección.
-          </p>
+    <Section id="contacto" tone="white">
+      <Container size="2xl">
+        <div className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
+          <div>
+            <Eyebrow>Contacto</Eyebrow>
+            <h2 className="mt-5 text-4xl font-semibold leading-tight text-[var(--color-azul-marino)] sm:text-5xl">
+              Estamos en el corazón de San Luis de la Paz.
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-[var(--color-texto-secundario)]">
+              La oficina del colegio atiende directamente a familias
+              interesadas y a la comunidad educativa.
+            </p>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Button href={contactInfo.phoneHref}>
+                Llamar al colegio
+                <Phone className="h-4 w-4" aria-hidden="true" />
+              </Button>
+              <Button
+                href={facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="secondary"
+              >
+                Facebook
+                <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              </Button>
+            </div>
+          </div>
+
+          <div className="grid border-t border-[var(--color-bordes)] sm:grid-cols-2">
+            <div className="border-b border-[var(--color-bordes)] py-7 sm:border-r sm:pr-8">
+              <MapPin
+                className="h-5 w-5 text-[var(--color-guinda)]"
+                aria-hidden="true"
+              />
+              <h3 className="mt-4 text-base font-bold text-[var(--color-azul-marino)]">
+                Dirección
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-[var(--color-texto-secundario)]">
+                {contactInfo.address}
+                <br />
+                {contactInfo.city}
+              </p>
+            </div>
+            <div className="border-b border-[var(--color-bordes)] py-7 sm:pl-8">
+              <Phone
+                className="h-5 w-5 text-[var(--color-guinda)]"
+                aria-hidden="true"
+              />
+              <h3 className="mt-4 text-base font-bold text-[var(--color-azul-marino)]">
+                Teléfono
+              </h3>
+              <a
+                href={contactInfo.phoneHref}
+                className="mt-2 inline-block text-sm text-[var(--color-texto-secundario)] hover:text-[var(--color-guinda)]"
+              >
+                {contactInfo.phone}
+              </a>
+            </div>
+            <div className="border-b border-[var(--color-bordes)] py-7 sm:border-b-0 sm:border-r sm:pr-8">
+              <Clock3
+                className="h-5 w-5 text-[var(--color-guinda)]"
+                aria-hidden="true"
+              />
+              <h3 className="mt-4 text-base font-bold text-[var(--color-azul-marino)]">
+                Horario de oficina
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-[var(--color-texto-secundario)]">
+                {contactInfo.officeHours}
+                <br />
+                {contactInfo.summerHours}
+              </p>
+            </div>
+            <div className="py-7 sm:pl-8">
+              <MapPin
+                className="h-5 w-5 text-[var(--color-guinda)]"
+                aria-hidden="true"
+              />
+              <h3 className="mt-4 text-base font-bold text-[var(--color-azul-marino)]">
+                Ubicación
+              </h3>
+              <a
+                href={contactInfo.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center gap-2 text-sm font-bold text-[var(--color-guinda)] hover:text-[var(--color-guinda-oscuro)]"
+              >
+                Abrir en Google Maps
+                <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
         </div>
-        <div className="grid gap-3">
-          <a
-            href={`mailto:${contactInfo.email}`}
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-[var(--color-guinda)]"
-          >
-            Escribir por correo
-            <Mail className="h-4 w-4" aria-hidden="true" />
-          </a>
-          <a
-            href={contactInfo.mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-bold text-white"
-          >
-            Ver ubicación
-            <MapPin className="h-4 w-4" aria-hidden="true" />
-          </a>
-        </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

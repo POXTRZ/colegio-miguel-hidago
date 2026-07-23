@@ -1,38 +1,66 @@
+import { MapPin } from "lucide-react";
+import Container from "@/components/ui/Container";
+import Eyebrow from "@/components/ui/Eyebrow";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
+import Section from "@/components/ui/Section";
+import { getHistoricalMedia } from "@/data/confirmed/media";
+
 export default function HistoryNarrative() {
+  const building = getHistoricalMedia("plantel-historico");
+
   return (
-    <section id="resena" className="py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="lg:sticky lg:top-28 lg:self-start">
-            <p className="text-sm font-bold text-[var(--color-guinda)]">
-              Reseña histórica
-            </p>
-            <h2 className="mt-4 text-4xl font-bold leading-tight lg:text-5xl">
-              Desde 1907, una presencia educativa para San Luis de la Paz.
+    <Section id="resena">
+      <Container>
+        <div className="grid items-start gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
+          <div className="lg:sticky lg:top-32">
+            <Eyebrow>Memoria institucional</Eyebrow>
+            <h2 className="mt-4 max-w-xl text-4xl font-bold leading-tight lg:text-5xl">
+              Una presencia educativa tejida con San Luis de la Paz.
             </h2>
+            <div className="mt-8 flex items-center gap-3 border-t border-[var(--color-linea)] pt-5 text-sm font-bold text-[var(--color-guinda)]">
+              <MapPin className="h-5 w-5" aria-hidden="true" />
+              Guerrero 215, Centro
+            </div>
           </div>
-          <div className="grid gap-6 text-lg leading-9 text-[var(--color-muted)]">
-            <p>
-              El Colegio Miguel Hidalgo inició labores ininterrumpidamente
-              desde el año de 1907, ofreciendo a la comunidad ludovicense una
-              educación integral a la niñez y juventud.
-            </p>
-            <p>
-              Su ubicación en Guerrero No. 215, Colonia Centro, lo mantiene
-              cercano a la vida cotidiana de las familias. Desde ahí, el
-              colegio abre sus puertas a quienes desean formar parte de una
-              institución basada en valores cristianos, cívicos, sociales y
-              morales.
-            </p>
-            <p>
-              La institución está incorporada a la Secretaría de Educación de
-              Guanajuato y fortalece su propuesta con inglés, computación,
-              danza, Educación en la Fe, banda de guerra, fútbol, básquetbol
-              y voleibol.
-            </p>
+
+          <div>
+            <div className="grid gap-6 text-lg leading-9 text-[var(--color-muted)]">
+              <p className="font-display text-2xl leading-9 text-[var(--color-tinta)] md:text-3xl md:leading-10">
+                La historia del Colegio se reconoce en las generaciones que han
+                aprendido, convivido y crecido en comunidad.
+              </p>
+              <p>
+                En el centro de San Luis de la Paz, el Colegio Miguel Hidalgo ha
+                acompañado a niñas, niños y jóvenes mediante una formación
+                académica, humana y espiritual vinculada con la vida de sus
+                familias.
+              </p>
+              <p>
+                Los documentos disponibles confirman distintos momentos de
+                incorporación educativa. La fecha de origen institucional sigue
+                en revisión archivística y por ello no se presenta aquí como un
+                dato definitivo.
+              </p>
+            </div>
+
+            {building ? (
+              <div className="mt-10">
+                <ResponsiveImage
+                  alt={building.alt}
+                  src={building.src}
+                  width={building.width}
+                  height={building.height}
+                  ratio="wide"
+                  className="grayscale-[0.2]"
+                />
+                <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--color-muted)]">
+                  {building.caption}
+                </p>
+              </div>
+            ) : null}
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

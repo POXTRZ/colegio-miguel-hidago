@@ -1,107 +1,168 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, CalendarDays } from "lucide-react";
+import { ArrowDownRight, ArrowRight } from "lucide-react";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import {
+  Button,
+  Container,
+  Eyebrow,
+  ResponsiveImage,
+} from "@/components/ui";
 import { schoolMotto } from "@/config/site";
 
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const media = gsap.matchMedia();
+
+      media.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.from("[data-hero-copy]", {
+          autoAlpha: 0,
+          y: 24,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        gsap.from("[data-hero-photo]", {
+          autoAlpha: 0,
+          y: 18,
+          duration: 0.9,
+          ease: "power2.out",
+        });
+      });
+
+      media.add(
+        "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
+        () => {
+          gsap.to("[data-hero-photo]", {
+            yPercent: 5,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.7,
+            },
+          });
+          gsap.to("[data-hero-gold]", {
+            xPercent: 14,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.7,
+            },
+          });
+        }
+      );
+
+      return () => media.revert();
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section className="relative overflow-hidden pt-28">
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,#fffdf8_0%,#f4efe4_48%,#e8eeeb_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-36 bg-[linear-gradient(180deg,rgba(251,250,246,0),var(--color-fondo))]" />
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden bg-[var(--color-crema)] pt-20"
+    >
+      <div
+        className="absolute inset-y-0 right-0 hidden w-[45%] bg-[var(--color-azul-marino)] lg:block lg:[clip-path:polygon(14%_0,100%_0,100%_100%,0_100%)]"
+        aria-hidden="true"
+      />
+      <div
+        data-hero-gold
+        className="absolute bottom-20 right-[42%] hidden h-px w-72 rotate-[66deg] bg-[var(--color-dorado-decorativo)] lg:block"
+        aria-hidden="true"
+      />
 
-      <div className="relative mx-auto grid min-h-[84vh] max-w-7xl grid-cols-1 items-center gap-14 px-5 pb-24 pt-12 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
-        <div>
-          <p className="inline-flex rounded-full border border-[var(--color-linea)] bg-white/80 px-4 py-2 text-sm font-bold text-[var(--color-guinda)] shadow-sm">
-            {schoolMotto}
-          </p>
-          <h1 className="mt-7 max-w-4xl text-5xl font-bold leading-[0.95] tracking-tight text-[var(--color-tinta)] sm:text-6xl lg:text-7xl">
-            Educación integral con raíz franciscana.
+      <Container
+        size="2xl"
+        className="relative grid items-center gap-6 py-6 sm:gap-10 sm:py-10 lg:min-h-[calc(100svh-10rem)] lg:grid-cols-[1.02fr_0.98fr] lg:gap-16 lg:py-12"
+      >
+        <div data-hero-copy className="max-w-3xl">
+          <Eyebrow>{schoolMotto}</Eyebrow>
+          <h1 className="mt-4 text-4xl font-semibold leading-[1.02] text-[var(--color-azul-marino)] sm:mt-6 sm:text-6xl lg:text-7xl">
+            Formación integral para construir un futuro fraterno.
           </h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
-            Desde 1907, el Colegio Miguel Hidalgo acompaña a la niñez y
-            juventud ludovicense con formación académica, valores humanos y
-            sentido de comunidad.
+          <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--color-texto-secundario)] sm:mt-7 sm:text-lg sm:leading-8">
+            Una comunidad educativa en San Luis de la Paz que acompaña desde
+            Preescolar hasta Preparatoria, integrando aprendizaje, valores y
+            espiritualidad franciscana.
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/quienes-somos"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[var(--color-guinda)] px-6 py-3 text-sm font-bold text-white shadow-[0_18px_45px_rgba(125,23,52,0.24)] transition hover:bg-[var(--color-guinda-oscuro)]"
+          <div className="mt-6 flex flex-col gap-3 sm:mt-9 sm:flex-row">
+            <Button
+              href="/oferta-educativa"
+              className="w-full !bg-[var(--color-guinda)] !text-white hover:!bg-[var(--color-guinda-oscuro)] sm:w-fit"
             >
-              Conocer la institución
+              Conocer la oferta educativa
+              <ArrowDownRight className="h-4 w-4" aria-hidden="true" />
+            </Button>
+            <Button
+              href="/inscripciones"
+              variant="ghost"
+              className="w-full sm:w-fit"
+            >
+              Consultar inscripciones
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <Link
-              href="/calendario"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[var(--color-linea)] bg-white px-6 py-3 text-sm font-bold text-[var(--color-tinta)] shadow-sm transition hover:bg-[var(--color-hueso)]"
-            >
-              Ver calendario
-              <CalendarDays className="h-4 w-4" aria-hidden="true" />
-            </Link>
+            </Button>
           </div>
-        </div>
 
-        <div className="relative">
-          <div className="absolute -left-6 top-8 h-36 w-36 rounded-full border border-[var(--color-dorado)] bg-white/40" />
-          <div className="absolute -right-4 bottom-8 h-40 w-28 rounded-full bg-[var(--color-salvia)]/18" />
-          <div className="relative overflow-hidden rounded-lg border border-white/80 bg-white shadow-[0_28px_90px_rgba(58,45,32,0.16)]">
-            <div className="grid min-h-[520px] grid-rows-[1fr_auto]">
-              <div className="relative bg-[linear-gradient(145deg,#ffffff_0%,#f2eadc_52%,#e8efed_100%)] p-8">
-                <div className="absolute right-0 top-0 h-full w-28 bg-[var(--color-guinda)]" />
-                <div className="relative flex h-full flex-col justify-between">
-                  <div className="flex items-start gap-5 rounded-lg border border-white/90 bg-white/90 p-6 shadow-sm backdrop-blur">
-                    <Image
-                      src="/brand/shield.webp"
-                      alt="Escudo del Colegio Miguel Hidalgo"
-                      width={396}
-                      height={508}
-                      unoptimized
-                      className="h-36 w-auto object-contain"
-                    />
-                    <div>
-                      <p className="text-sm font-bold text-[var(--color-guinda)]">
-                        Colegio Miguel Hidalgo
-                      </p>
-                      <p className="mt-2 text-2xl font-bold leading-tight">
-                        Una comunidad que forma para servir.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-3">
-                    {[
-                      ["1907", "Trayectoria"],
-                      ["HFIC", "Identidad"],
-                      ["SEG", "Validez"],
-                    ].map(([value, label]) => (
-                      <div
-                        key={value}
-                        className="rounded-lg border border-white/80 bg-white/90 p-4 text-center shadow-sm"
-                      >
-                        <p className="text-2xl font-black text-[var(--color-guinda)]">
-                          {value}
-                        </p>
-                        <p className="mt-1 text-xs font-bold uppercase tracking-wide text-[var(--color-muted)]">
-                          {label}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="border-t border-[var(--color-linea)] bg-[var(--color-tinta)] p-6 text-white">
-                <p className="text-sm font-bold text-[var(--color-dorado-claro)]">
-                  Lema institucional
-                </p>
-                <p className="mt-2 text-2xl font-bold leading-tight">
-                  {schoolMotto}
-                </p>
-              </div>
+          <div className="mt-12 hidden items-center gap-4 border-t border-[var(--color-bordes)] pt-6 sm:flex">
+            <Image
+              src="/brand/shield.webp"
+              alt=""
+              width={396}
+              height={508}
+              className="h-14 w-auto object-contain"
+            />
+            <div>
+              <p className="text-sm font-bold text-[var(--color-azul-marino)]">
+                Colegio Miguel Hidalgo
+              </p>
+              <p className="mt-1 text-xs text-[var(--color-texto-secundario)]">
+                HFIC - Provincia de Cristo Rey
+              </p>
             </div>
           </div>
         </div>
-      </div>
+
+        <div data-hero-photo className="relative -mx-5 bg-[var(--color-azul-marino)] px-5 py-5 sm:mx-0 sm:px-8 sm:py-9 lg:bg-transparent lg:p-0">
+          <div
+            className="absolute left-2 top-4 h-px w-28 bg-[var(--color-dorado-decorativo)] sm:left-5 lg:-left-8 lg:top-10"
+            aria-hidden="true"
+          />
+          <div className="relative">
+            <ResponsiveImage
+              src="/images/home/comunidad-educativa-archivo.jpeg"
+              alt="Amplio grupo de estudiantes del Colegio Miguel Hidalgo en una fotografía histórica"
+              width={1600}
+              height={1238}
+              ratio="auto"
+              className="grayscale"
+              containerClassName="h-36 border border-white/20 shadow-[var(--shadow-lg)] sm:h-[28rem] lg:h-[min(68vh,660px)]"
+              sizes="(min-width: 1024px) 44vw, 100vw"
+              priority
+            />
+            <span className="absolute bottom-3 left-3 bg-[var(--color-azul-marino)] px-3 py-1 text-xs font-bold uppercase tracking-normal text-white sm:hidden">
+              Archivo histórico
+            </span>
+          </div>
+          <p className="mt-3 hidden max-w-md text-xs leading-5 text-white/64 sm:block">
+            Archivo histórico del Colegio Miguel Hidalgo. Fecha y personas
+            por identificar.
+          </p>
+        </div>
+      </Container>
     </section>
   );
 }

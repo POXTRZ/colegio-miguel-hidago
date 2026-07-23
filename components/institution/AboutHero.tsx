@@ -1,61 +1,53 @@
 import Image from "next/image";
 import { schoolMotto } from "@/config/site";
+import Container from "@/components/ui/Container";
+import Eyebrow from "@/components/ui/Eyebrow";
+import { getHistoricalMedia } from "@/data/confirmed/media";
 
 export default function AboutHero() {
+  const background = getHistoricalMedia("comunidad-franciscana");
+
   return (
-    <section className="relative overflow-hidden pt-32">
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,#fffdf8_0%,#f3eadb_54%,#e8efed_100%)]" />
-      <div className="absolute left-0 top-32 h-72 w-24 bg-[var(--color-guinda)]" />
-      <div className="absolute bottom-0 right-0 h-40 w-40 rounded-full border border-[var(--color-dorado)] bg-white/40" />
+    <section className="relative min-h-[min(760px,86vh)] overflow-hidden bg-[var(--color-azul-marino)] pt-28 text-white">
+      {background ? (
+        <Image
+          alt=""
+          aria-hidden="true"
+          className="object-cover object-center opacity-24 grayscale"
+          fill
+          priority
+          sizes="100vw"
+          src={background.src}
+        />
+      ) : null}
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,37,69,1)_0%,rgba(11,37,69,0.9)_58%,rgba(11,37,69,0.48)_100%)]" />
 
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-end gap-12 px-5 pb-20 pt-14 lg:grid-cols-[1fr_0.82fr] lg:px-8">
-        <div>
-          <p className="inline-flex rounded-full border border-[var(--color-linea)] bg-white/80 px-4 py-2 text-sm font-bold text-[var(--color-guinda)] shadow-sm">
-            Quiénes somos
-          </p>
-          <h1 className="mt-7 max-w-4xl text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
-            Una historia educativa escrita con fe, servicio y comunidad.
+      <Container className="relative grid min-h-[calc(min(760px,86vh)-7rem)] items-center gap-10 py-14 lg:grid-cols-[1fr_300px]">
+        <div className="max-w-4xl">
+          <Eyebrow tone="gold">Quiénes somos</Eyebrow>
+          <h1 className="mt-5 max-w-3xl text-5xl font-bold leading-[1.02] sm:text-6xl lg:text-7xl">
+            Formar para construir un mundo fraterno.
           </h1>
-          <p className="mt-7 max-w-3xl text-xl leading-9 text-[var(--color-muted)]">
-            El Colegio Miguel Hidalgo reúne tradición, formación académica y
-            carisma franciscano para acompañar a cada estudiante en su camino
-            humano, espiritual y social.
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-white/78 md:text-xl md:leading-9">
+            Una comunidad educativa que integra conocimiento, dignidad,
+            espiritualidad y servicio desde el carisma HFIC.
+          </p>
+          <p className="mt-8 border-l-2 border-[var(--color-dorado)] pl-5 font-display text-2xl italic text-white/92">
+            {schoolMotto}
           </p>
         </div>
 
-        <div className="rounded-lg border border-white/80 bg-white/90 p-7 shadow-[0_24px_70px_rgba(58,45,32,0.12)] backdrop-blur">
-          <div className="flex items-start gap-5">
-            <Image
-              src="/brand/shield.webp"
-              alt="Escudo del Colegio Miguel Hidalgo"
-              width={396}
-              height={508}
-              unoptimized
-              className="h-32 w-auto object-contain"
-            />
-            <div>
-              <p className="text-sm font-bold text-[var(--color-guinda)]">
-                Lema institucional
-              </p>
-              <p className="mt-2 text-3xl font-bold leading-tight">
-                {schoolMotto}
-              </p>
-            </div>
-          </div>
-          <div className="mt-7 grid grid-cols-3 gap-3">
-            {["1907", "HFIC", "SEG"].map((stat) => (
-              <div
-                key={stat}
-                className="rounded-md border border-[var(--color-linea)] bg-[var(--color-fondo)] px-3 py-4 text-center"
-              >
-                <p className="text-2xl font-black text-[var(--color-guinda)]">
-                  {stat}
-                </p>
-              </div>
-            ))}
-          </div>
+        <div className="flex justify-center lg:justify-end">
+          <Image
+            src="/brand/shield.webp"
+            alt="Escudo oficial del Colegio Miguel Hidalgo"
+            width={396}
+            height={508}
+            unoptimized
+            className="h-auto w-48 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.28)] sm:w-56 lg:w-64"
+          />
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

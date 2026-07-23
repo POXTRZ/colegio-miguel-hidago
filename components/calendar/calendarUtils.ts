@@ -1,24 +1,44 @@
-import type { CalendarEvent, EventCategory } from "@/types/event";
+import type {
+  CalendarEvent,
+  EventCategory,
+  EventEducationLevel,
+  EventStatus,
+} from "@/types/event";
 
-export type ViewMode = "month" | "week";
-export type CategoryFilter = "Todos" | EventCategory;
+export type CategoryFilter = "all" | EventCategory;
+export type StatusFilter = "all" | EventStatus;
+export type LevelFilter = "all" | EventEducationLevel;
 
-export const categories: CategoryFilter[] = [
-  "Todos",
-  "Acad\u00e9mico",
-  "Eventos",
-  "Admisiones",
-  "Pastoral",
-  "Deportivo",
-];
-
-export const categoryStyles: Record<EventCategory, string> = {
-  "Acad\u00e9mico": "bg-[var(--color-guinda)] text-white",
-  Eventos: "bg-[var(--color-salvia)] text-white",
-  Admisiones: "bg-[var(--color-dorado)] text-white",
-  Pastoral: "bg-[var(--color-tinta)] text-white",
-  Deportivo: "bg-[var(--color-marino)] text-white",
+export const eventCategoryLabels: Record<EventCategory, string> = {
+  academic: "Académico",
+  cultural: "Cultural",
+  sports: "Deportivo",
+  pastoral: "Pastoral",
+  administrative: "Administrativo",
+  celebration: "Celebración",
+  community: "Comunidad",
 };
+
+export const eventStatusLabels: Record<EventStatus, string> = {
+  upcoming: "Próximo",
+  completed: "Finalizado",
+  rescheduled: "Reprogramado",
+  cancelled: "Cancelado",
+};
+
+export const educationLevelLabels: Record<EventEducationLevel, string> = {
+  preescolar: "Preescolar",
+  primaria: "Primaria",
+  secundaria: "Secundaria",
+  preparatoria: "Preparatoria",
+  todos: "Todos los niveles",
+};
+
+export const categories = Object.keys(eventCategoryLabels) as EventCategory[];
+export const statuses = Object.keys(eventStatusLabels) as EventStatus[];
+export const educationLevels = Object.keys(
+  educationLevelLabels
+) as EventEducationLevel[];
 
 export function parseDate(date: string) {
   const [year, month, day] = date.split("-").map(Number);
@@ -31,15 +51,6 @@ export function sameDay(a: Date, b: Date) {
     a.getMonth() === b.getMonth() &&
     a.getDate() === b.getDate()
   );
-}
-
-export function startOfWeek(date: Date) {
-  const copy = new Date(date);
-  const day = copy.getDay();
-  const diff = day === 0 ? -6 : 1 - day;
-  copy.setDate(copy.getDate() + diff);
-  copy.setHours(0, 0, 0, 0);
-  return copy;
 }
 
 export function getMonthDays(date: Date) {
@@ -73,6 +84,31 @@ export function formatFullDate(date: Date) {
   }).format(date);
 }
 
+export function formatShortDate(date: Date) {
+  return new Intl.DateTimeFormat("es-MX", {
+    day: "numeric",
+    month: "short",
+  }).format(date);
+}
+
 export function eventDate(event: CalendarEvent) {
-  return parseDate(event.date);
+  return parseDate(event.startDate);
+}
+
+export function filterEvents(
+  events: CalendarEvent[],
+  category: CategoryFilter,
+  status: StatusFilter,
+  level: LevelFilter
+) {
+  return events.filter((event) => {
+    const categoryMatches = category === "all" || event.category === category;
+    const statusMatches = status === "all" || event.status === status;
+    const levelMatches =
+      level === "all" ||
+      event.educationLevel.includes("todos") ||
+      event.educationLevel.includes(level);
+
+    return categoryMatches && statusMatches && levelMatches;
+  });
 }

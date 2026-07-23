@@ -1,0 +1,96 @@
+export const admissionsInfo = {
+  cycle: "2026-2027",
+  circularHref: "/documents/circular-inscripciones-2026-2027.pdf",
+  periods: [
+    {
+      label: "Preinscripción",
+      dates: "16 al 27 de febrero de 2026",
+      note: "15% de descuento en el concepto de inscripción.",
+    },
+    {
+      label: "Inscripción normal",
+      dates: "6 al 29 de mayo de 2026",
+      note: "Segunda etapa, sin descuento.",
+    },
+  ],
+  requirements: {
+    preescolar: [
+      "Acta de nacimiento, 2 copias.",
+      "CURP, 2 copias.",
+      "Ficha de inscripción en formato del Colegio.",
+      "Certificado médico con tipo de sangre.",
+      "Copia de cartilla de vacunación actualizada.",
+      "Constancia de estudios, si está cursando algún grado.",
+      "Constancia de no adeudo económico, si procede de escuela particular.",
+    ],
+    primaria: [
+      "Acta de nacimiento, 2 copias.",
+      "CURP, 2 copias.",
+      "Ficha de inscripción en formato del Colegio.",
+      "Constancia de que está cursando Preescolar.",
+      "Constancia con calificaciones para ingreso de 2.º a 6.º grado.",
+      "Copia de boleta del grado anterior inmediato.",
+      "Carta de buena conducta.",
+      "Certificado médico con tipo de sangre.",
+      "Constancia de no adeudo económico, si procede de escuela particular.",
+    ],
+    secundaria: [
+      "Acta de nacimiento, 2 copias.",
+      "CURP, 2 copias.",
+      "Ficha de inscripción en formato del Colegio.",
+      "Constancia con calificaciones.",
+      "Copia de boleta del grado anterior inmediato.",
+      "Carta de buena conducta.",
+      "Certificado médico con tipo de sangre.",
+      "Constancia de no adeudo económico, si procede de escuela particular.",
+    ],
+  },
+  costs: [
+    {
+      concept: "Inscripción",
+      preescolar: "$2,550.00",
+      primaria: "$2,780.00",
+      secundaria: "$2,970.00",
+    },
+    {
+      concept: "Documentación",
+      preescolar: "$600.00",
+      primaria: "$600.00",
+      secundaria: "$600.00",
+    },
+    {
+      concept: "Computación",
+      preescolar: "$1,400.00",
+      primaria: "$1,500.00",
+      secundaria: "$1,800.00",
+    },
+    {
+      concept: "Aportación de padres de familia",
+      preescolar: "$1,000.00",
+      primaria: "$1,000.00",
+      secundaria: "$1,000.00",
+    },
+    {
+      concept: "Colegiatura mensual",
+      preescolar: "$2,300.00",
+      primaria: "$2,650.00",
+      secundaria: "$2,800.00",
+    },
+  ],
+  paymentPolicies: [
+    "Las colegiaturas se cubren del día 1 al 25, día hábil bancario.",
+    "Se cubren 12 mensualidades, de agosto de 2026 a julio de 2027.",
+    "El pago anual recibe 5% de descuento si se liquida a más tardar el 30 de septiembre de 2026.",
+    "A partir del día 26 se aplica un recargo acumulable del 5%.",
+    "Los pagos que requieren factura deben realizarse del día 1 al 15 de cada mes.",
+    "Documentación, Computación y Aportación de Padres de Familia se cubren en efectivo en las oficinas del Colegio.",
+  ],
+  scholarship:
+    "El Colegio otorga una beca del 5% conforme a los requisitos de la SEG y del Comité de Becas. La inscripción en la fecha correspondiente es requisito para solicitarla.",
+  refunds: [
+    "Devolución del 100% de la inscripción si se avisa que el alumno no participará en el ciclo a más tardar el 11 de junio de 2026.",
+    "Devolución del 50% si el aviso de separación se realiza a más tardar el 30 de julio de 2026.",
+    "Después del 30 de julio de 2026 no se devuelve la inscripción.",
+  ],
+  preparatoriaStatus: "Información específica pendiente de confirmación",
+} as const;
