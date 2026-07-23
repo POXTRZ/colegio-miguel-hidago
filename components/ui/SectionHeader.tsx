@@ -30,7 +30,7 @@ export default function SectionHeader({
   return (
     <div
       className={cn(
-        "mb-12 flex flex-col gap-6",
+        "mb-14 flex flex-col gap-7",
         centered ? "items-center text-center" : "lg:flex-row lg:items-end lg:justify-between",
         className
       )}
@@ -39,21 +39,26 @@ export default function SectionHeader({
         {eyebrow ? (
           <Eyebrow tone={light ? "light" : "burgundy"}>{eyebrow}</Eyebrow>
         ) : null}
-        <h2 className="mt-4 text-4xl font-bold leading-tight lg:text-5xl">
+        <h2
+          className={cn(
+            "mt-5 max-w-[18ch] text-4xl font-semibold leading-[1.06] lg:text-5xl",
+            light ? "text-white" : "text-[var(--color-azul-marino)]",
+          )}
+        >
           {title}
         </h2>
         {description ? (
           <p
             className={cn(
               "mt-5 text-lg leading-8",
-              light ? "text-white/80" : "text-[var(--color-muted)]"
+              light ? "text-white/76" : "text-[var(--color-muted)]"
             )}
           >
             {description}
           </p>
         ) : null}
       </div>
-      {actions ? <div className="shrink-0">{actions}</div> : null}
+      {actions ? <div className="shrink-0 lg:pb-1">{actions}</div> : null}
     </div>
   );
 }

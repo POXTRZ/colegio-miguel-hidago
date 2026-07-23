@@ -1,8 +1,16 @@
 "use client";
 
 import { MotionConfig, motion } from "framer-motion";
+import { useRef } from "react";
 import { Container, Eyebrow, ResponsiveImage, Section } from "@/components/ui";
 import { getHistoricalMedia } from "@/data/confirmed/media";
+import {
+  gsap,
+  gsapEases,
+  motionDurations,
+  motionQueries,
+  useGSAP,
+} from "@/lib/motion";
 
 const formationDimensions = [
   {
@@ -25,20 +33,54 @@ const formationDimensions = [
 
 export default function FormationSection() {
   const image = getHistoricalMedia("comunidad-franciscana");
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const media = gsap.matchMedia();
+
+      media.add(motionQueries.desktop, () => {
+        gsap.to("[data-formation-photo] figure", {
+          yPercent: 4,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.7,
+          },
+        });
+
+        gsap.from("[data-formation-line]", {
+          scaleY: 0,
+          transformOrigin: "center top",
+          duration: motionDurations.reveal,
+          ease: gsapEases.reveal,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 68%",
+            once: true,
+          },
+        });
+      });
+
+      return () => media.revert();
+    },
+    { scope: sectionRef },
+  );
 
   return (
     <MotionConfig reducedMotion="user">
+    <div ref={sectionRef}>
     <Section tone="navy" className="overflow-hidden !py-0">
       <Container size="2xl" className="px-0 lg:px-8">
         <div className="grid lg:min-h-[820px] lg:grid-cols-[1.06fr_0.94fr]">
-          <motion.div
-            className="relative min-h-[420px] lg:min-h-0"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          <div
+            data-formation-photo
+            className="relative min-h-[420px] overflow-hidden lg:min-h-0"
           >
             <div
+              data-formation-line
               className="absolute bottom-0 right-0 top-0 z-10 hidden w-px bg-[var(--color-dorado-decorativo)] lg:block"
               aria-hidden="true"
             />
@@ -62,7 +104,7 @@ export default function FormationSection() {
                 </p>
               </>
             ) : null}
-          </motion.div>
+          </div>
 
           <motion.div
             className="px-5 py-16 sm:px-10 lg:flex lg:flex-col lg:justify-center lg:px-16 lg:py-24"
@@ -103,7 +145,7 @@ export default function FormationSection() {
                   key={dimension.title}
                   className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-white/18 py-5 sm:grid-cols-[2.5rem_8rem_1fr]"
                   variants={{
-                    hidden: { opacity: 0, x: 18 },
+                    hidden: { opacity: 0, x: 10 },
                     visible: { opacity: 1, x: 0 },
                   }}
                 >
@@ -127,6 +169,7 @@ export default function FormationSection() {
         </div>
       </Container>
     </Section>
+    </div>
     </MotionConfig>
   );
 }

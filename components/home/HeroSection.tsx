@@ -3,17 +3,20 @@
 import Image from "next/image";
 import { ArrowDownRight, ArrowRight } from "lucide-react";
 import { useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import {
   Button,
   Container,
   Eyebrow,
 } from "@/components/ui";
 import { getHistoricalMedia } from "@/data/confirmed/media";
+import {
+  gsap,
+  gsapEases,
+  motionDurations,
+  motionQueries,
+  useGSAP,
+} from "@/lib/motion";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
 const heroImage = getHistoricalMedia("comunidad-educativa");
 
 export default function HeroSection() {
@@ -23,24 +26,22 @@ export default function HeroSection() {
     () => {
       const media = gsap.matchMedia();
 
-      media.add("(prefers-reduced-motion: no-preference)", () => {
+      media.add(motionQueries.noPreference, () => {
         gsap.from("[data-hero-copy]", {
           autoAlpha: 0,
-          y: 24,
-          duration: 0.8,
-          ease: "power2.out",
+          y: 16,
+          duration: motionDurations.enter,
+          ease: gsapEases.enter,
         });
-        gsap.from("[data-hero-photo]", {
+        gsap.from("[data-hero-photo-reveal]", {
           autoAlpha: 0,
-          y: 18,
-          duration: 0.9,
-          ease: "power2.out",
+          y: 12,
+          duration: 0.82,
+          ease: gsapEases.enter,
         });
       });
 
-      media.add(
-        "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
-        () => {
+      media.add(motionQueries.desktop, () => {
           gsap.to("[data-hero-photo]", {
             yPercent: 5,
             ease: "none",
@@ -52,7 +53,7 @@ export default function HeroSection() {
             },
           });
           gsap.to("[data-hero-gold]", {
-            xPercent: 14,
+            xPercent: 8,
             ease: "none",
             scrollTrigger: {
               trigger: sectionRef.current,
@@ -61,8 +62,7 @@ export default function HeroSection() {
               scrub: 0.7,
             },
           });
-        }
-      );
+        });
 
       return () => media.revert();
     },
@@ -75,19 +75,21 @@ export default function HeroSection() {
       className="relative min-h-[calc(100svh-5rem)] overflow-hidden bg-[var(--color-crema)] pt-20 lg:min-h-[min(840px,calc(100svh-5rem))]"
     >
       <div
-        data-hero-photo
+        data-hero-photo-reveal
         className="absolute -inset-y-[6%] inset-x-0 lg:left-[42%]"
       >
-        {heroImage ? (
-          <Image
-            src={heroImage.src}
-            alt={heroImage.alt}
-            fill
-            priority
-            sizes="(min-width: 1024px) 58vw, 100vw"
-            className="object-cover object-center grayscale-[0.16]"
-          />
-        ) : null}
+        <div data-hero-photo className="absolute inset-0">
+          {heroImage ? (
+            <Image
+              src={heroImage.src}
+              alt={heroImage.alt}
+              fill
+              priority
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              className="object-cover object-center grayscale-[0.16]"
+            />
+          ) : null}
+        </div>
       </div>
       <div
         className="absolute inset-x-0 bottom-20 top-0 bg-[rgba(11,37,69,0.78)] lg:right-auto lg:w-[59%] lg:bg-[var(--color-azul-marino)]"
@@ -143,6 +145,21 @@ export default function HeroSection() {
         </span>
         {heroImage?.caption}
       </div>
+      <ul className="absolute bottom-0 left-5 hidden h-20 items-center gap-5 text-[0.6875rem] font-bold uppercase text-[var(--color-azul-marino)] sm:flex lg:left-8">
+        {["Preescolar", "Primaria", "Secundaria", "Preparatoria"].map(
+          (level, index) => (
+            <li key={level} className="flex items-center gap-5">
+              {index > 0 ? (
+                <span
+                  className="h-px w-5 bg-[var(--color-dorado-decorativo)]"
+                  aria-hidden="true"
+                />
+              ) : null}
+              {level}
+            </li>
+          ),
+        )}
+      </ul>
     </section>
   );
 }

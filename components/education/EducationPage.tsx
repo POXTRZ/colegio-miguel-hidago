@@ -34,24 +34,24 @@ export default function EducationPage() {
         id="main-content"
         className="min-h-screen bg-[var(--color-fondo)] text-[var(--color-tinta)]"
       >
-        <section className="overflow-hidden border-b border-[var(--color-bordes)] bg-white pt-28">
-          <Container size="2xl" className="grid gap-12 py-16 lg:grid-cols-[1fr_0.72fr] lg:items-center lg:gap-20 lg:py-16">
+        <section className="overflow-hidden border-b border-[var(--color-bordes)] bg-white pt-[var(--internal-hero-offset)]">
+          <Container size="2xl" className="grid gap-10 py-12 lg:grid-cols-[1fr_0.72fr] lg:items-center lg:gap-20 lg:py-14">
             <div className="lg:py-6">
               <Eyebrow>Oferta educativa</Eyebrow>
-              <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[1.02] text-[var(--color-azul-marino)] sm:text-6xl">
-                Un acompañamiento formativo desde los primeros años hasta la
-                preparación universitaria.
+              <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.04] text-[var(--color-azul-marino)] sm:text-5xl lg:text-6xl">
+                Una trayectoria educativa de Preescolar a Preparatoria.
               </h1>
               <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--color-muted)]">
-                Cuatro etapas enlazadas por una misma visión académica, humana y
-                franciscana.
+                Un acompañamiento formativo desde los primeros años hasta la
+                preparación universitaria, con una misma visión académica,
+                humana y franciscana.
               </p>
             </div>
             <div className="relative lg:translate-y-10">
               {heroImage ? (
                 <ManagedImage
                   asset={heroImage}
-                  ratio="auto"
+                  ratio="video"
                   imageClassName="grayscale-[0.2]"
                   sizes="(min-width: 1024px) 36vw, 100vw"
                   priority
@@ -73,7 +73,7 @@ export default function EducationPage() {
                 <article
                   id={level.id}
                   key={level.id}
-                  className={`grid scroll-mt-28 gap-6 border-b border-[var(--color-bordes)] py-10 md:grid-cols-[7rem_0.7fr_1.3fr] md:items-start lg:py-14 ${
+                  className={`editorial-row grid scroll-mt-[calc(var(--site-header-height-compact)+1rem)] gap-6 border-b border-[var(--color-bordes)] py-10 md:grid-cols-[7rem_0.7fr_1.3fr] md:items-start lg:py-14 ${
                     index % 2 ? "lg:ml-20" : ""
                   }`}
                 >

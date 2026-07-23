@@ -32,7 +32,7 @@ export default function ResponsiveImage({
   return (
     <figure
       className={cn(
-        "relative overflow-hidden rounded-[var(--radius-md)] bg-[var(--color-hueso)]",
+        "relative overflow-hidden rounded-[var(--radius-md)] bg-[var(--color-hueso)] shadow-[var(--shadow-sm)] ring-1 ring-black/5 [&_img]:transition-[transform,filter] [&_img]:duration-[var(--duration-slow)] [&_img]:ease-[var(--ease-enter)] hover:[&_img]:scale-[1.025] motion-reduce:[&_img]:transform-none",
         ratioClasses[ratio],
         containerClassName
       )}

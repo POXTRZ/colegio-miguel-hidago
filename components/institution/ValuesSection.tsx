@@ -47,9 +47,9 @@ export default function ValuesSection() {
           tone="light"
         />
 
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <div className="grid min-w-0 gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div
-            className="grid border-t border-white/18"
+            className="grid w-full min-w-0 border-t border-white/18"
             role="tablist"
             aria-label="Valores institucionales"
           >
@@ -64,7 +64,7 @@ export default function ValuesSection() {
                   role="tab"
                   aria-controls={`value-panel-${value.id}`}
                   aria-selected={isSelected}
-                  className={`grid grid-cols-[3rem_1fr_auto] items-center gap-3 border-b border-white/18 py-4 text-left transition ${
+                  className={`grid w-full min-w-0 grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 border-b border-white/18 py-4 text-left transition ${
                     isSelected ? "text-white" : "text-white/58 hover:text-white"
                   }`}
                   onClick={() => setSelectedId(value.id)}
@@ -73,7 +73,7 @@ export default function ValuesSection() {
                   <span className="font-display text-lg text-[var(--color-dorado-claro)]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-base font-bold sm:text-lg">
+                  <span className="min-w-0 text-base font-bold sm:text-lg">
                     {value.title}
                   </span>
                   <span
@@ -91,7 +91,7 @@ export default function ValuesSection() {
             id={`value-panel-${selected.id}`}
             role="tabpanel"
             aria-labelledby={`value-tab-${selected.id}`}
-            className="flex min-h-72 flex-col justify-end border-l border-[var(--color-dorado)] pl-7 sm:pl-10 lg:min-h-[480px]"
+            className="flex min-h-72 min-w-0 flex-col justify-end border-l border-[var(--color-dorado)] pl-7 sm:pl-10 lg:min-h-[480px]"
           >
             <p className="font-display text-5xl font-bold leading-none text-white sm:text-6xl lg:text-7xl">
               {selected.title}

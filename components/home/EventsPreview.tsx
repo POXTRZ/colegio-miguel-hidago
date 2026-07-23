@@ -54,7 +54,7 @@ export default function EventsPreview() {
               return (
                 <article
                   key={event.id}
-                  className="grid gap-5 border-b border-[var(--color-bordes)] py-7 sm:grid-cols-[5rem_1fr_auto] sm:items-center"
+                  className="editorial-row grid gap-5 border-b border-[var(--color-bordes)] py-7 sm:grid-cols-[5rem_1fr_auto] sm:items-center"
                 >
                   <time dateTime={event.startDate} className="flex items-baseline gap-2 sm:block">
                     <span className="font-display block text-4xl leading-none text-[var(--color-azul-marino)]">

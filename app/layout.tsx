@@ -64,7 +64,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${fraunces.variable} ${inter.variable}`}>
+    <html
+      lang="es"
+      className={`${fraunces.variable} ${inter.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <body className="antialiased">
         <a className="skip-link" href="#main-content">
           Saltar al contenido principal

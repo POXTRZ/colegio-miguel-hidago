@@ -74,7 +74,7 @@ export default function EventPage({
     <>
       <SiteHeader />
       <main id="main-content" className="min-h-screen bg-[var(--color-fondo)] text-[var(--color-tinta)]">
-        <section className="relative min-h-[min(820px,88svh)] overflow-hidden bg-[var(--color-azul-marino)] pt-28 text-white">
+        <section className="relative min-h-[min(680px,78svh)] overflow-hidden bg-[var(--color-azul-marino)] pt-[var(--internal-hero-offset)] text-white">
           {event.cover ? (
             <Image
               alt=""
@@ -100,7 +100,7 @@ export default function EventPage({
           )}
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,37,69,1)_0%,rgba(11,37,69,0.9)_58%,rgba(11,37,69,0.4)_100%)]" />
 
-          <Container className="relative flex min-h-[calc(min(820px,88svh)-7rem)] flex-col justify-end pb-16 pt-14 lg:pb-20">
+          <Container className="relative flex min-h-[calc(min(680px,78svh)-var(--internal-hero-offset))] flex-col justify-end pb-14 pt-12 lg:pb-16">
             <Button
               href="/calendario"
               variant="light"
@@ -270,6 +270,10 @@ export default function EventPage({
                 También puede interesarte
               </p>
               <h2 className="mt-4 text-4xl font-bold">Eventos relacionados.</h2>
+              <Button href="/calendario" variant="light" className="mt-7">
+                Ver calendario
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Button>
               <div className="mt-10 grid gap-5 md:grid-cols-3">
                 {relatedEvents.map((related) => (
                   <Link
@@ -290,7 +294,24 @@ export default function EventPage({
               </div>
             </Container>
           </Section>
-        ) : null}
+        ) : (
+          <Section tone="navy" spacing="md">
+            <Container className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+              <div>
+                <p className="text-sm font-bold text-[var(--color-dorado-claro)]">
+                  Agenda institucional
+                </p>
+                <h2 className="mt-2 text-3xl font-semibold">
+                  Consulta las próximas actividades del Colegio.
+                </h2>
+              </div>
+              <Button href="/calendario" variant="light">
+                Volver al calendario
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Button>
+            </Container>
+          </Section>
+        )}
       </main>
       <SiteFooter />
     </>

@@ -29,21 +29,21 @@ export default function FacilitiesPreview() {
           description="La infraestructura acompaña las actividades académicas, deportivas, tecnológicas y pastorales de cada sección."
         />
 
-        <div className="grid gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-start lg:gap-20">
-          <div>
+        <div className="grid gap-10">
+          <div className="editorial-frame z-0">
             <ManagedImage
               asset={currentFacilitiesPhotography}
-              ratio="portrait"
-              sizes="(min-width: 1024px) 52vw, 100vw"
+              ratio="wide"
+              sizes="(min-width: 1024px) 90vw, 100vw"
             />
           </div>
 
-          <div className="lg:pt-12">
-            <div className="border-t border-[var(--color-bordes)]">
+          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div className="grid border-t border-[var(--color-bordes)] md:grid-cols-2">
               {facilities.map((facility, index) => (
                 <div
                   key={facility}
-                  className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-[var(--color-bordes)] py-4"
+                  className="editorial-row grid grid-cols-[2.5rem_1fr] gap-4 border-b border-[var(--color-bordes)] py-4 md:odd:border-r md:odd:pr-6 md:even:pl-6"
                 >
                   <span className="font-display text-lg text-[var(--color-dorado-texto)]">
                     {String(index + 1).padStart(2, "0")}
@@ -54,7 +54,7 @@ export default function FacilitiesPreview() {
                 </div>
               ))}
             </div>
-            <Button href="/instalaciones" variant="secondary" className="mt-8">
+            <Button href="/instalaciones" variant="secondary">
               Explorar instalaciones
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Button>

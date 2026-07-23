@@ -40,7 +40,7 @@ export default function ContactPreview() {
           </div>
 
           <div className="grid border-t border-[var(--color-bordes)] sm:grid-cols-2">
-            <div className="border-b border-[var(--color-bordes)] py-7 sm:border-r sm:pr-8">
+            <div className="editorial-row border-b border-[var(--color-bordes)] py-7 sm:border-r sm:pr-8">
               <MapPin
                 className="h-5 w-5 text-[var(--color-guinda)]"
                 aria-hidden="true"
@@ -54,7 +54,7 @@ export default function ContactPreview() {
                 {contactInfo.city}
               </p>
             </div>
-            <div className="border-b border-[var(--color-bordes)] py-7 sm:pl-8">
+            <div className="editorial-row border-b border-[var(--color-bordes)] py-7 sm:pl-8">
               <Phone
                 className="h-5 w-5 text-[var(--color-guinda)]"
                 aria-hidden="true"
@@ -69,7 +69,7 @@ export default function ContactPreview() {
                 {contactInfo.phone}
               </a>
             </div>
-            <div className="border-b border-[var(--color-bordes)] py-7 sm:border-b-0 sm:border-r sm:pr-8">
+            <div className="editorial-row border-b border-[var(--color-bordes)] py-7 sm:border-b-0 sm:border-r sm:pr-8">
               <Clock3
                 className="h-5 w-5 text-[var(--color-guinda)]"
                 aria-hidden="true"
@@ -83,7 +83,7 @@ export default function ContactPreview() {
                 {contactInfo.summerHours}
               </p>
             </div>
-            <div className="py-7 sm:pl-8">
+            <div className="editorial-row py-7 sm:pl-8">
               <MapPin
                 className="h-5 w-5 text-[var(--color-guinda)]"
                 aria-hidden="true"

@@ -19,8 +19,8 @@ export default function HistoryContinuity() {
               Preparatoria dentro de una misma vocación formativa.
             </p>
           </div>
-          <Button href="/quienes-somos" variant="secondary">
-            Conocer nuestra identidad
+          <Button href="/calendario" variant="secondary">
+            Consultar la actualidad
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Button>
         </div>

@@ -12,7 +12,7 @@ export default function IdentitySection() {
   const image = getHistoricalMedia("alumnas-formacion");
 
   return (
-    <Section tone="white">
+    <Section>
       <Container size="2xl">
         <div className="grid items-center gap-14 lg:grid-cols-[1.12fr_0.88fr] lg:gap-20">
           <div>
@@ -50,7 +50,7 @@ export default function IdentitySection() {
             </div>
           </div>
 
-          <div className="lg:pt-20">
+          <div className="editorial-frame z-0 lg:mb-10 lg:mt-20">
             {image ? (
               <ManagedImage
                 asset={image}

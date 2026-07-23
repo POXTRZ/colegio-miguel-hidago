@@ -9,13 +9,13 @@ export default function AboutCta() {
           <p className="text-sm font-bold text-[var(--color-dorado-claro)]">
             Siguiente paso
           </p>
-          <h2 className="mt-3 text-4xl font-bold">Consulta fechas y eventos.</h2>
+          <h2 className="mt-3 text-4xl font-bold">Conoce nuestra oferta educativa.</h2>
         </div>
         <Link
-          href="/calendario"
-          className="inline-flex min-h-12 w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-[var(--color-guinda)]"
+          href="/oferta-educativa"
+          className="inline-flex min-h-12 w-fit items-center gap-2 rounded-[var(--radius-md)] bg-white px-6 py-3 text-sm font-bold text-[var(--color-guinda)]"
         >
-          Abrir calendario
+          Ver niveles educativos
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>

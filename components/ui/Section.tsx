@@ -6,9 +6,9 @@ type SectionTone = "default" | "white" | "navy" | "burgundy";
 
 const spacingClasses: Record<SectionSpacing, string> = {
   none: "",
-  sm: "py-16 lg:py-20",
-  md: "py-20 lg:py-24",
-  lg: "py-24 lg:py-32",
+  sm: "py-14 lg:py-18",
+  md: "py-18 lg:py-22",
+  lg: "py-20 lg:py-28",
 };
 
 const toneClasses: Record<SectionTone, string> = {
@@ -34,7 +34,12 @@ export default function Section({
 }: SectionProps) {
   return (
     <section
-      className={cn(spacingClasses[spacing], toneClasses[tone], className)}
+      className={cn(
+        "relative overflow-clip",
+        spacingClasses[spacing],
+        toneClasses[tone],
+        className,
+      )}
       {...props}
     >
       {children}

@@ -64,10 +64,10 @@ export default function EducationalLevelsPreview() {
                     key={level.name}
                     type="button"
                     aria-pressed={active}
-                    className={`grid w-full grid-cols-[3.25rem_1fr_auto] items-start gap-4 border-b border-[var(--color-bordes)] py-6 text-left transition ${
+                    className={`editorial-row relative grid w-full grid-cols-[3.25rem_1fr_auto] items-start gap-4 border-b border-[var(--color-bordes)] py-6 text-left transition before:absolute before:bottom-0 before:left-0 before:top-0 before:w-0.5 before:origin-center before:bg-[var(--color-guinda)] before:transition-transform ${
                       active
-                        ? "text-[var(--color-azul-marino)]"
-                        : "text-[var(--color-muted)] hover:text-[var(--color-tinta)]"
+                        ? "bg-[var(--color-crema)] px-4 text-[var(--color-azul-marino)] before:scale-y-100"
+                        : "text-[var(--color-muted)] before:scale-y-0 hover:text-[var(--color-tinta)]"
                     }`}
                     onClick={() => setActiveIndex(index)}
                     onFocus={() => setActiveIndex(index)}
@@ -121,14 +121,24 @@ export default function EducationalLevelsPreview() {
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {activeVisual.asset ? (
-                    <ManagedImage
-                      asset={activeVisual.asset}
-                      ratio="portrait"
-                      imageClassName="grayscale-[0.2]"
-                      sizes="(min-width: 1024px) 54vw, 100vw"
-                    />
-                  ) : null}
+                  <div className="editorial-frame z-0">
+                    {activeVisual.asset ? (
+                      <ManagedImage
+                        asset={activeVisual.asset}
+                        ratio="portrait"
+                        imageClassName="grayscale-[0.2]"
+                        sizes="(min-width: 1024px) 54vw, 100vw"
+                      />
+                    ) : null}
+                    <div className="absolute bottom-8 left-0 z-10 max-w-[85%] bg-[var(--color-azul-marino)] px-6 py-5 text-white shadow-[var(--shadow-lg)]">
+                      <span className="text-xs font-bold uppercase text-[var(--color-dorado-claro)]">
+                        Nivel {String(activeIndex + 1).padStart(2, "0")}
+                      </span>
+                      <p className="font-display mt-1 text-2xl font-semibold">
+                        {activeLevel.name}
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
               </AnimatePresence>
             </div>

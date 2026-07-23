@@ -10,8 +10,8 @@ export const primaryNav: NavigationLink[] = [
 ];
 
 export const aboutAnchors: NavigationLink[] = [
-  { label: "Reseña histórica", href: "/quienes-somos#resena" },
-  { label: "Filosofía", href: "/quienes-somos#filosofia" },
+  { label: "Presentación", href: "/quienes-somos#presentacion" },
+  { label: "Modelo educativo", href: "/quienes-somos#modelo-educativo" },
   { label: "Misión", href: "/quienes-somos#mision" },
   { label: "Visión", href: "/quienes-somos#vision" },
   { label: "Valores", href: "/quienes-somos#valores" },

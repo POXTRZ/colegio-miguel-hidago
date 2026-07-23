@@ -8,7 +8,7 @@ export default function AboutHero() {
   const background = getHistoricalMedia("comunidad-franciscana");
 
   return (
-    <section className="relative min-h-[min(760px,86vh)] overflow-hidden bg-[var(--color-azul-marino)] pt-28 text-white">
+    <section className="relative min-h-[min(700px,80svh)] overflow-hidden bg-[var(--color-azul-marino)] pt-[var(--internal-hero-offset)] text-white">
       {background ? (
         <Image
           alt=""
@@ -22,10 +22,10 @@ export default function AboutHero() {
       ) : null}
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,37,69,1)_0%,rgba(11,37,69,0.9)_58%,rgba(11,37,69,0.48)_100%)]" />
 
-      <Container className="relative grid min-h-[calc(min(760px,86vh)-7rem)] items-center gap-10 py-14 lg:grid-cols-[1fr_300px]">
+      <Container className="relative grid min-h-[calc(min(700px,80svh)-var(--internal-hero-offset))] items-center gap-10 py-12 lg:grid-cols-[1fr_260px]">
         <div className="max-w-4xl">
           <Eyebrow tone="gold">Quiénes somos</Eyebrow>
-          <h1 className="mt-5 max-w-3xl text-5xl font-bold leading-[1.02] sm:text-6xl lg:text-7xl">
+          <h1 className="mt-5 max-w-3xl text-4xl font-bold leading-[1.04] sm:text-6xl lg:text-7xl">
             Una comunidad educativa con identidad franciscana.
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-white/78 md:text-xl md:leading-9">
@@ -37,14 +37,14 @@ export default function AboutHero() {
           </p>
         </div>
 
-        <div className="flex justify-center lg:justify-end">
+        <div className="hidden justify-center sm:flex lg:justify-end">
           <Image
             src={schoolShield.src}
             alt={schoolShield.alt}
             width={schoolShield.width}
             height={schoolShield.height}
             unoptimized
-            className="h-auto w-48 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.28)] sm:w-56 lg:w-64"
+            className="h-auto w-44 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.28)] sm:w-52 lg:w-56"
           />
         </div>
       </Container>

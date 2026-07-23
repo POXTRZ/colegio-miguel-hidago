@@ -36,5 +36,11 @@ export function createPageMetadata({
         },
       ],
     },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+      images: ["/brand/shield.webp"],
+    },
   };
 }

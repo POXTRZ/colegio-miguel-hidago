@@ -15,19 +15,19 @@ export default function DocumentsPage() {
     <>
       <SiteHeader />
       <main id="main-content" className="min-h-screen bg-[var(--color-fondo)]">
-        <section className="border-b border-[var(--color-bordes)] bg-[var(--color-azul-marino)] pt-28 text-white">
-          <Container size="2xl" className="grid min-h-[480px] gap-10 py-16 lg:grid-cols-[1fr_auto] lg:items-end lg:py-20">
+        <section className="border-b border-[var(--color-bordes)] bg-[var(--color-azul-marino)] pt-[var(--internal-hero-offset)] text-white">
+          <Container size="2xl" className="grid min-h-[340px] gap-8 py-10 lg:grid-cols-[1fr_auto] lg:items-end lg:py-14">
             <div>
               <Eyebrow tone="gold">Documentos descargables</Eyebrow>
-              <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
-                Información institucional para consultar y conservar.
+              <h1 className="mt-4 max-w-3xl text-3xl font-semibold leading-[1.06] sm:text-5xl lg:text-6xl">
+                Documentos institucionales para consultar y conservar.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
                 Los documentos de esta sección corresponden a archivos
                 confirmados para publicación.
               </p>
             </div>
-            <p className="font-display text-8xl text-white/12" aria-hidden="true">
+            <p className="hidden font-display text-8xl text-white/12 sm:block" aria-hidden="true">
               01
             </p>
           </Container>
@@ -39,7 +39,7 @@ export default function DocumentsPage() {
               {publicDocuments.map((document) => (
                 <article
                   key={document.id}
-                  className="grid gap-6 border-b border-[var(--color-bordes)] py-10 md:grid-cols-[4rem_1fr_auto] md:items-center"
+                  className="editorial-row grid gap-6 border-b border-[var(--color-bordes)] py-10 md:grid-cols-[4rem_1fr_auto] md:items-center"
                 >
                   <FileText className="h-10 w-10 text-[var(--color-dorado-texto)]" aria-hidden="true" />
                   <div>
@@ -69,6 +69,25 @@ export default function DocumentsPage() {
                 </article>
               ))}
             </div>
+          </Container>
+        </Section>
+
+        <Section spacing="md">
+          <Container
+            size="2xl"
+            className="flex flex-col items-start justify-between gap-6 border-y border-[var(--color-bordes)] py-10 md:flex-row md:items-center"
+          >
+            <div>
+              <p className="text-sm font-bold text-[var(--color-guinda)]">
+                ¿Necesitas orientación?
+              </p>
+              <h2 className="mt-2 text-3xl font-semibold text-[var(--color-azul-marino)]">
+                Confirma la información directamente con el Colegio.
+              </h2>
+            </div>
+            <Button href="/contacto" variant="secondary">
+              Ir a contacto
+            </Button>
           </Container>
         </Section>
       </main>

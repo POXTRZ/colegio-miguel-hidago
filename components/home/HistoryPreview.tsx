@@ -15,7 +15,7 @@ export default function HistoryPreview() {
     <Section tone="white">
       <Container size="2xl">
         <div className="grid items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
-          <div>
+          <div className="editorial-frame z-0">
             {image ? (
               <ManagedImage
                 asset={image}

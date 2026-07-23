@@ -41,6 +41,15 @@ export type HistoricalMediaType =
   | "religiosas"
   | "retratos";
 
+export type HistoricalArchiveCategory =
+  | "Comunidad HFIC"
+  | "Generaciones"
+  | "Vida escolar"
+  | "Espacios históricos"
+  | "Celebraciones"
+  | "Formación"
+  | "Archivo documental";
+
 export type HistoricalMediaAsset = ManagedImageAsset & {
   src: string;
   status: "historical";
@@ -49,6 +58,7 @@ export type HistoricalMediaAsset = ManagedImageAsset & {
   newName: string;
   description: string;
   type: HistoricalMediaType;
+  archiveCategory: HistoricalArchiveCategory;
   context: string;
   dateStatus: "confirmed" | "pending";
   embeddedText: boolean;

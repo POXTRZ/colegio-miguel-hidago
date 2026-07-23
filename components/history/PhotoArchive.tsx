@@ -6,10 +6,10 @@ import { historicalMedia } from "@/data/confirmed/media";
 
 const archiveIds = [
   "hermanas-franciscanas",
-  "grupo-escolar-aula",
   "capilla-historica",
-  "entrega-reconocimientos",
+  "grupo-escolar-aula",
   "actividad-escolar",
+  "entrega-reconocimientos",
   "comunidad-franciscana",
   "generacion-escolar",
 ];
@@ -21,13 +21,17 @@ export default function PhotoArchive() {
 
   return (
     <Section id="archivo-fotografico" tone="white">
-      <Container>
+      <Container size="2xl">
         <SectionHeader
           eyebrow="Archivo fotográfico"
           title="Fragmentos de una memoria compartida."
           description="La clasificación se basa en lo visible en cada pieza. Fechas, generaciones y participantes permanecen pendientes hasta contar con identificación documental."
         />
-        <Gallery items={archive} label="Archivo histórico del Colegio" />
+        <Gallery
+          items={archive}
+          label="Archivo histórico del Colegio"
+          variant="editorial"
+        />
       </Container>
     </Section>
   );

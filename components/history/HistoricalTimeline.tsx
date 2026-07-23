@@ -7,9 +7,6 @@ import {
   useRef,
   useState,
 } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import Modal from "@/components/ui/Modal";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
@@ -19,8 +16,13 @@ import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import Section from "@/components/ui/Section";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { confirmedTimeline } from "@/data/confirmed/timeline";
-
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+import {
+  gsap,
+  gsapEases,
+  motionDurations,
+  motionQueries,
+  useGSAP,
+} from "@/lib/motion";
 
 export default function HistoricalTimeline() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -47,18 +49,50 @@ export default function HistoricalTimeline() {
     () => {
       const media = gsap.matchMedia();
 
-      media.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.from("[data-timeline-line-horizontal]", {
-          scaleX: 0,
-          transformOrigin: "left center",
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 72%",
-            end: "bottom 72%",
-            scrub: 0.5,
-          },
-        });
+      media.add(motionQueries.timelineDesktop, () => {
+        const path =
+          sectionRef.current?.querySelector<SVGPathElement>(
+            "[data-timeline-path]",
+          );
+
+        if (path) {
+          const pathLength = path.getTotalLength();
+          gsap.set(path, {
+            strokeDasharray: pathLength,
+            strokeDashoffset: pathLength,
+          });
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 72%",
+              end: "bottom 72%",
+              scrub: 0.55,
+            },
+          });
+        }
+
+        gsap.utils
+          .toArray<HTMLElement>(
+            "[data-timeline-desktop] [data-timeline-event]",
+          )
+          .forEach((item) => {
+            gsap.from(item, {
+              autoAlpha: 0,
+              y: 18,
+              duration: motionDurations.reveal,
+              ease: gsapEases.reveal,
+              scrollTrigger: {
+                trigger: item,
+                start: "top 88%",
+                once: true,
+              },
+            });
+          });
+      });
+
+      media.add(motionQueries.timelineMobile, () => {
         gsap.from("[data-timeline-line-vertical]", {
           scaleY: 0,
           transformOrigin: "center top",
@@ -70,32 +104,22 @@ export default function HistoricalTimeline() {
             scrub: 0.5,
           },
         });
-        gsap.from("[data-timeline-node]", {
-          scale: 0.55,
-          autoAlpha: 0,
-          duration: 0.45,
-          stagger: 0.12,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-            once: true,
-          },
-        });
 
-        gsap.utils.toArray<HTMLElement>("[data-timeline-event]").forEach((item) => {
-          gsap.from(item, {
-            autoAlpha: 0,
-            y: 22,
-            duration: 0.6,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: item,
-              start: "top 88%",
-              once: true,
-            },
+        gsap.utils
+          .toArray<HTMLElement>("[data-timeline-mobile] [data-timeline-event]")
+          .forEach((item) => {
+            gsap.from(item, {
+              autoAlpha: 0,
+              y: 12,
+              duration: motionDurations.reveal,
+              ease: gsapEases.reveal,
+              scrollTrigger: {
+                trigger: item,
+                start: "top 90%",
+                once: true,
+              },
+            });
           });
-        });
       });
 
       return () => media.revert();
@@ -150,12 +174,33 @@ export default function HistoricalTimeline() {
             }
           />
 
-          <div className="relative hidden pb-8 pt-2 md:block">
-            <div
-              data-timeline-line-horizontal
+          <div
+            data-timeline-desktop
+            className="relative hidden pb-8 pt-2 md:block"
+          >
+            <svg
               aria-hidden="true"
-              className="absolute left-[8%] right-[8%] top-[6.75rem] h-8 border-t border-[var(--color-dorado)]/76 [border-radius:50%]"
-            />
+              className="pointer-events-none absolute left-[16.666%] right-[16.666%] top-[4.25rem] h-14 w-[66.667%] overflow-visible lg:top-20"
+              preserveAspectRatio="none"
+              viewBox="0 0 1200 56"
+            >
+              <path
+                d="M0 32 C180 24 320 40 480 32 S800 24 960 32 S1120 40 1200 32"
+                fill="none"
+                stroke="rgba(255,255,255,0.13)"
+                strokeWidth="1"
+                vectorEffect="non-scaling-stroke"
+              />
+              <path
+                data-timeline-path
+                d="M0 26 C180 18 320 34 480 26 S800 18 960 26 S1120 34 1200 26"
+                fill="none"
+                stroke="var(--color-dorado)"
+                strokeLinecap="round"
+                strokeWidth="1.5"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
             <div className="grid grid-cols-3 gap-8 lg:gap-12">
               {confirmedTimeline.map((event, index) => {
                 const image = event.media[0];
@@ -167,7 +212,7 @@ export default function HistoricalTimeline() {
                     key={event.id}
                     className="relative"
                   >
-                    <p className="font-display text-6xl font-semibold leading-none text-[var(--color-dorado-claro)] lg:text-7xl">
+                    <p className="text-center font-display text-6xl font-semibold leading-none text-[var(--color-dorado-claro)] lg:text-7xl">
                       {event.year}
                     </p>
                     <button
@@ -175,7 +220,7 @@ export default function HistoricalTimeline() {
                       type="button"
                       aria-label={`Seleccionar ${event.title}, ${event.year}`}
                       aria-pressed={isActive}
-                      className="relative z-10 -ml-3.5 mt-3 flex h-11 w-11 items-center justify-center rounded-full"
+                      className="relative z-10 mx-auto mt-3 flex h-11 w-11 items-center justify-center rounded-full"
                       onClick={() => setActiveIndex(index)}
                     >
                       <span
@@ -237,7 +282,7 @@ export default function HistoricalTimeline() {
             </div>
           </div>
 
-          <div className="relative pl-8 md:hidden">
+          <div data-timeline-mobile className="relative pl-8 md:hidden">
             <div
               data-timeline-line-vertical
               aria-hidden="true"

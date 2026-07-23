@@ -50,6 +50,14 @@ export async function generateMetadata({
           ]
         : undefined,
     },
+    twitter: {
+      card: event.cover ? "summary_large_image" : "summary",
+      title: event.title,
+      description: event.summary,
+      images: event.cover
+        ? [event.cover.src]
+        : ["/brand/shield.webp"],
+    },
   };
 }
 

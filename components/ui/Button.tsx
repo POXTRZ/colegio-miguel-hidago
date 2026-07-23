@@ -52,7 +52,7 @@ export default function Button(props: ButtonProps) {
     variant = "primary",
   } = props;
   const classes = cn(
-    "inline-flex w-fit items-center justify-center gap-2 rounded-full font-bold transition",
+    "group inline-flex w-fit items-center justify-center gap-2 rounded-full font-bold transition-[transform,background-color,border-color,color,box-shadow] duration-[var(--duration-base)] ease-[var(--ease-enter)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)] active:translate-y-0 active:shadow-[var(--shadow-sm)] motion-reduce:transform-none [&_svg]:transition-transform [&_svg]:duration-[var(--duration-base)] [&_svg]:group-hover:translate-x-0.5",
     sizeClasses[size],
     variantClasses[variant],
     className

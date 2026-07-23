@@ -1,48 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { type KeyboardEvent, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import { type KeyboardEvent, useState } from "react";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { shieldElements } from "@/data/confirmed/institution";
 import { schoolShield } from "@/data/confirmed/media";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
-
 export default function ShieldMeaning() {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const [selectedId, setSelectedId] = useState(shieldElements[0].id);
   const selected =
     shieldElements.find((element) => element.id === selectedId) ??
     shieldElements[0];
-
-  useGSAP(
-    () => {
-      const media = gsap.matchMedia();
-
-      media.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.from("[data-shield-reveal]", {
-          autoAlpha: 0,
-          y: 20,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 72%",
-            once: true,
-          },
-        });
-      });
-
-      return () => media.revert();
-    },
-    { scope: sectionRef }
-  );
 
   function handleKeyDown(
     event: KeyboardEvent<HTMLButtonElement>,
@@ -73,7 +43,6 @@ export default function ShieldMeaning() {
   }
 
   return (
-    <div ref={sectionRef}>
     <Section id="escudo" tone="white">
       <Container>
         <SectionHeader
@@ -83,7 +52,7 @@ export default function ShieldMeaning() {
         />
 
         <div className="grid items-center gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
-          <div data-shield-reveal className="flex justify-center bg-[var(--color-crema)] px-8 py-12">
+          <div className="flex justify-center bg-[var(--color-crema)] px-8 py-12">
             <Image
               src={schoolShield.src}
               alt={schoolShield.alt}
@@ -96,7 +65,6 @@ export default function ShieldMeaning() {
 
           <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
             <div
-              data-shield-reveal
               className="border-t border-[var(--color-linea)]"
               role="tablist"
               aria-label="Elementos del escudo"
@@ -130,7 +98,6 @@ export default function ShieldMeaning() {
             </div>
 
             <div
-              data-shield-reveal
               id={`shield-panel-${selected.id}`}
               role="tabpanel"
               aria-labelledby={`shield-tab-${selected.id}`}
@@ -150,6 +117,5 @@ export default function ShieldMeaning() {
         </div>
       </Container>
     </Section>
-    </div>
   );
 }

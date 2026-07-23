@@ -29,11 +29,11 @@ export default function AdmissionsPage() {
     <>
       <SiteHeader />
       <main id="main-content" className="min-h-screen bg-[var(--color-fondo)]">
-        <section className="bg-[var(--color-azul-marino)] pt-28 text-white">
-          <Container size="2xl" className="grid min-h-[500px] gap-12 py-16 lg:grid-cols-[1fr_0.62fr] lg:items-end lg:py-24">
+        <section className="bg-[var(--color-azul-marino)] pt-[var(--internal-hero-offset)] text-white">
+          <Container size="2xl" className="grid min-h-[360px] gap-10 py-12 lg:grid-cols-[1fr_0.62fr] lg:items-end lg:py-14">
             <div>
               <Eyebrow tone="light">Inscripciones {admissionsInfo.cycle}</Eyebrow>
-              <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
+              <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.04] sm:text-5xl lg:text-6xl">
                 Información clara para preparar el siguiente ciclo.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">

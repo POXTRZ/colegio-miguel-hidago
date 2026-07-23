@@ -25,11 +25,21 @@ const statusTones = {
   cancelled: "error",
 } as const;
 
-export function EventStatusBadge({ status }: { status: EventStatus }) {
+type LabelProps = {
+  compact?: boolean;
+};
+
+export function EventStatusBadge({
+  compact = false,
+  status,
+}: LabelProps & { status: EventStatus }) {
   const Icon = statusIcons[status];
 
   return (
-    <Badge tone={statusTones[status]}>
+    <Badge
+      tone={statusTones[status]}
+      className={compact ? "px-2 py-0.5 text-[10px]" : undefined}
+    >
       <Icon className="mr-1.5 h-3.5 w-3.5" aria-hidden="true" />
       {eventStatusLabels[status]}
     </Badge>
@@ -38,16 +48,28 @@ export function EventStatusBadge({ status }: { status: EventStatus }) {
 
 export function EventCategoryBadge({
   category,
-}: {
+  compact = false,
+}: LabelProps & {
   category: EventCategory;
 }) {
   return (
-    <Badge tone="neutral" className="text-[var(--color-guinda)]">
+    <Badge
+      tone="neutral"
+      className={
+        compact
+          ? "px-2 py-0.5 text-[10px] text-[var(--color-guinda)]"
+          : "text-[var(--color-guinda)]"
+      }
+    >
       {eventCategoryLabels[category]}
     </Badge>
   );
 }
 
 export function DemoBadge() {
-  return <Badge tone="warning">Contenido demo</Badge>;
+  return (
+    <Badge tone="warning" className="px-2 py-0.5 text-[10px]">
+      Demo
+    </Badge>
+  );
 }

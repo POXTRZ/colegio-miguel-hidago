@@ -22,17 +22,17 @@ export default function ContactPage() {
     <>
       <SiteHeader />
       <main id="main-content" className="min-h-screen bg-[var(--color-fondo)]">
-        <section className="overflow-hidden bg-white pt-28">
-          <Container size="2xl" className="relative grid min-h-[500px] gap-12 py-16 lg:grid-cols-[1fr_0.65fr] lg:items-end lg:py-24">
+        <section className="overflow-hidden border-b border-[var(--color-bordes)] bg-white pt-[var(--internal-hero-offset)]">
+          <Container size="2xl" className="relative grid min-h-[340px] gap-8 py-10 lg:grid-cols-[1fr_0.65fr] lg:items-end lg:py-14">
             <span
               aria-hidden="true"
-              className="absolute -right-6 top-12 font-display text-[13rem] leading-none text-[var(--color-crema)]"
+              className="absolute -right-6 top-8 font-display text-[10rem] leading-none text-[var(--color-crema)]"
             >
               215
             </span>
             <div>
               <Eyebrow>Contacto</Eyebrow>
-              <h1 className="relative mt-5 max-w-4xl text-5xl font-semibold leading-[1.02] text-[var(--color-azul-marino)] sm:text-6xl lg:text-7xl">
+              <h1 className="relative mt-4 max-w-3xl text-4xl font-semibold leading-[1.04] text-[var(--color-azul-marino)] sm:text-5xl lg:text-6xl">
                 Estamos en el centro de San Luis de la Paz.
               </h1>
             </div>
@@ -46,28 +46,28 @@ export default function ContactPage() {
         <Section tone="white" spacing="md">
           <Container size="2xl">
             <div className="grid border-t border-[var(--color-bordes)] md:grid-cols-2 lg:grid-cols-4">
-              <div className="border-b border-[var(--color-bordes)] py-7 lg:border-r lg:px-6 lg:first:pl-0">
+              <div className="editorial-row border-b border-[var(--color-bordes)] py-7 lg:border-r lg:px-6 lg:first:pl-0">
                 <MapPin className="h-5 w-5 text-[var(--color-guinda)]" aria-hidden="true" />
                 <h2 className="mt-4 text-base font-bold">Dirección</h2>
                 <p className="mt-2 text-sm leading-6 text-[var(--color-muted)]">
                   {contactInfo.address}<br />{contactInfo.city}
                 </p>
               </div>
-              <div className="border-b border-[var(--color-bordes)] py-7 lg:border-r lg:px-6">
+              <div className="editorial-row border-b border-[var(--color-bordes)] py-7 lg:border-r lg:px-6">
                 <Phone className="h-5 w-5 text-[var(--color-guinda)]" aria-hidden="true" />
                 <h2 className="mt-4 text-base font-bold">Teléfono</h2>
                 <a href={contactInfo.phoneHref} className="mt-2 inline-block text-sm text-[var(--color-muted)] hover:text-[var(--color-guinda)]">
                   {contactInfo.phone}
                 </a>
               </div>
-              <div className="border-b border-[var(--color-bordes)] py-7 lg:border-r lg:px-6">
+              <div className="editorial-row border-b border-[var(--color-bordes)] py-7 lg:border-r lg:px-6">
                 <Clock3 className="h-5 w-5 text-[var(--color-guinda)]" aria-hidden="true" />
                 <h2 className="mt-4 text-base font-bold">Horario</h2>
                 <p className="mt-2 text-sm leading-6 text-[var(--color-muted)]">
                   {contactInfo.officeHours}<br />{contactInfo.summerHours}
                 </p>
               </div>
-              <div className="border-b border-[var(--color-bordes)] py-7 lg:px-6 lg:pr-0">
+              <div className="editorial-row border-b border-[var(--color-bordes)] py-7 lg:px-6 lg:pr-0">
                 <ExternalLink className="h-5 w-5 text-[var(--color-guinda)]" aria-hidden="true" />
                 <h2 className="mt-4 text-base font-bold">Facebook</h2>
                 <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-2 text-sm text-[var(--color-muted)] hover:text-[var(--color-guinda)]">
@@ -98,7 +98,7 @@ export default function ContactPage() {
                 </Button>
               </div>
             </div>
-            <div className="overflow-hidden border-y border-[var(--color-bordes)] bg-white">
+            <div className="editorial-frame z-0 overflow-hidden border-y border-[var(--color-bordes)] bg-white">
               <iframe
                 title="Mapa de ubicación del Colegio Miguel Hidalgo"
                 src={mapEmbedUrl}

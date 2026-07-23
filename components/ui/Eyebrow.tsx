@@ -24,7 +24,11 @@ export default function Eyebrow({
 }: EyebrowProps) {
   return (
     <p
-      className={cn("text-sm font-bold uppercase tracking-normal", toneClasses[tone], className)}
+      className={cn(
+        "inline-flex items-center gap-3 text-xs font-bold uppercase tracking-normal before:h-px before:w-7 before:shrink-0 before:bg-current before:opacity-60",
+        toneClasses[tone],
+        className,
+      )}
       {...props}
     >
       {children}
