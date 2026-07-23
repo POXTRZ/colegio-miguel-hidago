@@ -1,7 +1,12 @@
 import Image, { type ImageProps } from "next/image";
 import { cn } from "@/components/ui/utils";
 
-type ResponsiveImageRatio = "square" | "video" | "portrait" | "wide" | "auto";
+export type ResponsiveImageRatio =
+  | "square"
+  | "video"
+  | "portrait"
+  | "wide"
+  | "auto";
 
 const ratioClasses: Record<ResponsiveImageRatio, string> = {
   square: "aspect-square",

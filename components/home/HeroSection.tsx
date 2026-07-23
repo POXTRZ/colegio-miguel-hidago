@@ -10,11 +10,11 @@ import {
   Button,
   Container,
   Eyebrow,
-  ResponsiveImage,
 } from "@/components/ui";
-import { schoolMotto } from "@/config/site";
+import { getHistoricalMedia } from "@/data/confirmed/media";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
+const heroImage = getHistoricalMedia("comunidad-educativa");
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -72,31 +72,49 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[var(--color-crema)] pt-20"
+      className="relative min-h-[calc(100svh-5rem)] overflow-hidden bg-[var(--color-crema)] pt-20 lg:min-h-[min(840px,calc(100svh-5rem))]"
     >
       <div
-        className="absolute inset-y-0 right-0 hidden w-[45%] bg-[var(--color-azul-marino)] lg:block lg:[clip-path:polygon(14%_0,100%_0,100%_100%,0_100%)]"
+        data-hero-photo
+        className="absolute -inset-y-[6%] inset-x-0 lg:left-[42%]"
+      >
+        {heroImage ? (
+          <Image
+            src={heroImage.src}
+            alt={heroImage.alt}
+            fill
+            priority
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            className="object-cover object-center grayscale-[0.16]"
+          />
+        ) : null}
+      </div>
+      <div
+        className="absolute inset-x-0 bottom-20 top-0 bg-[rgba(11,37,69,0.78)] lg:right-auto lg:w-[59%] lg:bg-[var(--color-azul-marino)]"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-x-0 bottom-0 h-20 bg-[var(--color-crema)]"
         aria-hidden="true"
       />
       <div
         data-hero-gold
-        className="absolute bottom-20 right-[42%] hidden h-px w-72 rotate-[66deg] bg-[var(--color-dorado-decorativo)] lg:block"
+        className="absolute bottom-[18%] left-[54%] hidden h-px w-72 rotate-[72deg] bg-[var(--color-dorado-decorativo)] lg:block"
         aria-hidden="true"
       />
 
       <Container
         size="2xl"
-        className="relative grid items-center gap-6 py-6 sm:gap-10 sm:py-10 lg:min-h-[calc(100svh-10rem)] lg:grid-cols-[1.02fr_0.98fr] lg:gap-16 lg:py-12"
+        className="relative flex min-h-[calc(100svh-10rem)] items-end pb-24 pt-16 text-white lg:min-h-[min(760px,calc(100svh-10rem))] lg:pb-28"
       >
-        <div data-hero-copy className="max-w-3xl">
-          <Eyebrow>{schoolMotto}</Eyebrow>
-          <h1 className="mt-4 text-4xl font-semibold leading-[1.02] text-[var(--color-azul-marino)] sm:mt-6 sm:text-6xl lg:text-7xl">
-            Formación integral para construir un futuro fraterno.
+        <div data-hero-copy className="max-w-4xl">
+          <Eyebrow tone="gold">Colegio Miguel Hidalgo</Eyebrow>
+          <h1 className="mt-5 max-w-3xl text-5xl font-semibold leading-[0.98] sm:mt-7 sm:text-6xl lg:text-[5rem]">
+            Educación integral de Preescolar a Preparatoria.
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--color-texto-secundario)] sm:mt-7 sm:text-lg sm:leading-8">
-            Una comunidad educativa en San Luis de la Paz que acompaña desde
-            Preescolar hasta Preparatoria, integrando aprendizaje, valores y
-            espiritualidad franciscana.
+          <p className="mt-6 max-w-xl text-base leading-7 text-white/76 sm:mt-8 sm:text-lg sm:leading-8">
+            Aprendizaje, formación humana y espiritualidad franciscana en una
+            comunidad cercana de San Luis de la Paz.
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:mt-9 sm:flex-row">
@@ -109,60 +127,22 @@ export default function HeroSection() {
             </Button>
             <Button
               href="/inscripciones"
-              variant="ghost"
-              className="w-full sm:w-fit"
+              variant="secondary"
+              className="w-full border-white/45 text-white hover:bg-white/10 sm:w-fit"
             >
               Consultar inscripciones
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Button>
           </div>
 
-          <div className="mt-12 hidden items-center gap-4 border-t border-[var(--color-bordes)] pt-6 sm:flex">
-            <Image
-              src="/brand/shield.webp"
-              alt=""
-              width={396}
-              height={508}
-              className="h-14 w-auto object-contain"
-            />
-            <div>
-              <p className="text-sm font-bold text-[var(--color-azul-marino)]">
-                Colegio Miguel Hidalgo
-              </p>
-              <p className="mt-1 text-xs text-[var(--color-texto-secundario)]">
-                HFIC - Provincia de Cristo Rey
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div data-hero-photo className="relative -mx-5 bg-[var(--color-azul-marino)] px-5 py-5 sm:mx-0 sm:px-8 sm:py-9 lg:bg-transparent lg:p-0">
-          <div
-            className="absolute left-2 top-4 h-px w-28 bg-[var(--color-dorado-decorativo)] sm:left-5 lg:-left-8 lg:top-10"
-            aria-hidden="true"
-          />
-          <div className="relative">
-            <ResponsiveImage
-              src="/images/home/comunidad-educativa-archivo.jpeg"
-              alt="Amplio grupo de estudiantes del Colegio Miguel Hidalgo en una fotografía histórica"
-              width={1600}
-              height={1238}
-              ratio="auto"
-              className="grayscale"
-              containerClassName="h-36 border border-white/20 shadow-[var(--shadow-lg)] sm:h-[28rem] lg:h-[min(68vh,660px)]"
-              sizes="(min-width: 1024px) 44vw, 100vw"
-              priority
-            />
-            <span className="absolute bottom-3 left-3 bg-[var(--color-azul-marino)] px-3 py-1 text-xs font-bold uppercase tracking-normal text-white sm:hidden">
-              Archivo histórico
-            </span>
-          </div>
-          <p className="mt-3 hidden max-w-md text-xs leading-5 text-white/64 sm:block">
-            Archivo histórico del Colegio Miguel Hidalgo. Fecha y personas
-            por identificar.
-          </p>
         </div>
       </Container>
+      <div className="absolute bottom-4 right-5 hidden max-w-sm text-right text-[11px] leading-5 text-[var(--color-muted)] sm:block lg:right-8">
+        <span className="block font-bold uppercase text-[var(--color-guinda)]">
+          Archivo histórico
+        </span>
+        {heroImage?.caption}
+      </div>
     </section>
   );
 }

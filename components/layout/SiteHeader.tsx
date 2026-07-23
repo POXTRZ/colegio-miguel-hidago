@@ -8,6 +8,7 @@ import { Menu } from "lucide-react";
 import MobileNavigation from "@/components/layout/MobileNavigation";
 import SiteNavigation from "@/components/layout/SiteNavigation";
 import { admissionsCta } from "@/config/navigation";
+import { schoolShield } from "@/data/confirmed/media";
 
 export default function SiteHeader() {
   const pathname = usePathname();
@@ -46,10 +47,10 @@ export default function SiteHeader() {
           >
             <span className="flex h-14 w-11 shrink-0 items-center justify-center border border-[var(--color-bordes)] bg-white p-1 shadow-[var(--shadow-sm)] transition-transform group-hover:-translate-y-0.5">
               <Image
-                src="/brand/shield.webp"
+                src={schoolShield.src}
                 alt=""
-                width={396}
-                height={508}
+                width={schoolShield.width}
+                height={schoolShield.height}
                 className="h-full w-auto object-contain"
                 priority
               />

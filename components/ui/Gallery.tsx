@@ -23,6 +23,10 @@ export default function Gallery({
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const selected = items[selectedIndex];
+  const showTechnicalStatus =
+    process.env.NODE_ENV === "development" &&
+    (selected?.status === "provisional" ||
+      selected?.status === "pending-replacement");
 
   const move = useCallback(
     (direction: -1 | 1) => {
@@ -101,9 +105,21 @@ export default function Gallery({
             <span className="absolute bottom-4 right-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white text-[var(--color-guinda)] shadow-[var(--shadow-md)]">
               <Expand className="h-5 w-5" aria-hidden="true" />
             </span>
+            {showTechnicalStatus ? (
+              <span className="absolute left-3 top-3 bg-[var(--color-advertencia)] px-2.5 py-1 text-[10px] font-bold uppercase text-white">
+                {selected.status === "provisional"
+                  ? "Imagen provisional"
+                  : "Reemplazo pendiente"}
+              </span>
+            ) : null}
           </button>
-          {selected.caption ? (
+          {selected.caption || selected.status === "historical" ? (
             <figcaption className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+              {selected.status === "historical" ? (
+                <span className="block text-xs font-bold uppercase text-[var(--color-guinda)]">
+                  Archivo histórico
+                </span>
+              ) : null}
               {selected.caption}
             </figcaption>
           ) : null}
@@ -183,6 +199,11 @@ export default function Gallery({
           </div>
           {selected.caption ? (
             <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-6 text-white/78">
+              {selected.status === "historical" ? (
+                <span className="block text-xs font-bold uppercase text-[var(--color-dorado-claro)]">
+                  Archivo histórico
+                </span>
+              ) : null}
               {selected.caption}
             </p>
           ) : null}

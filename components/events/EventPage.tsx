@@ -28,6 +28,7 @@ import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Gallery from "@/components/ui/Gallery";
 import Section from "@/components/ui/Section";
+import { schoolShield } from "@/data/confirmed/media";
 import type {
   CalendarEvent,
   EventImage,
@@ -73,12 +74,12 @@ export default function EventPage({
     <>
       <SiteHeader />
       <main id="main-content" className="min-h-screen bg-[var(--color-fondo)] text-[var(--color-tinta)]">
-        <section className="relative min-h-[650px] overflow-hidden bg-[var(--color-azul-marino)] pt-28 text-white">
+        <section className="relative min-h-[min(820px,88svh)] overflow-hidden bg-[var(--color-azul-marino)] pt-28 text-white">
           {event.cover ? (
             <Image
               alt=""
               aria-hidden="true"
-              className="object-cover opacity-38"
+              className="object-cover opacity-44"
               fill
               priority
               sizes="100vw"
@@ -89,9 +90,9 @@ export default function EventPage({
               <Image
                 alt=""
                 aria-hidden="true"
-                src="/brand/shield.webp"
-                width={396}
-                height={508}
+                src={schoolShield.src}
+                width={schoolShield.width}
+                height={schoolShield.height}
                 unoptimized
                 className="h-[70%] w-auto object-contain"
               />
@@ -99,7 +100,7 @@ export default function EventPage({
           )}
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,37,69,1)_0%,rgba(11,37,69,0.9)_58%,rgba(11,37,69,0.4)_100%)]" />
 
-          <Container className="relative flex min-h-[522px] flex-col justify-end pb-16 pt-14">
+          <Container className="relative flex min-h-[calc(min(820px,88svh)-7rem)] flex-col justify-end pb-16 pt-14 lg:pb-20">
             <Button
               href="/calendario"
               variant="light"
@@ -114,17 +115,34 @@ export default function EventPage({
               <EventCategoryBadge category={event.category} />
               {event.isDemo ? <DemoBadge /> : null}
             </div>
-            <h1 className="mt-6 max-w-4xl text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
+            <h1 className="mt-6 max-w-5xl text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
               {event.title}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/76">
               {event.summary}
             </p>
           </Container>
+          {event.cover?.status === "historical" ? (
+            <p className="absolute bottom-5 right-8 hidden max-w-sm border-r-2 border-[var(--color-dorado)] pr-4 text-right text-xs leading-5 text-white/72 lg:block">
+              <span className="block font-bold uppercase text-[var(--color-dorado-claro)]">
+                Archivo histórico
+              </span>
+              {event.cover.caption}
+            </p>
+          ) : null}
+          {process.env.NODE_ENV === "development" &&
+          (event.cover?.status === "provisional" ||
+            event.cover?.status === "pending-replacement") ? (
+            <span className="absolute right-4 top-32 bg-[var(--color-advertencia)] px-3 py-1.5 text-xs font-bold uppercase text-white">
+              {event.cover.status === "provisional"
+                ? "Imagen provisional"
+                : "Reemplazo pendiente"}
+            </span>
+          ) : null}
         </section>
 
         <section className="bg-white">
-          <Container className="grid gap-6 py-8 sm:grid-cols-2 lg:grid-cols-4">
+          <Container className="grid gap-8 border-b border-[var(--color-linea)] py-10 sm:grid-cols-2 lg:grid-cols-4">
             <div className="flex gap-3">
               <CalendarDays
                 className="h-6 w-6 shrink-0 text-[var(--color-guinda)]"

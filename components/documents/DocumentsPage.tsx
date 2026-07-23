@@ -15,15 +15,20 @@ export default function DocumentsPage() {
     <>
       <SiteHeader />
       <main id="main-content" className="min-h-screen bg-[var(--color-fondo)]">
-        <section className="border-b border-[var(--color-bordes)] pt-28">
-          <Container size="2xl" className="py-16 lg:py-24">
-            <Eyebrow>Documentos descargables</Eyebrow>
-            <h1 className="mt-5 max-w-4xl font-semibold text-[var(--color-azul-marino)]">
-              Información institucional para consultar y conservar.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
-              Los documentos de esta sección corresponden a archivos
-              confirmados para publicación.
+        <section className="border-b border-[var(--color-bordes)] bg-[var(--color-azul-marino)] pt-28 text-white">
+          <Container size="2xl" className="grid min-h-[480px] gap-10 py-16 lg:grid-cols-[1fr_auto] lg:items-end lg:py-20">
+            <div>
+              <Eyebrow tone="gold">Documentos descargables</Eyebrow>
+              <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
+                Información institucional para consultar y conservar.
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
+                Los documentos de esta sección corresponden a archivos
+                confirmados para publicación.
+              </p>
+            </div>
+            <p className="font-display text-8xl text-white/12" aria-hidden="true">
+              01
             </p>
           </Container>
         </section>
@@ -34,9 +39,9 @@ export default function DocumentsPage() {
               {publicDocuments.map((document) => (
                 <article
                   key={document.id}
-                  className="grid gap-6 border-b border-[var(--color-bordes)] py-8 md:grid-cols-[3rem_1fr_auto] md:items-center"
+                  className="grid gap-6 border-b border-[var(--color-bordes)] py-10 md:grid-cols-[4rem_1fr_auto] md:items-center"
                 >
-                  <FileText className="h-8 w-8 text-[var(--color-guinda)]" aria-hidden="true" />
+                  <FileText className="h-10 w-10 text-[var(--color-dorado-texto)]" aria-hidden="true" />
                   <div>
                     <div className="flex flex-wrap items-center gap-3">
                       <Badge tone="burgundy">{document.category}</Badge>

@@ -10,6 +10,7 @@ import {
   Button,
   Container,
   Eyebrow,
+  ManagedImage,
   Section,
   SectionHeader,
 } from "@/components/ui";
@@ -19,10 +20,13 @@ import {
   formationAreas,
 } from "@/data/confirmed/education-offer";
 import { facilityGroups } from "@/data/confirmed/facilities";
+import { getHistoricalMedia } from "@/data/confirmed/media";
 
 const formationIcons = [BookOpen, HeartHandshake, Church] as const;
 
 export default function EducationPage() {
+  const heroImage = getHistoricalMedia("alumnas-formacion");
+
   return (
     <>
       <SiteHeader />
@@ -30,19 +34,30 @@ export default function EducationPage() {
         id="main-content"
         className="min-h-screen bg-[var(--color-fondo)] text-[var(--color-tinta)]"
       >
-        <section className="border-b border-[var(--color-bordes)] pt-28">
-          <Container size="2xl" className="grid gap-10 py-16 lg:grid-cols-[1fr_0.7fr] lg:items-end lg:py-24">
-            <div>
+        <section className="overflow-hidden border-b border-[var(--color-bordes)] bg-white pt-28">
+          <Container size="2xl" className="grid gap-12 py-16 lg:grid-cols-[1fr_0.72fr] lg:items-center lg:gap-20 lg:py-16">
+            <div className="lg:py-6">
               <Eyebrow>Oferta educativa</Eyebrow>
-              <h1 className="mt-5 max-w-4xl font-semibold text-[var(--color-azul-marino)]">
+              <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[1.02] text-[var(--color-azul-marino)] sm:text-6xl">
                 Un acompañamiento formativo desde los primeros años hasta la
                 preparación universitaria.
               </h1>
+              <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--color-muted)]">
+                Cuatro etapas enlazadas por una misma visión académica, humana y
+                franciscana.
+              </p>
             </div>
-            <p className="max-w-xl text-lg leading-8 text-[var(--color-muted)] lg:justify-self-end">
-              Cuatro etapas enlazadas por una misma visión académica, humana y
-              franciscana.
-            </p>
+            <div className="relative lg:translate-y-10">
+              {heroImage ? (
+                <ManagedImage
+                  asset={heroImage}
+                  ratio="auto"
+                  imageClassName="grayscale-[0.2]"
+                  sizes="(min-width: 1024px) 36vw, 100vw"
+                  priority
+                />
+              ) : null}
+            </div>
           </Container>
         </section>
 
@@ -92,13 +107,13 @@ export default function EducationPage() {
               title="Conocimiento, persona y fraternidad."
               tone="light"
             />
-            <div className="grid gap-10 lg:grid-cols-3">
+            <div className="grid border-t border-white/20 lg:grid-cols-3">
               {formationAreas.map((area, index) => {
                 const Icon = formationIcons[index];
                 return (
                   <article
                     key={area.title}
-                    className="border-t border-white/20 pt-7"
+                    className="border-b border-white/20 py-8 lg:border-r lg:px-8 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
                   >
                     <Icon
                       className="h-7 w-7 text-[var(--color-dorado-claro)]"

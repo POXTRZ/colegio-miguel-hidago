@@ -34,6 +34,14 @@ export default function HistoryHero() {
           </p>
         </div>
       </Container>
+      {heroImage ? (
+        <p className="absolute bottom-5 right-8 hidden max-w-sm border-r-2 border-[var(--color-dorado)] pr-4 text-right text-xs leading-5 text-white/72 lg:block">
+          <span className="block font-bold uppercase text-[var(--color-dorado-claro)]">
+            Archivo histórico
+          </span>
+          {heroImage.caption}
+        </p>
+      ) : null}
     </section>
   );
 }

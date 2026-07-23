@@ -2,7 +2,7 @@ import Image from "next/image";
 import { schoolMotto } from "@/config/site";
 import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
-import { getHistoricalMedia } from "@/data/confirmed/media";
+import { getHistoricalMedia, schoolShield } from "@/data/confirmed/media";
 
 export default function AboutHero() {
   const background = getHistoricalMedia("comunidad-franciscana");
@@ -26,7 +26,7 @@ export default function AboutHero() {
         <div className="max-w-4xl">
           <Eyebrow tone="gold">Quiénes somos</Eyebrow>
           <h1 className="mt-5 max-w-3xl text-5xl font-bold leading-[1.02] sm:text-6xl lg:text-7xl">
-            Formar para construir un mundo fraterno.
+            Una comunidad educativa con identidad franciscana.
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-white/78 md:text-xl md:leading-9">
             Una comunidad educativa que integra conocimiento, dignidad,
@@ -39,15 +39,23 @@ export default function AboutHero() {
 
         <div className="flex justify-center lg:justify-end">
           <Image
-            src="/brand/shield.webp"
-            alt="Escudo oficial del Colegio Miguel Hidalgo"
-            width={396}
-            height={508}
+            src={schoolShield.src}
+            alt={schoolShield.alt}
+            width={schoolShield.width}
+            height={schoolShield.height}
             unoptimized
             className="h-auto w-48 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.28)] sm:w-56 lg:w-64"
           />
         </div>
       </Container>
+      {background ? (
+        <p className="absolute bottom-5 left-8 hidden max-w-sm border-l-2 border-[var(--color-dorado)] pl-4 text-xs leading-5 text-white/68 lg:block">
+          <span className="block font-bold uppercase text-[var(--color-dorado-claro)]">
+            Archivo histórico
+          </span>
+          {background.caption}
+        </p>
+      ) : null}
     </section>
   );
 }

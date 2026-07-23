@@ -7,6 +7,7 @@ import {
 } from "@/data/confirmed/contact";
 import { primaryNav } from "@/config/navigation";
 import { schoolMotto } from "@/config/site";
+import { schoolShield } from "@/data/confirmed/media";
 
 export default function SiteFooter() {
   return (
@@ -18,10 +19,10 @@ export default function SiteFooter() {
           <div className="flex items-center gap-3">
             <span className="flex h-12 w-10 items-center justify-center rounded-md bg-white p-1">
               <Image
-                src="/brand/shield.webp"
+                src={schoolShield.src}
                 alt=""
-                width={396}
-                height={508}
+                width={schoolShield.width}
+                height={schoolShield.height}
                 unoptimized
                 className="h-full w-auto object-contain"
               />

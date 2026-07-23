@@ -30,10 +30,10 @@ export default function AdmissionsPage() {
       <SiteHeader />
       <main id="main-content" className="min-h-screen bg-[var(--color-fondo)]">
         <section className="bg-[var(--color-azul-marino)] pt-28 text-white">
-          <Container size="2xl" className="grid gap-12 py-16 lg:grid-cols-[1fr_0.8fr] lg:items-end lg:py-24">
+          <Container size="2xl" className="grid min-h-[500px] gap-12 py-16 lg:grid-cols-[1fr_0.62fr] lg:items-end lg:py-24">
             <div>
               <Eyebrow tone="light">Inscripciones {admissionsInfo.cycle}</Eyebrow>
-              <h1 className="mt-5 max-w-3xl font-semibold">
+              <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
                 Información clara para preparar el siguiente ciclo.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
@@ -41,7 +41,7 @@ export default function AdmissionsPage() {
                 circular institucional.
               </p>
             </div>
-            <div className="border-l-2 border-[var(--color-dorado)] pl-7">
+            <div className="border-l-2 border-[var(--color-dorado)] pl-7 lg:mb-3">
               <p className="text-sm font-bold">Atención en oficina</p>
               <p className="mt-2 leading-7 text-white/72">
                 {contactInfo.officeHours}
@@ -82,12 +82,12 @@ export default function AdmissionsPage() {
               eyebrow="Documentación"
               title="Requisitos por nivel."
             />
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid lg:grid-cols-3">
               {levels.map((level, index) => (
                 <details
                   key={level.key}
                   open={index === 0}
-                  className="group border border-[var(--color-bordes)] bg-white"
+                  className="group border-y border-[var(--color-bordes)] bg-transparent lg:border-r lg:border-t lg:px-5 lg:first:border-l lg:first:pl-0 lg:last:pr-0"
                 >
                   <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-bold text-[var(--color-azul-marino)]">
                     {level.label}

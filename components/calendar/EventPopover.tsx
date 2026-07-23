@@ -31,7 +31,7 @@ export default function EventPopover({ event }: EventPopoverProps) {
   }
 
   return (
-    <aside className="border-t-4 border-[var(--color-guinda)] bg-white p-6 shadow-[var(--shadow-sm)]">
+    <aside className="border-t-2 border-[var(--color-guinda)] bg-white p-7">
       <div className="flex flex-wrap gap-2">
         <EventStatusBadge status={event.status} />
         <EventCategoryBadge category={event.category} />

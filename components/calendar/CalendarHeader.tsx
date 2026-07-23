@@ -9,10 +9,10 @@ type CalendarHeaderProps = {
 export default function CalendarHeader({ demoMode }: CalendarHeaderProps) {
   return (
     <section className="bg-[var(--color-crema)] pt-28">
-      <Container className="grid gap-8 border-b border-[var(--color-linea)] pb-12 pt-12 lg:grid-cols-[1fr_auto] lg:items-end lg:pb-16">
+      <Container className="grid min-h-[470px] gap-10 border-b border-[var(--color-linea)] pb-14 pt-16 lg:grid-cols-[1fr_280px] lg:items-end lg:pb-20">
         <div className="max-w-3xl">
           <Eyebrow>Calendario escolar</Eyebrow>
-          <h1 className="mt-4 text-5xl font-bold leading-tight sm:text-6xl">
+          <h1 className="mt-5 text-5xl font-semibold leading-[1.02] text-[var(--color-azul-marino)] sm:text-6xl lg:text-7xl">
             Fechas para encontrarnos y participar.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
@@ -20,12 +20,12 @@ export default function CalendarHeader({ demoMode }: CalendarHeaderProps) {
             educativo.
           </p>
         </div>
-        <div className="flex items-center gap-3 border-l-2 border-[var(--color-dorado)] pl-5 text-sm text-[var(--color-muted)]">
+        <div className="flex items-start gap-4 border-l-2 border-[var(--color-dorado)] pl-5 text-sm leading-6 text-[var(--color-muted)]">
           <CalendarDays
             className="h-6 w-6 text-[var(--color-guinda)]"
             aria-hidden="true"
           />
-          <span>
+          <span className="max-w-52">
             {demoMode
               ? "Vista de desarrollo con eventos demo"
               : "Información institucional confirmada"}

@@ -9,6 +9,7 @@ import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { shieldElements } from "@/data/confirmed/institution";
+import { schoolShield } from "@/data/confirmed/media";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -84,10 +85,10 @@ export default function ShieldMeaning() {
         <div className="grid items-center gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
           <div data-shield-reveal className="flex justify-center bg-[var(--color-crema)] px-8 py-12">
             <Image
-              src="/brand/shield.webp"
-              alt="Escudo oficial del Colegio Miguel Hidalgo"
-              width={396}
-              height={508}
+              src={schoolShield.src}
+              alt={schoolShield.alt}
+              width={schoolShield.width}
+              height={schoolShield.height}
               unoptimized
               className="h-auto w-56 object-contain md:w-72"
             />

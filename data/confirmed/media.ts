@@ -1,6 +1,12 @@
-import type { HistoricalMediaAsset } from "@/types/media";
+import type {
+  HistoricalMediaAsset,
+  ManagedImageAsset,
+} from "@/types/media";
 
-export const historicalMedia: HistoricalMediaAsset[] = [
+const historicalMediaSource: Omit<
+  HistoricalMediaAsset,
+  "replaceLater" | "status"
+>[] = [
   {
     id: "comunidad-educativa",
     originalName: "WhatsApp Image 2026-07-14 at 9.38.51 AM (3).jpeg",
@@ -179,6 +185,50 @@ export const historicalMedia: HistoricalMediaAsset[] = [
   },
 ];
 
+export const historicalMedia: HistoricalMediaAsset[] =
+  historicalMediaSource.map((asset) => ({
+    ...asset,
+    status: "historical",
+    replaceLater: false,
+  }));
+
+export const schoolShield = {
+  id: "school-shield",
+  src: "/brand/shield.webp",
+  alt: "Escudo oficial del Colegio Miguel Hidalgo",
+  caption: "Escudo oficial del Colegio Miguel Hidalgo.",
+  status: "final",
+  context: "Identidad institucional.",
+  source: "Archivo institucional proporcionado por el Colegio Miguel Hidalgo.",
+  replaceLater: false,
+  width: 396,
+  height: 508,
+} as const satisfies ManagedImageAsset;
+
+export const currentFacilitiesPhotography = {
+  id: "current-facilities-photography",
+  src: null,
+  alt: "Registro fotográfico actual de las instalaciones pendiente",
+  caption: "Registro fotográfico contemporáneo pendiente de entrega.",
+  status: "pending-replacement",
+  context:
+    "Instalaciones actuales: aulas, canchas, cómputo, laboratorio, salón de usos múltiples, capilla y Preescolar.",
+  source: "Pendiente de entrega por el Colegio Miguel Hidalgo.",
+  replaceLater: true,
+  width: 1600,
+  height: 1000,
+} as const satisfies ManagedImageAsset;
+
+export const managedMedia: ManagedImageAsset[] = [
+  schoolShield,
+  currentFacilitiesPhotography,
+  ...historicalMedia,
+];
+
 export function getHistoricalMedia(id: string) {
   return historicalMedia.find((asset) => asset.id === id);
+}
+
+export function getManagedMedia(id: string) {
+  return managedMedia.find((asset) => asset.id === id);
 }

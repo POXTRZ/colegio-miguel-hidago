@@ -3,11 +3,14 @@ import {
   Button,
   Container,
   Eyebrow,
-  ResponsiveImage,
+  ManagedImage,
   Section,
 } from "@/components/ui";
+import { getHistoricalMedia } from "@/data/confirmed/media";
 
 export default function IdentitySection() {
+  const image = getHistoricalMedia("alumnas-formacion");
+
   return (
     <Section tone="white">
       <Container size="2xl">
@@ -48,19 +51,14 @@ export default function IdentitySection() {
           </div>
 
           <div className="lg:pt-20">
-            <ResponsiveImage
-              src="/images/home/alumnas-formacion-archivo.jpeg"
-              alt="Generaciones de alumnas formadas en el Colegio Miguel Hidalgo"
-              width={1487}
-              height={1011}
-              ratio="portrait"
-              className="grayscale"
-              sizes="(min-width: 1024px) 36vw, 100vw"
-            />
-            <p className="mt-3 text-xs leading-5 text-[var(--color-texto-secundario)]">
-              Archivo histórico. La imagen documenta generaciones escolares;
-              fecha y personas por identificar.
-            </p>
+            {image ? (
+              <ManagedImage
+                asset={image}
+                ratio="portrait"
+                imageClassName="grayscale"
+                sizes="(min-width: 1024px) 36vw, 100vw"
+              />
+            ) : null}
           </div>
         </div>
       </Container>

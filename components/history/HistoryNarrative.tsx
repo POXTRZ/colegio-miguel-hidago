@@ -52,6 +52,7 @@ export default function HistoryNarrative() {
                   height={building.height}
                   ratio="wide"
                   className="grayscale-[0.2]"
+                  containerClassName="rounded-none"
                 />
                 <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--color-muted)]">
                   {building.caption}

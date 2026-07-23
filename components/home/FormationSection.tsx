@@ -1,4 +1,8 @@
+"use client";
+
+import { MotionConfig, motion } from "framer-motion";
 import { Container, Eyebrow, ResponsiveImage, Section } from "@/components/ui";
+import { getHistoricalMedia } from "@/data/confirmed/media";
 
 const formationDimensions = [
   {
@@ -20,68 +24,109 @@ const formationDimensions = [
 ] as const;
 
 export default function FormationSection() {
+  const image = getHistoricalMedia("comunidad-franciscana");
+
   return (
-    <Section tone="navy" className="overflow-hidden">
-      <Container size="2xl">
-        <div className="grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <div className="relative pb-8 pl-0 sm:pl-8">
+    <MotionConfig reducedMotion="user">
+    <Section tone="navy" className="overflow-hidden !py-0">
+      <Container size="2xl" className="px-0 lg:px-8">
+        <div className="grid lg:min-h-[820px] lg:grid-cols-[1.06fr_0.94fr]">
+          <motion.div
+            className="relative min-h-[420px] lg:min-h-0"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
             <div
-              className="absolute bottom-0 left-0 top-10 hidden w-px bg-[var(--color-dorado-decorativo)] sm:block"
+              className="absolute bottom-0 right-0 top-0 z-10 hidden w-px bg-[var(--color-dorado-decorativo)] lg:block"
               aria-hidden="true"
             />
-            <ResponsiveImage
-              src="/images/home/comunidad-franciscana-archivo.jpeg"
-              alt="Comunidad escolar y religiosa reunida en una fotografía histórica"
-              width={1462}
-              height={993}
-              ratio="video"
-              className="grayscale"
-              sizes="(min-width: 1024px) 42vw, 100vw"
-            />
-            <p className="mt-3 text-xs leading-5 text-white/60">
-              Archivo histórico del Colegio Miguel Hidalgo. Fecha y personas
-              por identificar.
-            </p>
-          </div>
+            {image ? (
+              <>
+                <ResponsiveImage
+                  src={image.src}
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.height}
+                  ratio="auto"
+                  className="grayscale-[0.35]"
+                  containerClassName="absolute inset-0 h-full rounded-none"
+                  sizes="(min-width: 1024px) 52vw, 100vw"
+                />
+                <p className="absolute bottom-5 left-5 right-5 z-10 max-w-sm bg-[rgba(11,37,69,0.86)] px-4 py-3 text-xs leading-5 text-white/72">
+                  <span className="block font-bold uppercase text-white">
+                    Archivo histórico
+                  </span>
+                  {image.caption}
+                </p>
+              </>
+            ) : null}
+          </motion.div>
 
-          <div>
+          <motion.div
+            className="px-5 py-16 sm:px-10 lg:flex lg:flex-col lg:justify-center lg:px-16 lg:py-24"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.18 }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.1 } },
+            }}
+          >
             <Eyebrow tone="light">Formación integral</Eyebrow>
-            <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">
+            <motion.h2
+              className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] sm:text-5xl lg:text-6xl"
+              variants={{
+                hidden: { opacity: 0, y: 18 },
+                visible: { opacity: 1, y: 0 },
+              }}
+            >
               Educar es acompañar a la persona completa.
-            </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
+            </motion.h2>
+            <motion.p
+              className="mt-6 max-w-2xl text-lg leading-8 text-white/72"
+              variants={{
+                hidden: { opacity: 0, y: 18 },
+                visible: { opacity: 1, y: 0 },
+              }}
+            >
               La propuesta educativa HFIC integra fe, cultura y vida. El
               aprendizaje académico convive con la formación humana, la
               espiritualidad franciscana y el compromiso con una comunidad
               más justa y fraterna.
-            </p>
+            </motion.p>
 
-            <div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+            <div className="mt-12 border-t border-white/18">
               {formationDimensions.map((dimension, index) => (
-                <div
+                <motion.div
                   key={dimension.title}
-                  className={`border-l pl-5 ${
-                    index === 0
-                      ? "border-[var(--color-dorado-decorativo)]"
-                      : "border-white/20"
-                  }`}
+                  className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-white/18 py-5 sm:grid-cols-[2.5rem_8rem_1fr]"
+                  variants={{
+                    hidden: { opacity: 0, x: 18 },
+                    visible: { opacity: 1, x: 0 },
+                  }}
                 >
+                  <span className="font-display text-lg text-[var(--color-dorado-claro)]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   <p className="text-sm font-bold text-white">
                     {dimension.title}
                   </p>
-                  <p className="mt-2 text-sm leading-6 text-white/64">
+                  <p className="col-start-2 text-sm leading-6 text-white/64 sm:col-start-3">
                     {dimension.text}
                   </p>
-                </div>
+                </motion.div>
               ))}
             </div>
 
-            <p className="font-display mt-10 max-w-xl border-t border-white/14 pt-7 text-2xl leading-snug text-white">
+            <p className="font-display mt-10 max-w-xl text-2xl leading-snug text-white">
               “Formar para construir un mundo fraterno”.
             </p>
-          </div>
+          </motion.div>
         </div>
       </Container>
     </Section>
+    </MotionConfig>
   );
 }

@@ -47,7 +47,7 @@ export default function MissionVision() {
                 height={image.height}
                 ratio="portrait"
                 className="grayscale-[0.18]"
-                containerClassName="mt-9"
+                containerClassName="mt-9 rounded-none"
                 sizes="(min-width: 1024px) 360px, 90vw"
               />
             ) : null}

@@ -113,8 +113,8 @@ export default function EventCalendar({
               </div>
 
               <div className="hidden gap-6 pt-8 lg:grid xl:grid-cols-[1fr_360px]">
-                <section className="overflow-hidden border border-[var(--color-linea)] bg-white shadow-[var(--shadow-sm)]">
-                  <div className="flex items-center justify-between gap-6 border-b border-[var(--color-linea)] p-5">
+                <section className="overflow-hidden border-y border-[var(--color-linea)] bg-white">
+                  <div className="flex items-center justify-between gap-6 border-b border-[var(--color-linea)] px-5 py-7">
                     <div>
                       <p className="text-sm font-bold text-[var(--color-guinda)]">
                         Vista mensual

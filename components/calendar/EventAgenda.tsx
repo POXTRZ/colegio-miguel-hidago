@@ -42,7 +42,7 @@ export default function EventAgenda({
             {dateEvents.map((event) => (
               <article
                 key={event.id}
-                className="border-l-4 border-[var(--color-guinda)] bg-white p-5 shadow-[var(--shadow-sm)]"
+                className="border-l-2 border-[var(--color-guinda)] bg-white p-5"
               >
                 <div className="flex flex-wrap gap-2">
                   <EventStatusBadge status={event.status} />

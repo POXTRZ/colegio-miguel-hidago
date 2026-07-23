@@ -22,15 +22,21 @@ export default function ContactPage() {
     <>
       <SiteHeader />
       <main id="main-content" className="min-h-screen bg-[var(--color-fondo)]">
-        <section className="pt-28">
-          <Container size="2xl" className="grid gap-12 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:py-24">
+        <section className="overflow-hidden bg-white pt-28">
+          <Container size="2xl" className="relative grid min-h-[500px] gap-12 py-16 lg:grid-cols-[1fr_0.65fr] lg:items-end lg:py-24">
+            <span
+              aria-hidden="true"
+              className="absolute -right-6 top-12 font-display text-[13rem] leading-none text-[var(--color-crema)]"
+            >
+              215
+            </span>
             <div>
               <Eyebrow>Contacto</Eyebrow>
-              <h1 className="mt-5 font-semibold text-[var(--color-azul-marino)]">
+              <h1 className="relative mt-5 max-w-4xl text-5xl font-semibold leading-[1.02] text-[var(--color-azul-marino)] sm:text-6xl lg:text-7xl">
                 Estamos en el centro de San Luis de la Paz.
               </h1>
             </div>
-            <p className="max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
+            <p className="relative max-w-xl border-l-2 border-[var(--color-dorado)] pl-6 text-lg leading-8 text-[var(--color-muted)]">
               Para información escolar o de inscripciones, comunícate por
               teléfono o visita la oficina dentro del horario de atención.
             </p>
@@ -92,7 +98,7 @@ export default function ContactPage() {
                 </Button>
               </div>
             </div>
-            <div className="overflow-hidden border border-[var(--color-bordes)] bg-white shadow-[var(--shadow-sm)]">
+            <div className="overflow-hidden border-y border-[var(--color-bordes)] bg-white">
               <iframe
                 title="Mapa de ubicación del Colegio Miguel Hidalgo"
                 src={mapEmbedUrl}

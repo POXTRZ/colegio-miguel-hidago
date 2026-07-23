@@ -1,7 +1,12 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, Expand } from "lucide-react";
-import { useCallback, useRef, useState } from "react";
+import {
+  type MouseEvent,
+  useCallback,
+  useRef,
+  useState,
+} from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -19,12 +24,24 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function HistoricalTimeline() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const modalTriggerRef = useRef<HTMLButtonElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [modalIndex, setModalIndex] = useState<number | null>(null);
   const selectedEvent =
     modalIndex === null ? null : confirmedTimeline[modalIndex];
 
-  const closeModal = useCallback(() => setModalIndex(null), []);
+  const closeModal = useCallback(() => {
+    setModalIndex(null);
+    window.setTimeout(() => modalTriggerRef.current?.focus(), 0);
+  }, []);
+
+  function openModal(
+    index: number,
+    event: MouseEvent<HTMLButtonElement>
+  ) {
+    modalTriggerRef.current = event.currentTarget;
+    setModalIndex(index);
+  }
 
   useGSAP(
     () => {
@@ -51,6 +68,18 @@ export default function HistoricalTimeline() {
             start: "top 72%",
             end: "bottom 72%",
             scrub: 0.5,
+          },
+        });
+        gsap.from("[data-timeline-node]", {
+          scale: 0.55,
+          autoAlpha: 0,
+          duration: 0.45,
+          stagger: 0.12,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 70%",
+            once: true,
           },
         });
 
@@ -102,7 +131,7 @@ export default function HistoricalTimeline() {
             description="Las fechas mostradas corresponden a registros administrativos. No se presentan como fechas de fundación o apertura."
             tone="light"
             actions={
-              <div className="hidden items-center gap-2 md:flex">
+              <div className="flex items-center gap-2">
                 <IconButton
                   aria-label="Ver hito anterior"
                   onClick={() => moveActive(-1)}
@@ -121,13 +150,13 @@ export default function HistoricalTimeline() {
             }
           />
 
-          <div className="relative hidden min-h-[580px] md:block">
+          <div className="relative hidden pb-8 pt-2 md:block">
             <div
               data-timeline-line-horizontal
               aria-hidden="true"
-              className="absolute left-[8%] right-[8%] top-1/2 h-12 -translate-y-1/2 border-t-2 border-[var(--color-dorado)]/70 [border-radius:50%]"
+              className="absolute left-[8%] right-[8%] top-[6.75rem] h-8 border-t border-[var(--color-dorado)]/76 [border-radius:50%]"
             />
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-3 gap-8 lg:gap-12">
               {confirmedTimeline.map((event, index) => {
                 const image = event.media[0];
                 const isActive = activeIndex === index;
@@ -136,24 +165,34 @@ export default function HistoricalTimeline() {
                   <article
                     data-timeline-event
                     key={event.id}
-                    className={`relative ${
-                      index % 2 === 0 ? "pt-4" : "pt-52"
-                    }`}
+                    className="relative"
                   >
+                    <p className="font-display text-6xl font-semibold leading-none text-[var(--color-dorado-claro)] lg:text-7xl">
+                      {event.year}
+                    </p>
                     <button
+                      data-timeline-node
                       type="button"
                       aria-label={`Seleccionar ${event.title}, ${event.year}`}
                       aria-pressed={isActive}
-                      className={`absolute left-1/2 z-10 h-4 w-4 -translate-x-1/2 rounded-full border-4 border-[var(--color-azul-marino)] bg-[var(--color-dorado)] transition ${
-                        index % 2 === 0 ? "top-[276px]" : "top-[276px]"
-                      } ${isActive ? "scale-150" : ""}`}
+                      className="relative z-10 -ml-3.5 mt-3 flex h-11 w-11 items-center justify-center rounded-full"
                       onClick={() => setActiveIndex(index)}
-                    />
-                    <div
-                      className={`overflow-hidden rounded-[var(--radius-md)] border bg-white text-[var(--color-tinta)] shadow-[var(--shadow-md)] transition ${
+                    >
+                      <span
+                        className={`block h-4 w-4 rounded-full border-4 border-[var(--color-azul-marino)] bg-[var(--color-dorado)] transition ${
                         isActive
-                          ? "border-[var(--color-dorado)]"
-                          : "border-white/10 opacity-82"
+                          ? "scale-125 shadow-[0_0_0_7px_rgba(214,167,53,0.18)]"
+                          : "scale-100"
+                      }`}
+                      />
+                    </button>
+                    <div
+                      className={`border p-4 transition duration-300 ${
+                        index === 1 ? "mt-5 lg:mt-14" : "mt-5"
+                      } ${
+                        isActive
+                          ? "border-[var(--color-dorado)]/70 bg-white/10 opacity-100"
+                          : "border-white/12 bg-white/[0.035] opacity-72 hover:border-white/28 hover:opacity-100"
                       }`}
                     >
                       {image ? (
@@ -163,32 +202,29 @@ export default function HistoricalTimeline() {
                             src={image.src}
                             width={image.width}
                             height={image.height}
-                            ratio="video"
+                            ratio={index === 1 ? "portrait" : "video"}
                             className="grayscale-[0.35]"
                             containerClassName="rounded-none"
                             sizes="(min-width: 1024px) 340px, 30vw"
                           />
-                          <span className="absolute bottom-2 left-2 bg-[var(--color-azul-marino)]/88 px-2 py-1 text-[10px] font-bold text-white">
-                            Imagen de contexto · fecha pendiente
+                          <span className="absolute bottom-0 left-0 bg-[var(--color-azul-marino)] px-3 py-2 text-[10px] font-bold uppercase text-white">
+                            Archivo histórico
                           </span>
                         </div>
                       ) : null}
-                      <div className="p-5">
-                        <p className="font-display text-4xl font-bold text-[var(--color-guinda)]">
-                          {event.year}
-                        </p>
-                        <p className="mt-1 text-xs font-bold uppercase text-[var(--color-muted)]">
+                      <div className="border-t border-white/20 px-1 pt-5">
+                        <p className="text-xs font-bold uppercase text-white/58">
                           {event.stage}
                         </p>
-                        <h3 className="mt-4 text-xl font-bold">{event.title}</h3>
-                        <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+                        <h3 className="mt-3 text-xl font-bold text-white">{event.title}</h3>
+                        <p className="mt-3 text-sm leading-6 text-white/66">
                           {event.summary}
                         </p>
                         <Button
                           className="mt-5"
-                          onClick={() => setModalIndex(index)}
+                          onClick={(event) => openModal(index, event)}
                           size="sm"
-                          variant="secondary"
+                          variant="light"
                         >
                           <Expand className="h-4 w-4" aria-hidden="true" />
                           Ampliar
@@ -214,8 +250,9 @@ export default function HistoricalTimeline() {
                 return (
                   <article key={event.id} data-timeline-event className="relative">
                     <span
+                      data-timeline-node
                       aria-hidden="true"
-                      className="absolute -left-[31px] top-2 h-3.5 w-3.5 rounded-full border-4 border-[var(--color-azul-marino)] bg-[var(--color-dorado)]"
+                      className="absolute -left-[31px] top-2 h-3.5 w-3.5 rounded-full border-4 border-[var(--color-azul-marino)] bg-[var(--color-dorado)] shadow-[0_0_0_5px_rgba(214,167,53,0.12)]"
                     />
                     <p className="font-display text-4xl font-bold text-[var(--color-dorado-claro)]">
                       {event.year}
@@ -240,7 +277,7 @@ export default function HistoricalTimeline() {
                     </p>
                     <Button
                       className="mt-5"
-                      onClick={() => setModalIndex(index)}
+                      onClick={(event) => openModal(index, event)}
                       size="sm"
                       variant="light"
                     >
@@ -283,20 +320,29 @@ export default function HistoricalTimeline() {
       >
         {selectedEvent ? (
           <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
-            {selectedEvent.media[0] ? (
-              <div className="bg-[var(--color-hueso)] p-5 md:p-8">
-                <ResponsiveImage
-                  alt={selectedEvent.media[0].alt}
-                  src={selectedEvent.media[0].src}
-                  width={selectedEvent.media[0].width}
-                  height={selectedEvent.media[0].height}
-                  ratio="portrait"
-                  className="grayscale-[0.28]"
-                  sizes="(min-width: 1024px) 420px, 90vw"
-                />
-                <p className="mt-3 text-xs leading-5 text-[var(--color-muted)]">
-                  {selectedEvent.media[0].caption}
-                </p>
+            {selectedEvent.media.length > 0 ? (
+              <div
+                className="grid gap-5 bg-[var(--color-hueso)] p-5 md:p-8"
+                role="group"
+                aria-label={`Galería de ${selectedEvent.title}`}
+              >
+                {selectedEvent.media.map((image, index) => (
+                  <div key={image.id}>
+                    <ResponsiveImage
+                      alt={image.alt}
+                      src={image.src}
+                      width={image.width}
+                      height={image.height}
+                      ratio={index === 0 ? "portrait" : "video"}
+                      className="grayscale-[0.28]"
+                      containerClassName="rounded-none"
+                      sizes="(min-width: 1024px) 420px, 90vw"
+                    />
+                    <p className="mt-3 text-xs leading-5 text-[var(--color-muted)]">
+                      {image.caption}
+                    </p>
+                  </div>
+                ))}
               </div>
             ) : null}
             <div className="p-6 md:p-10">

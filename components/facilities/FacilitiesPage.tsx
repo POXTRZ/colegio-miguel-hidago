@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Camera, CheckCircle2 } from "lucide-react";
 import SiteFooter from "@/components/layout/SiteFooter";
 import SiteHeader from "@/components/layout/SiteHeader";
@@ -6,12 +5,19 @@ import {
   Button,
   Container,
   Eyebrow,
+  ManagedImage,
   Section,
   SectionHeader,
 } from "@/components/ui";
 import { facilityGroups } from "@/data/confirmed/facilities";
+import {
+  currentFacilitiesPhotography,
+  getHistoricalMedia,
+} from "@/data/confirmed/media";
 
 export default function FacilitiesPage() {
+  const historicalBuilding = getHistoricalMedia("plantel-historico");
+
   return (
     <>
       <SiteHeader />
@@ -93,27 +99,24 @@ export default function FacilitiesPage() {
               </ul>
             </div>
 
-            <figure className="bg-[var(--color-azul-marino)] p-5 text-white sm:p-8">
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <Image
-                  src="/images/home/plantel-historico-san-luis-de-la-paz.jpeg"
-                  alt="Edificio del Colegio Miguel Hidalgo en una fotografía histórica"
-                  fill
-                  className="object-cover grayscale"
-                  sizes="(min-width: 1024px) 55vw, 100vw"
-                />
-              </div>
-              <figcaption className="mt-5">
-                <p className="text-xs font-bold uppercase text-[var(--color-dorado-claro)]">
-                  Archivo histórico
-                </p>
-                <p className="mt-2 text-sm leading-6 text-white/72">
-                  Imagen histórica del edificio. La fecha exacta está pendiente
-                  de identificación; no representa necesariamente las
-                  instalaciones actuales.
-                </p>
-              </figcaption>
-            </figure>
+            <div className="grid gap-8">
+              <ManagedImage
+                asset={currentFacilitiesPhotography}
+                ratio="wide"
+                sizes="(min-width: 1024px) 55vw, 100vw"
+              />
+              {historicalBuilding ? (
+                <div className="bg-[var(--color-azul-marino)] p-5 sm:p-8">
+                  <ManagedImage
+                    asset={historicalBuilding}
+                    ratio="wide"
+                    imageClassName="grayscale"
+                    captionTone="light"
+                    sizes="(min-width: 1024px) 55vw, 100vw"
+                  />
+                </div>
+              ) : null}
+            </div>
           </Container>
         </Section>
 
