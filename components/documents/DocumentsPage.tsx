@@ -62,6 +62,7 @@ export default function DocumentsPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     variant="secondary"
+                    className="w-full md:w-fit"
                   >
                     <Download className="h-4 w-4" aria-hidden="true" />
                     Descargar
@@ -85,7 +86,11 @@ export default function DocumentsPage() {
                 Confirma la información directamente con el Colegio.
               </h2>
             </div>
-            <Button href="/contacto" variant="secondary">
+            <Button
+              href="/contacto"
+              variant="secondary"
+              className="w-full sm:w-fit"
+            >
               Ir a contacto
             </Button>
           </Container>

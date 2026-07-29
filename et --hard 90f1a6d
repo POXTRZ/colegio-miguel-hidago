@@ -1,0 +1,18 @@
+[33m356107d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m  cambio global css
+[33m90f1a6d[m actualizacion diseño pagina
+[33ma9d13a9[m mejora diseño, home page, time lap
+[33m5d25745[m Modificaciones mejoramientro pagina, completo
+[33mf994fdc[m reorganize project finall
+[33m56af932[m refactor: reorganize project structure
+[33mda998c7[m refactor: organize public brand assets
+[33m64cfa4c[m refactor: split shared types by domain
+[33mfd07880[m refactor: split site data by domain
+[33m9a9d40a[m refactor: split site header navigation
+[33m252b372[m refactor: split calendar experience
+[33me1846b3[m refactor: split institution and history pages
+[33m82958bd[m refactor: split home page sections
+[33m2f3bbbe[m refactor: clean generated and legacy files
+[33m447a1cf[m MPV CMH
+[33mfc9d797[m Cambios 2 a medias
+[33m9a98d74[m Subiendo mi proyecto de Next.js
+[33m8916ba5[m Initial commit

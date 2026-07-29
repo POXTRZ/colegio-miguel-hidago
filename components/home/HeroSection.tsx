@@ -72,7 +72,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[calc(100svh-5rem)] overflow-hidden bg-[var(--color-crema)] pt-20 lg:min-h-[min(840px,calc(100svh-5rem))]"
+      className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-[var(--color-crema)] pt-20 lg:min-h-[min(780px,calc(100svh-4rem))]"
     >
       <div
         data-hero-photo-reveal
@@ -92,26 +92,29 @@ export default function HeroSection() {
         </div>
       </div>
       <div
-        className="absolute inset-x-0 bottom-20 top-0 bg-[rgba(11,37,69,0.78)] lg:right-auto lg:w-[59%] lg:bg-[var(--color-azul-marino)]"
+        className="absolute inset-x-0 bottom-13 top-0 bg-[rgba(11,37,69,0.78)] lg:right-auto lg:w-[59%] lg:bg-[var(--color-azul-marino)]"
         aria-hidden="true"
       />
       <div
-        className="absolute inset-x-0 bottom-0 h-20 bg-[var(--color-crema)]"
+        className="absolute inset-x-0 bottom-0 h-13 bg-[var(--color-crema)]"
         aria-hidden="true"
       />
       <div
         data-hero-gold
-        className="absolute bottom-[18%] left-[54%] hidden h-px w-72 rotate-[72deg] bg-[var(--color-dorado-decorativo)] lg:block"
+        className="absolute bottom-36 left-[55%] hidden h-px w-48 rotate-[72deg] bg-[var(--color-dorado-decorativo)] lg:block"
         aria-hidden="true"
       />
 
       <Container
         size="2xl"
-        className="relative flex min-h-[calc(100svh-10rem)] items-end pb-24 pt-16 text-white lg:min-h-[min(760px,calc(100svh-10rem))] lg:pb-28"
+        className="relative flex min-h-[calc(100svh-9rem)] items-end pb-24 pt-16 text-white lg:min-h-[min(700px,calc(100svh-9rem))] lg:items-center lg:pb-12 lg:pt-28 2xl:pb-20"
       >
-        <div data-hero-copy className="max-w-4xl">
+        <div
+          data-hero-copy
+          className="min-w-0 max-w-3xl lg:max-w-[50vw] xl:max-w-[min(50vw,48rem)]"
+        >
           <Eyebrow tone="gold">Colegio Miguel Hidalgo</Eyebrow>
-          <h1 className="mt-5 max-w-3xl text-5xl font-semibold leading-[0.98] sm:mt-7 sm:text-6xl lg:text-[5rem]">
+          <h1 className="mt-5 max-w-full hyphens-none text-[clamp(2.5rem,8vw,4.5rem)] font-semibold leading-[0.98] sm:mt-7 lg:text-[clamp(3.25rem,4.45vw,5rem)]">
             Educación integral de Preescolar a Preparatoria.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-7 text-white/76 sm:mt-8 sm:text-lg sm:leading-8">
@@ -139,19 +142,19 @@ export default function HeroSection() {
 
         </div>
       </Container>
-      <div className="absolute bottom-4 right-5 hidden max-w-sm text-right text-[11px] leading-5 text-[var(--color-muted)] sm:block lg:right-8">
+      <div className="absolute bottom-2 right-8 hidden max-w-52 text-right text-[8px] leading-3.5 text-[var(--color-muted)] xl:block">
         <span className="block font-bold uppercase text-[var(--color-guinda)]">
           Archivo histórico
         </span>
         {heroImage?.caption}
       </div>
-      <ul className="absolute bottom-0 left-5 hidden h-20 items-center gap-5 text-[0.6875rem] font-bold uppercase text-[var(--color-azul-marino)] sm:flex lg:left-8">
+      <ul className="absolute inset-x-0 bottom-0 hidden h-13 items-center justify-center gap-3 px-4 text-[0.6875rem] font-bold uppercase text-[var(--color-azul-marino)] sm:flex md:gap-4">
         {["Preescolar", "Primaria", "Secundaria", "Preparatoria"].map(
           (level, index) => (
-            <li key={level} className="flex items-center gap-5">
+            <li key={level} className="flex items-center gap-3 md:gap-4">
               {index > 0 ? (
                 <span
-                  className="h-px w-5 bg-[var(--color-dorado-decorativo)]"
+                  className="h-px w-3 bg-[var(--color-dorado-decorativo)] md:w-4"
                   aria-hidden="true"
                 />
               ) : null}

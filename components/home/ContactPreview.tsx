@@ -23,7 +23,7 @@ export default function ContactPreview() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Button href={contactInfo.phoneHref}>
+              <Button href={contactInfo.phoneHref} className="w-full sm:w-fit">
                 Llamar al colegio
                 <Phone className="h-4 w-4" aria-hidden="true" />
               </Button>
@@ -32,6 +32,7 @@ export default function ContactPreview() {
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="secondary"
+                className="w-full sm:w-fit"
               >
                 Facebook
                 <ExternalLink className="h-4 w-4" aria-hidden="true" />

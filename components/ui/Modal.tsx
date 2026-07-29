@@ -145,7 +145,6 @@ export default function Modal({
                   ref={closeButtonRef}
                   aria-label="Cerrar ventana"
                   onClick={onClose}
-                  size="sm"
                   variant={tone === "dark" ? "light" : "ghost"}
                 >
                   <X className="h-5 w-5" aria-hidden="true" />

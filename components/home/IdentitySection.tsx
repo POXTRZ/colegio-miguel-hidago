@@ -12,9 +12,12 @@ export default function IdentitySection() {
   const image = getHistoricalMedia("alumnas-formacion");
 
   return (
-    <Section>
+    <Section
+      spacing="none"
+      className="pb-16 pt-12 lg:pb-24 lg:pt-20"
+    >
       <Container size="2xl">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.12fr_0.88fr] lg:gap-20">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.12fr_0.88fr] lg:items-start lg:gap-20">
           <div>
             <Eyebrow>Una comunidad con identidad</Eyebrow>
             <p className="font-display mt-6 max-w-4xl text-4xl leading-tight text-[var(--color-azul-marino)] sm:text-5xl">
@@ -50,7 +53,7 @@ export default function IdentitySection() {
             </div>
           </div>
 
-          <div className="editorial-frame z-0 lg:mb-10 lg:mt-20">
+          <div className="editorial-frame z-0">
             {image ? (
               <ManagedImage
                 asset={image}

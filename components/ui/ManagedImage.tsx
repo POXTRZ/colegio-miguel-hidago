@@ -43,7 +43,7 @@ export default function ManagedImage({
   const lightCaption = captionTone === "light";
 
   return (
-    <div className={cn("relative", className)}>
+    <div className={cn("relative min-w-0", className)}>
       {asset.src ? (
         <ResponsiveImage
           src={asset.src}
@@ -59,27 +59,31 @@ export default function ManagedImage({
       ) : (
         <div
           className={cn(
-            "relative flex min-h-72 overflow-hidden border border-[var(--color-bordes)] bg-[var(--color-azul-marino)] p-7 text-white",
+            "relative flex min-w-0 overflow-hidden border border-[var(--color-bordes)] bg-[var(--color-azul-marino)] p-5 text-white sm:p-7",
+            ratio === "auto" && "min-h-72",
             ratio === "square" && "aspect-square",
-            ratio === "video" && "aspect-video",
+            ratio === "video" && "aspect-[4/3] sm:aspect-video",
             ratio === "portrait" && "aspect-[4/5]",
-            ratio === "wide" && "aspect-[16/7]",
+            ratio === "wide" && "aspect-[4/3] sm:aspect-[16/7]",
           )}
           role="img"
           aria-label={asset.alt}
         >
-          <div className="flex h-full max-w-lg flex-col justify-between">
+          <div className="flex h-full min-w-0 max-w-lg flex-col justify-between">
             <span
-              className="font-display text-6xl leading-none text-[var(--color-dorado-claro)]/70"
+              className={cn(
+                "font-display text-5xl leading-none text-[var(--color-dorado-claro)]/70 sm:text-6xl",
+                (ratio === "video" || ratio === "wide") && "hidden sm:block",
+              )}
               aria-hidden="true"
             >
               CMH
             </span>
-            <div>
-              <p className="font-display text-2xl leading-tight">
+            <div className="min-w-0">
+              <p className="font-display break-words text-xl leading-tight sm:text-2xl">
                 Registro fotográfico en preparación
               </p>
-              <p className="mt-3 text-sm leading-6 text-white/68">
+              <p className="mt-3 break-words text-sm leading-6 text-white/68">
                 {asset.context}
               </p>
             </div>

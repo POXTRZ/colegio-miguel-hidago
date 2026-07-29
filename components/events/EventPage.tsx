@@ -115,7 +115,7 @@ export default function EventPage({
               <EventCategoryBadge category={event.category} />
               {event.isDemo ? <DemoBadge /> : null}
             </div>
-            <h1 className="mt-6 max-w-5xl text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-6 max-w-5xl break-words text-[clamp(2.5rem,12vw,3rem)] font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
               {event.title}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/76">

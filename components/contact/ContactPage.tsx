@@ -26,7 +26,7 @@ export default function ContactPage() {
           <Container size="2xl" className="relative grid min-h-[340px] gap-8 py-10 lg:grid-cols-[1fr_0.65fr] lg:items-end lg:py-14">
             <span
               aria-hidden="true"
-              className="absolute -right-6 top-8 font-display text-[10rem] leading-none text-[var(--color-crema)]"
+              className="absolute -right-6 top-8 hidden font-display text-[10rem] leading-none text-[var(--color-crema)] sm:block"
             >
               215
             </span>
@@ -88,11 +88,20 @@ export default function ContactPage() {
                 Guanajuato.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row lg:flex-col">
-                <Button href={contactInfo.phoneHref}>
+                <Button
+                  href={contactInfo.phoneHref}
+                  className="w-full sm:w-fit lg:w-full"
+                >
                   <Phone className="h-4 w-4" aria-hidden="true" />
                   Llamar al colegio
                 </Button>
-                <Button href={contactInfo.mapsUrl} target="_blank" rel="noopener noreferrer" variant="secondary">
+                <Button
+                  href={contactInfo.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="secondary"
+                  className="w-full sm:w-fit lg:w-full"
+                >
                   <MapPin className="h-4 w-4" aria-hidden="true" />
                   Abrir ubicación
                 </Button>
@@ -102,7 +111,7 @@ export default function ContactPage() {
               <iframe
                 title="Mapa de ubicación del Colegio Miguel Hidalgo"
                 src={mapEmbedUrl}
-                className="h-[420px] w-full border-0"
+                className="h-[340px] w-full border-0 sm:h-[420px]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen

@@ -77,7 +77,7 @@ export default function FormationSection() {
         <div className="grid lg:min-h-[820px] lg:grid-cols-[1.06fr_0.94fr]">
           <div
             data-formation-photo
-            className="relative min-h-[420px] overflow-hidden lg:min-h-0"
+            className="relative min-h-[360px] overflow-hidden sm:min-h-[420px] lg:min-h-0"
           >
             <div
               data-formation-line

@@ -20,7 +20,7 @@ export default function NotFound() {
             <p className="text-sm font-bold uppercase text-[var(--color-dorado-claro)]">
               Página no encontrada
             </p>
-            <h1 className="mt-5 text-5xl font-bold leading-tight text-white sm:text-6xl">
+            <h1 className="mt-5 break-words text-[clamp(2.25rem,11vw,3rem)] font-bold leading-[1.08] text-white sm:text-6xl">
               No encontramos esta sección.
             </h1>
             <h2 className="mt-6 text-xl font-semibold text-white">

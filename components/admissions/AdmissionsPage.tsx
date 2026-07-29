@@ -238,15 +238,16 @@ export default function AdmissionsPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="light"
+                className="w-full sm:w-fit"
               >
                 <Download className="h-4 w-4" aria-hidden="true" />
                 Descargar circular
               </Button>
-              <Button href={contactInfo.phoneHref} variant="secondary" className="border-white/40 text-white hover:bg-white/10">
+              <Button href={contactInfo.phoneHref} variant="secondary" className="w-full border-white/40 text-white hover:bg-white/10 sm:w-fit">
                 <Phone className="h-4 w-4" aria-hidden="true" />
                 Llamar
               </Button>
-              <Button href={contactInfo.mapsUrl} target="_blank" rel="noopener noreferrer" variant="secondary" className="border-white/40 text-white hover:bg-white/10">
+              <Button href={contactInfo.mapsUrl} target="_blank" rel="noopener noreferrer" variant="secondary" className="w-full border-white/40 text-white hover:bg-white/10 sm:w-fit">
                 <MapPin className="h-4 w-4" aria-hidden="true" />
                 Ubicación
               </Button>

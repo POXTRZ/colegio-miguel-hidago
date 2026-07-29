@@ -29,8 +29,8 @@ export default function FacilitiesPreview() {
           description="La infraestructura acompaña las actividades académicas, deportivas, tecnológicas y pastorales de cada sección."
         />
 
-        <div className="grid gap-10">
-          <div className="editorial-frame z-0">
+        <div className="grid min-w-0 gap-10">
+          <div className="editorial-frame z-0 min-w-0">
             <ManagedImage
               asset={currentFacilitiesPhotography}
               ratio="wide"
@@ -38,23 +38,27 @@ export default function FacilitiesPreview() {
             />
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div className="grid border-t border-[var(--color-bordes)] md:grid-cols-2">
+          <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+            <div className="grid min-w-0 border-t border-[var(--color-bordes)] md:grid-cols-2">
               {facilities.map((facility, index) => (
                 <div
                   key={facility}
-                  className="editorial-row grid grid-cols-[2.5rem_1fr] gap-4 border-b border-[var(--color-bordes)] py-4 md:odd:border-r md:odd:pr-6 md:even:pl-6"
+                  className="editorial-row grid min-w-0 grid-cols-[2.5rem_minmax(0,1fr)] gap-4 border-b border-[var(--color-bordes)] py-4 md:odd:border-r md:odd:pr-6 md:even:pl-6"
                 >
                   <span className="font-display text-lg text-[var(--color-dorado-texto)]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-sm leading-6 text-[var(--color-texto-secundario)]">
+                  <p className="min-w-0 break-words text-sm leading-6 text-[var(--color-texto-secundario)]">
                     {facility}
                   </p>
                 </div>
               ))}
             </div>
-            <Button href="/instalaciones" variant="secondary">
+            <Button
+              href="/instalaciones"
+              variant="secondary"
+              className="w-full sm:w-fit"
+            >
               Explorar instalaciones
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Button>

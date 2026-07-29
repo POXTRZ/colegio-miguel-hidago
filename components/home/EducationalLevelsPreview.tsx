@@ -38,9 +38,9 @@ export default function EducationalLevelsPreview() {
   const activeVisual = levelVisuals[activeIndex];
 
   return (
-    <Section id="academico" tone="white">
+    <Section id="academico" tone="white" spacing="md">
       <Container size="2xl">
-        <div className="grid gap-8 border-b border-[var(--color-bordes)] pb-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+        <div className="grid gap-6 border-b border-[var(--color-bordes)] pb-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
           <div>
             <Eyebrow>Oferta educativa</Eyebrow>
             <h2 className="mt-5 max-w-2xl text-4xl font-semibold leading-[1.05] text-[var(--color-azul-marino)] sm:text-5xl">
@@ -54,7 +54,7 @@ export default function EducationalLevelsPreview() {
         </div>
 
         <MotionConfig reducedMotion="user">
-          <div className="mt-12 grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
+          <div className="mt-10 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-12">
             <div className="order-2 border-t border-[var(--color-bordes)] lg:order-1">
               {levels.map((level, index) => {
                 const active = activeIndex === index;
@@ -64,9 +64,9 @@ export default function EducationalLevelsPreview() {
                     key={level.name}
                     type="button"
                     aria-pressed={active}
-                    className={`editorial-row relative grid w-full grid-cols-[3.25rem_1fr_auto] items-start gap-4 border-b border-[var(--color-bordes)] py-6 text-left transition before:absolute before:bottom-0 before:left-0 before:top-0 before:w-0.5 before:origin-center before:bg-[var(--color-guinda)] before:transition-transform ${
+                    className={`editorial-row relative grid w-full grid-cols-[2.75rem_minmax(0,1fr)_1.5rem] items-start gap-3 border-b border-[var(--color-bordes)] px-4 py-5 text-left transition before:absolute before:bottom-0 before:left-0 before:top-0 before:w-0.5 before:origin-center before:bg-[var(--color-guinda)] before:transition-transform ${
                       active
-                        ? "bg-[var(--color-crema)] px-4 text-[var(--color-azul-marino)] before:scale-y-100"
+                        ? "bg-[var(--color-crema)] text-[var(--color-azul-marino)] before:scale-y-100"
                         : "text-[var(--color-muted)] before:scale-y-0 hover:text-[var(--color-tinta)]"
                     }`}
                     onClick={() => setActiveIndex(index)}
@@ -81,19 +81,19 @@ export default function EducationalLevelsPreview() {
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span>
+                    <span className="min-w-0 overflow-hidden">
                       <span className="block text-xs font-bold uppercase text-[var(--color-guinda)]">
                         {levelVisuals[index].period}
                       </span>
-                      <span className="mt-2 block text-2xl font-bold">
+                      <span className="mt-2 block break-words text-2xl font-bold">
                         {level.name}
                       </span>
-                      <span className="mt-2 block max-w-xl text-sm leading-6 text-[var(--color-muted)]">
+                      <span className="mt-2 block max-w-xl break-words text-sm leading-6 text-[var(--color-muted)]">
                         {level.detail}
                       </span>
                     </span>
                     <ArrowRight
-                      className={`mt-6 h-5 w-5 transition ${
+                      className={`mt-6 h-5 w-5 justify-self-end transition ${
                         active ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"
                       }`}
                       aria-hidden="true"
@@ -105,14 +105,14 @@ export default function EducationalLevelsPreview() {
               <Button
                 href={`/oferta-educativa#${activeLevel.name.toLowerCase()}`}
                 variant="secondary"
-                className="mt-8"
+                className="ml-[4.5rem] mt-6"
               >
                 Ver {activeLevel.name}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Button>
             </div>
 
-            <div className="order-1 lg:order-2 lg:sticky lg:top-28 lg:self-start">
+            <div className="order-1 lg:order-2 xl:sticky xl:top-28 xl:self-start">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeLevel.name}
@@ -125,12 +125,13 @@ export default function EducationalLevelsPreview() {
                     {activeVisual.asset ? (
                       <ManagedImage
                         asset={activeVisual.asset}
-                        ratio="portrait"
+                        ratio="square"
+                        showCaption={false}
                         imageClassName="grayscale-[0.2]"
                         sizes="(min-width: 1024px) 54vw, 100vw"
                       />
                     ) : null}
-                    <div className="absolute bottom-8 left-0 z-10 max-w-[85%] bg-[var(--color-azul-marino)] px-6 py-5 text-white shadow-[var(--shadow-lg)]">
+                    <div className="absolute bottom-4 left-0 z-10 max-w-[70%] bg-[var(--color-azul-marino)] px-4 py-3 text-white shadow-[var(--shadow-lg)]">
                       <span className="text-xs font-bold uppercase text-[var(--color-dorado-claro)]">
                         Nivel {String(activeIndex + 1).padStart(2, "0")}
                       </span>
@@ -139,6 +140,14 @@ export default function EducationalLevelsPreview() {
                       </p>
                     </div>
                   </div>
+                  {activeVisual.asset?.caption ? (
+                    <p className="mt-4 border-l-2 border-[var(--color-dorado)] pl-4 text-xs leading-5 text-[var(--color-muted)]">
+                      <span className="block font-bold uppercase text-[var(--color-guinda)]">
+                        Archivo histórico
+                      </span>
+                      {activeVisual.asset.caption}
+                    </p>
+                  ) : null}
                 </motion.div>
               </AnimatePresence>
             </div>
