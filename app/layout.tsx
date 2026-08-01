@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
+import AdmissionsPopup from "@/components/layout/AdmissionsPopup";
 import { siteUrl } from "@/lib/seo";
 import "./globals.css";
 
@@ -74,6 +75,7 @@ export default function RootLayout({
           Saltar al contenido principal
         </a>
         {children}
+        <AdmissionsPopup />
       </body>
     </html>
   );

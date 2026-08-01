@@ -1,6 +1,7 @@
 import type { MediaAsset } from "@/types/media";
 
 export type EventStatus =
+  | "confirmed"
   | "upcoming"
   | "completed"
   | "rescheduled"
@@ -8,12 +9,8 @@ export type EventStatus =
 
 export type EventCategory =
   | "academic"
-  | "cultural"
-  | "sports"
-  | "pastoral"
   | "administrative"
-  | "celebration"
-  | "community";
+  | "cultural-sports";
 
 export type EventEducationLevel =
   | "preescolar"

@@ -40,8 +40,8 @@ export default function CalendarHeader({
             Fechas para encontrarnos, celebrar y participar.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--color-muted)]">
-            Actividades académicas, culturales, deportivas y comunitarias en
-            una agenda clara para las familias.
+            Actividades académicas, administrativas, culturales y deportivas
+            en una agenda clara para las familias.
           </p>
         </div>
 

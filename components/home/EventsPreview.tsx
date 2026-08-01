@@ -1,13 +1,11 @@
 import { ArrowRight, CalendarDays } from "lucide-react";
 import {
-  Badge,
-  Button,
-  Container,
-  Section,
-  SectionHeader,
-} from "@/components/ui";
-import { eventCategoryLabels } from "@/components/calendar/calendarUtils";
-import { demoEvents } from "@/data/demo/events";
+  DemoBadge,
+  EventCategoryBadge,
+  EventStatusBadge,
+} from "@/components/calendar/EventLabels";
+import { Button, Container, Section, SectionHeader } from "@/components/ui";
+import { visibleEvents } from "@/data/events";
 
 function getDateParts(dateValue: string) {
   const [year, month, day] = dateValue.split("-").map(Number);
@@ -28,8 +26,13 @@ function getDateParts(dateValue: string) {
 }
 
 export default function EventsPreview() {
-  const isDevelopment = process.env.NODE_ENV === "development";
-  const events = isDevelopment ? demoEvents.slice(-3) : [];
+  const events = visibleEvents
+    .filter(
+      (event) =>
+        event.status === "confirmed" || event.status === "upcoming",
+    )
+    .sort((a, b) => a.startDate.localeCompare(b.startDate))
+    .slice(0, 3);
 
   return (
     <Section tone="white">
@@ -66,8 +69,9 @@ export default function EventsPreview() {
                   </time>
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <Badge>{eventCategoryLabels[event.category]}</Badge>
-                      <Badge tone="warning">Demostración</Badge>
+                      <EventCategoryBadge category={event.category} compact />
+                      <EventStatusBadge status={event.status} compact />
+                      {event.isDemo ? <DemoBadge /> : null}
                     </div>
                     <h3 className="mt-3 text-xl font-bold text-[var(--color-azul-marino)]">
                       {event.title}

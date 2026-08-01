@@ -67,10 +67,13 @@ export default function EventCalendar({
     return (
       events.find(
         (event) =>
-          event.status === "upcoming" &&
+          (event.status === "confirmed" || event.status === "upcoming") &&
           eventDate(event).getTime() >= startOfToday.getTime(),
       ) ??
-      events.find((event) => event.status === "upcoming") ??
+      events.find(
+        (event) =>
+          event.status === "confirmed" || event.status === "upcoming",
+      ) ??
       events[0]
     );
   }, [events, today]);

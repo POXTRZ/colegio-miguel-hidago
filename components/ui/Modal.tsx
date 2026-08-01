@@ -13,7 +13,10 @@ import { cn } from "@/components/ui/utils";
 
 type ModalProps = {
   children: ReactNode;
+  className?: string;
+  contentClassName?: string;
   footer?: ReactNode;
+  headerStyle?: "default" | "overlay";
   isOpen: boolean;
   onClose: () => void;
   title: string;
@@ -31,7 +34,10 @@ const focusableSelector = [
 
 export default function Modal({
   children,
+  className,
+  contentClassName,
   footer,
+  headerStyle = "default",
   isOpen,
   onClose,
   title,
@@ -47,8 +53,10 @@ export default function Modal({
     }
 
     const previouslyFocused = document.activeElement as HTMLElement | null;
-    const previousOverflow = document.body.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     closeButtonRef.current?.focus();
 
     function handleKeyDown(event: KeyboardEvent) {
@@ -86,7 +94,8 @@ export default function Modal({
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = previousOverflow;
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
       previouslyFocused?.focus();
     };
   }, [isOpen, onClose]);
@@ -112,10 +121,11 @@ export default function Modal({
             <motion.div
               ref={dialogRef}
               className={cn(
-                "my-auto w-full overflow-hidden rounded-[var(--radius-lg)] shadow-[var(--shadow-lg)]",
+                "relative my-auto w-full overflow-hidden rounded-[var(--radius-lg)] shadow-[var(--shadow-lg)]",
                 tone === "dark"
                   ? "max-w-7xl bg-[var(--color-azul-marino)] text-white"
                   : "max-w-5xl bg-[var(--color-crema)]",
+                className,
               )}
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -128,12 +138,15 @@ export default function Modal({
                   tone === "dark"
                     ? "border-white/15"
                     : "border-[var(--color-linea)]",
+                  headerStyle === "overlay" &&
+                    "pointer-events-none absolute inset-x-0 top-0 z-20 justify-end border-0 p-3 sm:p-4",
                 )}
               >
                 <h2
                   id={titleId}
                   className={cn(
                     "font-bold",
+                    headerStyle === "overlay" && "sr-only",
                     tone === "dark"
                       ? "text-base text-white md:text-lg"
                       : "text-2xl md:text-3xl",
@@ -144,6 +157,10 @@ export default function Modal({
                 <IconButton
                   ref={closeButtonRef}
                   aria-label="Cerrar ventana"
+                  className={cn(
+                    headerStyle === "overlay" &&
+                      "pointer-events-auto shadow-[var(--shadow-md)]",
+                  )}
                   onClick={onClose}
                   variant={tone === "dark" ? "light" : "ghost"}
                 >
@@ -156,6 +173,7 @@ export default function Modal({
                   tone === "dark"
                     ? "max-h-[calc(100dvh-12rem)]"
                     : "max-h-[72vh]",
+                  contentClassName,
                 )}
               >
                 {children}

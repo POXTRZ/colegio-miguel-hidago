@@ -8,7 +8,7 @@ import {
   Container,
   Eyebrow,
 } from "@/components/ui";
-import { getHistoricalMedia } from "@/data/confirmed/media";
+import { currentHeroPhotography } from "@/data/confirmed/media";
 import {
   gsap,
   gsapEases,
@@ -17,7 +17,7 @@ import {
   useGSAP,
 } from "@/lib/motion";
 
-const heroImage = getHistoricalMedia("comunidad-educativa");
+const heroImage = currentHeroPhotography;
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -79,16 +79,14 @@ export default function HeroSection() {
         className="absolute -inset-y-[6%] inset-x-0 lg:left-[42%]"
       >
         <div data-hero-photo className="absolute inset-0">
-          {heroImage ? (
-            <Image
-              src={heroImage.src}
-              alt={heroImage.alt}
-              fill
-              priority
-              sizes="(min-width: 1024px) 58vw, 100vw"
-              className="object-cover object-center grayscale-[0.16]"
-            />
-          ) : null}
+          <Image
+            src={heroImage.src}
+            alt={heroImage.alt}
+            fill
+            priority
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            className="object-cover object-[62%_center]"
+          />
         </div>
       </div>
       <div
@@ -144,7 +142,7 @@ export default function HeroSection() {
       </Container>
       <div className="absolute bottom-2 right-8 hidden max-w-52 text-right text-[8px] leading-3.5 text-[var(--color-muted)] xl:block">
         <span className="block font-bold uppercase text-[var(--color-guinda)]">
-          Archivo histórico
+          Fotografía actual
         </span>
         {heroImage?.caption}
       </div>

@@ -11,15 +11,12 @@ export type LevelFilter = "all" | EventEducationLevel;
 
 export const eventCategoryLabels: Record<EventCategory, string> = {
   academic: "Académico",
-  cultural: "Cultural",
-  sports: "Deportivo",
-  pastoral: "Pastoral",
   administrative: "Administrativo",
-  celebration: "Celebración",
-  community: "Comunidad",
+  "cultural-sports": "Cultural/Deportivo",
 };
 
 export const eventStatusLabels: Record<EventStatus, string> = {
+  confirmed: "Confirmado",
   upcoming: "Próximo",
   completed: "Finalizado",
   rescheduled: "Reprogramado",

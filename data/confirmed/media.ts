@@ -216,23 +216,242 @@ export const schoolShield = {
   height: 508,
 } as const satisfies ManagedImageAsset;
 
+export const currentHeroPhotography = {
+  id: "current-hero-photography",
+  src: "/images/current/acceso-colegio-actual.webp",
+  alt: "Fachada y acceso actual del Colegio Miguel Hidalgo",
+  caption: "Fachada y acceso actual del Colegio Miguel Hidalgo.",
+  status: "final",
+  context: "Presentación institucional del plantel actual.",
+  source: "Fotografía actual proporcionada por el Colegio Miguel Hidalgo.",
+  replaceLater: false,
+  width: 1600,
+  height: 1200,
+} as const satisfies ManagedImageAsset;
+
+export const currentContactPhotography = {
+  id: "current-contact-photography",
+  src: "/images/current/fachada-colegio-actual.webp",
+  alt: "Vista actual de la fachada del Colegio Miguel Hidalgo",
+  caption: "Fachada actual del Colegio Miguel Hidalgo en San Luis de la Paz.",
+  status: "final",
+  context: "Referencia visual del acceso al plantel.",
+  source: "Fotografía actual proporcionada por el Colegio Miguel Hidalgo.",
+  replaceLater: false,
+  width: 1440,
+  height: 888,
+} as const satisfies ManagedImageAsset;
+
 export const currentFacilitiesPhotography = {
   id: "current-facilities-photography",
-  src: null,
-  alt: "Registro fotográfico actual de las instalaciones pendiente",
-  caption: "Registro fotográfico contemporáneo pendiente de entrega.",
-  status: "pending-replacement",
-  context:
-    "Instalaciones actuales: aulas, canchas, cómputo, laboratorio, salón de usos múltiples, capilla y Preescolar.",
-  source: "Pendiente de entrega por el Colegio Miguel Hidalgo.",
+  src: "/images/current/patio-central-colegio-actual.webp",
+  alt: "Vista actual del patio central y edificios del Colegio Miguel Hidalgo",
+  caption: "Patio central e instalaciones actuales del Colegio.",
+  status: "final",
+  context: "Vista general de las instalaciones actuales.",
+  source: "Fotografía actual proporcionada por el Colegio Miguel Hidalgo.",
+  replaceLater: false,
+  width: 1600,
+  height: 1200,
+} as const satisfies ManagedImageAsset;
+
+export const currentCourtyardDetailPhotography = {
+  id: "current-courtyard-detail-photography",
+  src: "/images/current/patio-escudo-colegio-actual.webp",
+  alt: "Patio actual con tablero que muestra el escudo del Colegio Miguel Hidalgo",
+  caption: "Vista actual de uno de los patios del plantel.",
+  status: "final",
+  context: "Espacio general actual del plantel.",
+  source: "Fotografía actual proporcionada por el Colegio Miguel Hidalgo.",
+  replaceLater: false,
+  width: 1600,
+  height: 1200,
+} as const satisfies ManagedImageAsset;
+
+export const currentSyntheticFieldPhotography = {
+  id: "current-synthetic-field-photography",
+  src: "/images/current/cancha-pasto-sintetico-actual.webp",
+  alt: "Cancha cubierta de pasto sintético del Colegio Miguel Hidalgo",
+  caption: "Cancha cubierta de pasto sintético en las instalaciones actuales.",
+  status: "final",
+  context: "Espacio deportivo actual del plantel.",
+  source: "Fotografía actual proporcionada por el Colegio Miguel Hidalgo.",
+  replaceLater: false,
+  width: 1600,
+  height: 583,
+} as const satisfies ManagedImageAsset;
+
+export const currentCoveredCourtPhotography = {
+  id: "current-covered-court-photography",
+  src: "/images/current/cancha-techada-colegio-actual.webp",
+  alt: "Cancha techada actual del Colegio Miguel Hidalgo",
+  caption: "Cancha techada en las instalaciones actuales del plantel.",
+  status: "final",
+  context: "Espacio deportivo general actual del plantel.",
+  source: "Fotografía actual proporcionada por el Colegio Miguel Hidalgo.",
+  replaceLater: false,
+  width: 1600,
+  height: 1200,
+} as const satisfies ManagedImageAsset;
+
+export const currentComputerRoomPhotography = {
+  id: "current-computer-room-photography",
+  src: "/images/current/sala-computo-actual.webp",
+  alt: "Sala de cómputo actual del Colegio Miguel Hidalgo",
+  caption: "Sala de cómputo en las instalaciones actuales.",
+  status: "final",
+  context: "Espacio tecnológico actual del plantel.",
+  source: "Fotografía actual proporcionada por el Colegio Miguel Hidalgo.",
+  replaceLater: false,
+  width: 1600,
+  height: 1200,
+} as const satisfies ManagedImageAsset;
+
+export const currentPreschoolPhotography = {
+  id: "current-preschool-photography",
+  src: "/images/current/patio-preescolar-actual.webp",
+  alt: "Patio actual del área de Preescolar",
+  caption: "Patio y área de juego actuales de Preescolar.",
+  status: "final",
+  context: "Espacio actual identificado como Preescolar.",
+  source: "Fotografía actual proporcionada por el Colegio Miguel Hidalgo.",
+  replaceLater: false,
+  width: 1600,
+  height: 1200,
+} as const satisfies ManagedImageAsset;
+
+export const currentEducationPhotography = {
+  id: "current-education-photography",
+  src: "/images/current/aula-equipada-actual.webp",
+  alt: "Aula equipada actual del Colegio Miguel Hidalgo",
+  caption: "Aula equipada actual del plantel; nivel educativo no identificado.",
+  status: "final",
+  context: "Recurso educativo general sin atribución de nivel.",
+  source: "Fotografía actual proporcionada por el Colegio Miguel Hidalgo.",
+  replaceLater: false,
+  width: 1600,
+  height: 1200,
+} as const satisfies ManagedImageAsset;
+
+export const currentPrimaryEntrancePhotography = {
+  id: "current-primary-entrance-photography",
+  src: "/images/current/entrada-primaria-escudo-actual.webp",
+  alt: "Entrada actual de Primaria con el escudo del Colegio Miguel Hidalgo",
+  caption: "Entrada actual de Primaria y escudo institucional.",
+  status: "final",
+  context: "Acceso actual identificado como Primaria.",
+  source: "Fotografía actual proporcionada por el Colegio Miguel Hidalgo.",
+  replaceLater: false,
+  width: 1288,
+  height: 896,
+} as const satisfies ManagedImageAsset;
+
+export const currentMultipurposeRoomPhotography = {
+  id: "current-multipurpose-room-photography",
+  src: "/images/current/salon-usos-multiples-actual.webp",
+  alt: "Interior actual del salón de usos múltiples con mesas y sillas",
+  caption:
+    "Espacio para actividades formativas, reuniones y vida comunitaria.",
+  status: "final",
+  context: "Salón de usos múltiples actual del plantel.",
+  source: "Fotografía actual proporcionada por el Colegio Miguel Hidalgo.",
+  replaceLater: false,
+  width: 1600,
+  height: 1200,
+} as const satisfies ManagedImageAsset;
+
+export const currentChapelPhotography = {
+  id: "current-chapel-photography",
+  src: "/images/current/capilla-nicho-actual.webp",
+  alt: "Nicho actual de la capilla con crucifijo y retrato",
+  caption:
+    "Espacio destinado a la oración y a la dimensión espiritual de la comunidad.",
+  status: "final",
+  context: "Detalle actual de la capilla del plantel.",
+  source: "Fotografía actual proporcionada por el Colegio Miguel Hidalgo.",
+  replaceLater: false,
+  width: 1448,
+  height: 440,
+} as const satisfies ManagedImageAsset;
+
+export const provisionalClassroomPhotography = {
+  id: "provisional-classroom-photography",
+  src: "/images/current/aula-recurso-general-actual.webp",
+  alt: "Aula actual del Colegio Miguel Hidalgo",
+  caption: "Aula actual del plantel; nivel educativo no identificado.",
+  status: "provisional",
+  context: "Recurso general temporal para un nivel sin fotografía identificada.",
+  source: "Fotografía actual proporcionada por el Colegio Miguel Hidalgo.",
   replaceLater: true,
   width: 1600,
-  height: 1000,
+  height: 1200,
 } as const satisfies ManagedImageAsset;
+
+export const provisionalSportsLevelPhotography = {
+  ...currentCoveredCourtPhotography,
+  id: "provisional-sports-level-photography",
+  caption: "Recurso deportivo actual del plantel; nivel educativo no identificado.",
+  status: "provisional",
+  context: "Recurso general temporal para un nivel sin fotografía identificada.",
+  replaceLater: true,
+} as const satisfies ManagedImageAsset;
+
+export const provisionalTechnologyLevelPhotography = {
+  ...currentComputerRoomPhotography,
+  id: "provisional-technology-level-photography",
+  caption: "Recurso tecnológico actual del plantel; nivel educativo no identificado.",
+  status: "provisional",
+  context: "Recurso general temporal para un nivel sin fotografía identificada.",
+  replaceLater: true,
+} as const satisfies ManagedImageAsset;
+
+export const currentFacilitiesHighlights = [
+  currentCoveredCourtPhotography,
+  currentComputerRoomPhotography,
+  currentCourtyardDetailPhotography,
+] as const;
+
+export const currentFacilitiesGallery = [
+  currentContactPhotography,
+  currentHeroPhotography,
+  currentCoveredCourtPhotography,
+  currentEducationPhotography,
+  currentComputerRoomPhotography,
+  currentPreschoolPhotography,
+  currentCourtyardDetailPhotography,
+  currentSyntheticFieldPhotography,
+] as const;
+
+export const homeFacilitiesPhotography = [
+  currentFacilitiesPhotography,
+  currentCourtyardDetailPhotography,
+  currentCoveredCourtPhotography,
+] as const;
+
+export const educationLevelPhotography = [
+  currentPreschoolPhotography,
+  provisionalClassroomPhotography,
+  provisionalSportsLevelPhotography,
+  provisionalTechnologyLevelPhotography,
+] as const;
 
 export const managedMedia: ManagedImageAsset[] = [
   schoolShield,
+  currentHeroPhotography,
+  currentContactPhotography,
   currentFacilitiesPhotography,
+  currentCourtyardDetailPhotography,
+  currentSyntheticFieldPhotography,
+  currentCoveredCourtPhotography,
+  currentComputerRoomPhotography,
+  currentPreschoolPhotography,
+  currentEducationPhotography,
+  currentPrimaryEntrancePhotography,
+  currentMultipurposeRoomPhotography,
+  currentChapelPhotography,
+  provisionalClassroomPhotography,
+  provisionalSportsLevelPhotography,
+  provisionalTechnologyLevelPhotography,
   ...historicalMedia,
 ];
 

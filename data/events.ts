@@ -1,7 +1,9 @@
 import { confirmedEvents } from "@/data/confirmed/events";
 import { demoEvents } from "@/data/demo/events";
 
-export const isEventDemoMode = process.env.NODE_ENV === "development";
+export const isEventDemoMode =
+  process.env.NODE_ENV === "development" ||
+  process.env.EVENT_DEMO_MODE === "true";
 
 export const visibleEvents = isEventDemoMode
   ? [...confirmedEvents, ...demoEvents]

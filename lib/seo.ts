@@ -29,7 +29,7 @@ export function createPageMetadata({
       url: path,
       images: [
         {
-          url: "/brand/shield.webp",
+          url: "/brand/escudo-cmh-oficial.png",
           alt: "Escudo del Colegio Miguel Hidalgo",
           width: 396,
           height: 508,
@@ -40,7 +40,7 @@ export function createPageMetadata({
       card: "summary",
       title,
       description,
-      images: ["/brand/shield.webp"],
+      images: ["/brand/escudo-cmh-oficial.png"],
     },
   };
 }

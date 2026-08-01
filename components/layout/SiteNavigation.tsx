@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { aboutAnchors, headerNav } from "@/config/navigation";
 
 type SiteNavigationProps = {
@@ -26,7 +26,27 @@ export default function SiteNavigation({ pathname }: SiteNavigationProps) {
   const aboutContainerRef = useRef<HTMLDivElement>(null);
   const aboutToggleRef = useRef<HTMLButtonElement>(null);
   const firstAboutLinkRef = useRef<HTMLAnchorElement>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const aboutActive = pathname.startsWith("/quienes-somos");
+
+  const cancelScheduledClose = useCallback(() => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  }, []);
+
+  const openAboutMenu = useCallback(() => {
+    cancelScheduledClose();
+    setAboutOpen(true);
+  }, [cancelScheduledClose]);
+
+  const scheduleAboutClose = useCallback(() => {
+    cancelScheduledClose();
+    closeTimerRef.current = setTimeout(() => setAboutOpen(false), 180);
+  }, [cancelScheduledClose]);
+
+  useEffect(() => () => cancelScheduledClose(), [cancelScheduledClose]);
 
   useEffect(() => {
     if (!aboutOpen) {
@@ -35,15 +55,17 @@ export default function SiteNavigation({ pathname }: SiteNavigationProps) {
 
     const closeOnOutsideClick = (event: PointerEvent) => {
       if (!aboutContainerRef.current?.contains(event.target as Node)) {
+        cancelScheduledClose();
         setAboutOpen(false);
       }
     };
 
     document.addEventListener("pointerdown", closeOnOutsideClick);
     return () => document.removeEventListener("pointerdown", closeOnOutsideClick);
-  }, [aboutOpen]);
+  }, [aboutOpen, cancelScheduledClose]);
 
   const closeAboutMenu = (returnFocus = false) => {
+    cancelScheduledClose();
     setAboutOpen(false);
     if (returnFocus) {
       aboutToggleRef.current?.focus();
@@ -55,11 +77,11 @@ export default function SiteNavigation({ pathname }: SiteNavigationProps) {
       <div
         ref={aboutContainerRef}
         className="relative flex items-center"
-        onMouseEnter={() => setAboutOpen(true)}
-        onMouseLeave={() => setAboutOpen(false)}
+        onMouseEnter={openAboutMenu}
+        onMouseLeave={scheduleAboutClose}
         onBlur={(event) => {
           if (!event.currentTarget.contains(event.relatedTarget)) {
-            setAboutOpen(false);
+            closeAboutMenu();
           }
         }}
       >
@@ -86,22 +108,32 @@ export default function SiteNavigation({ pathname }: SiteNavigationProps) {
           aria-label="Mostrar secciones de Quiénes somos"
           aria-expanded={aboutOpen}
           aria-controls="about-navigation"
-          onClick={() => setAboutOpen((open) => !open)}
+          onClick={() => {
+            cancelScheduledClose();
+            setAboutOpen((open) => !open);
+          }}
           onKeyDown={(event) => {
             if (event.key === "ArrowDown") {
               event.preventDefault();
-              setAboutOpen(true);
+              openAboutMenu();
               requestAnimationFrame(() => firstAboutLinkRef.current?.focus());
+            } else if (event.key === "Escape" && aboutOpen) {
+              event.preventDefault();
+              closeAboutMenu(true);
             }
           }}
         >
-          <ChevronDown className="h-4 w-4" aria-hidden="true" />
+          <ChevronDown
+            className={`h-4 w-4 transition-transform motion-reduce:transition-none ${aboutOpen ? "rotate-180" : ""}`}
+            aria-hidden="true"
+          />
         </button>
 
         {aboutOpen ? (
           <div
             id="about-navigation"
-            className="absolute left-0 top-[calc(100%+0.5rem)] w-72 overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-bordes)] bg-white p-2 shadow-[var(--shadow-lg)]"
+            className="absolute left-0 top-full z-[var(--z-dropdown)] w-80 pt-2"
+            onMouseEnter={cancelScheduledClose}
             onKeyDown={(event) => {
               if (event.key === "Escape") {
                 event.preventDefault();
@@ -109,21 +141,23 @@ export default function SiteNavigation({ pathname }: SiteNavigationProps) {
               }
             }}
           >
-            <p className="border-b border-[var(--color-bordes)] px-3 pb-2 pt-1 text-[0.6875rem] font-bold uppercase tracking-normal text-[var(--color-dorado-texto)]">
-              Nuestra institución
-            </p>
-            <div className="grid grid-cols-2 gap-1 pt-2">
-              {aboutAnchors.map((link, index) => (
-                <Link
-                  ref={index === 0 ? firstAboutLinkRef : undefined}
-                  key={link.href}
-                  href={link.href}
-                  className="rounded-[var(--radius-sm)] px-3 py-2 text-sm text-[var(--color-texto-secundario)] transition-colors hover:bg-[var(--color-crema)] hover:text-[var(--color-guinda)]"
-                  onClick={() => closeAboutMenu()}
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <div className="overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-bordes)] bg-white p-2 shadow-[var(--shadow-lg)]">
+              <p className="border-b border-[var(--color-bordes)] px-3 pb-2 pt-1 text-[0.6875rem] font-bold uppercase tracking-normal text-[var(--color-dorado-texto)]">
+                Nuestra institución
+              </p>
+              <div className="grid grid-cols-2 gap-1 pt-2">
+                {aboutAnchors.map((link, index) => (
+                  <Link
+                    ref={index === 0 ? firstAboutLinkRef : undefined}
+                    key={link.href}
+                    href={link.href}
+                    className="flex min-h-10 items-center rounded-[var(--radius-sm)] px-3 py-2 text-sm leading-snug text-[var(--color-texto-secundario)] transition-colors hover:bg-[var(--color-crema)] hover:text-[var(--color-guinda)]"
+                    onClick={() => closeAboutMenu()}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         ) : null}

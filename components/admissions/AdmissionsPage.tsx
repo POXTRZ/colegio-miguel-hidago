@@ -7,8 +7,8 @@ import {
 } from "lucide-react";
 import SiteFooter from "@/components/layout/SiteFooter";
 import SiteHeader from "@/components/layout/SiteHeader";
+import RequirementsAccordion from "@/components/admissions/RequirementsAccordion";
 import {
-  Badge,
   Button,
   Container,
   Eyebrow,
@@ -82,47 +82,7 @@ export default function AdmissionsPage() {
               eyebrow="Documentación"
               title="Requisitos por nivel."
             />
-            <div className="grid lg:grid-cols-3">
-              {levels.map((level, index) => (
-                <details
-                  key={level.key}
-                  open={index === 0}
-                  className="group border-y border-[var(--color-bordes)] bg-transparent lg:border-r lg:border-t lg:px-5 lg:first:border-l lg:first:pl-0 lg:last:pr-0"
-                >
-                  <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-bold text-[var(--color-azul-marino)]">
-                    {level.label}
-                    <span
-                      className="text-2xl text-[var(--color-guinda)] group-open:rotate-45"
-                      aria-hidden="true"
-                    >
-                      +
-                    </span>
-                  </summary>
-                  <ul className="border-t border-[var(--color-bordes)] px-5 py-5">
-                    {admissionsInfo.requirements[level.key].map((item) => (
-                      <li
-                        key={item}
-                        className="flex gap-3 border-b border-[var(--color-bordes)] py-3 text-sm leading-6 last:border-b-0"
-                      >
-                        <span
-                          className="mt-2 h-1.5 w-1.5 shrink-0 bg-[var(--color-dorado-texto)]"
-                          aria-hidden="true"
-                        />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-              ))}
-            </div>
-            <div className="mt-8 border-l-4 border-[var(--color-advertencia)] bg-white p-6">
-              <Badge tone="warning">Preparatoria</Badge>
-              <p className="mt-3 font-bold">{admissionsInfo.preparatoriaStatus}</p>
-              <p className="mt-2 text-sm text-[var(--color-muted)]">
-                No se publican requisitos ni costos hasta contar con
-                confirmación institucional.
-              </p>
-            </div>
+            <RequirementsAccordion />
           </Container>
         </Section>
 

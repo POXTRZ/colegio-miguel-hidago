@@ -58,6 +58,7 @@ export async function generateMetadata({
         ? [event.cover.src]
         : ["/brand/shield.webp"],
     },
+    robots: event.isDemo ? { index: false, follow: false } : undefined,
   };
 }
 

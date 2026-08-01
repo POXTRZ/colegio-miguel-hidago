@@ -11,24 +11,24 @@ import {
   Section,
 } from "@/components/ui";
 import { levels } from "@/data/confirmed/education-levels";
-import { getHistoricalMedia } from "@/data/confirmed/media";
+import { educationLevelPhotography } from "@/data/confirmed/media";
 
 const levelVisuals = [
   {
     period: "3 grados",
-    asset: getHistoricalMedia("grupo-escolar-aula"),
+    asset: educationLevelPhotography[0],
   },
   {
     period: "6 grados",
-    asset: getHistoricalMedia("actividad-escolar"),
+    asset: educationLevelPhotography[1],
   },
   {
     period: "3 grados",
-    asset: getHistoricalMedia("generacion-escolar"),
+    asset: educationLevelPhotography[2],
   },
   {
     period: "6 semestres",
-    asset: getHistoricalMedia("entrega-reconocimientos"),
+    asset: educationLevelPhotography[3],
   },
 ] as const;
 
@@ -127,7 +127,6 @@ export default function EducationalLevelsPreview() {
                         asset={activeVisual.asset}
                         ratio="square"
                         showCaption={false}
-                        imageClassName="grayscale-[0.2]"
                         sizes="(min-width: 1024px) 54vw, 100vw"
                       />
                     ) : null}
@@ -143,7 +142,9 @@ export default function EducationalLevelsPreview() {
                   {activeVisual.asset?.caption ? (
                     <p className="mt-4 border-l-2 border-[var(--color-dorado)] pl-4 text-xs leading-5 text-[var(--color-muted)]">
                       <span className="block font-bold uppercase text-[var(--color-guinda)]">
-                        Archivo histórico
+                        {activeVisual.asset.status === "provisional"
+                          ? "Recurso general"
+                          : "Fotografía actual"}
                       </span>
                       {activeVisual.asset.caption}
                     </p>

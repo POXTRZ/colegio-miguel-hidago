@@ -17,6 +17,7 @@ type CalendarMonthViewProps = {
 };
 
 const statusMarker: Record<CalendarEvent["status"], string> = {
+  confirmed: "bg-[var(--color-exito)]",
   upcoming: "bg-[var(--color-informacion)]",
   completed: "bg-[var(--color-exito)]",
   rescheduled: "bg-[var(--color-advertencia)]",

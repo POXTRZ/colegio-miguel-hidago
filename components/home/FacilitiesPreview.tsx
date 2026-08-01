@@ -6,7 +6,7 @@ import {
   Section,
   SectionHeader,
 } from "@/components/ui";
-import { currentFacilitiesPhotography } from "@/data/confirmed/media";
+import { homeFacilitiesPhotography } from "@/data/confirmed/media";
 
 const facilities = [
   "Aulas equipadas con proyector, bocinas y computadora",
@@ -31,11 +31,28 @@ export default function FacilitiesPreview() {
 
         <div className="grid min-w-0 gap-10">
           <div className="editorial-frame z-0 min-w-0">
-            <ManagedImage
-              asset={currentFacilitiesPhotography}
-              ratio="wide"
-              sizes="(min-width: 1024px) 90vw, 100vw"
-            />
+            <div className="grid min-w-0 gap-4 lg:grid-cols-[1.45fr_0.55fr]">
+              <ManagedImage
+                asset={homeFacilitiesPhotography[0]}
+                ratio="wide"
+                showCaption={false}
+                sizes="(min-width: 1024px) 64vw, 100vw"
+              />
+              <div className="grid min-w-0 grid-cols-2 gap-4 lg:grid-cols-1">
+                {homeFacilitiesPhotography.slice(1).map((asset) => (
+                  <ManagedImage
+                    key={asset.id}
+                    asset={asset}
+                    ratio="video"
+                    showCaption={false}
+                    sizes="(min-width: 1024px) 26vw, 50vw"
+                  />
+                ))}
+              </div>
+            </div>
+            <p className="mt-3 border-l-2 border-[var(--color-dorado)] pl-4 text-xs leading-5 text-[var(--color-muted)]">
+              Espacios generales e instalaciones actuales del Colegio.
+            </p>
           </div>
 
           <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">

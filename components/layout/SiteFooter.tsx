@@ -84,7 +84,12 @@ export default function SiteFooter() {
               />
               {contactInfo.phone}
             </a>
-            <p className="flex items-start gap-3">
+            <a
+              href={contactInfo.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-3 hover:text-white"
+            >
               <MapPin
                 className="mt-1 h-4 w-4 shrink-0 text-[var(--color-dorado-claro)]"
                 aria-hidden="true"
@@ -94,7 +99,7 @@ export default function SiteFooter() {
                 <br />
                 {contactInfo.city}
               </span>
-            </p>
+            </a>
           </div>
         </div>
 

@@ -2,6 +2,7 @@ export { default as Badge } from "@/components/ui/Badge";
 export { default as Button } from "@/components/ui/Button";
 export { default as Container } from "@/components/ui/Container";
 export { default as Eyebrow } from "@/components/ui/Eyebrow";
+export { default as Gallery } from "@/components/ui/Gallery";
 export { default as IconButton } from "@/components/ui/IconButton";
 export { default as ManagedImage } from "@/components/ui/ManagedImage";
 export { default as ResponsiveImage } from "@/components/ui/ResponsiveImage";

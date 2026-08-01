@@ -1,5 +1,6 @@
 import {
   Ban,
+  BadgeCheck,
   CalendarCheck,
   CalendarClock,
   RotateCw,
@@ -12,6 +13,7 @@ import {
 import type { EventCategory, EventStatus } from "@/types/event";
 
 const statusIcons = {
+  confirmed: BadgeCheck,
   upcoming: CalendarClock,
   completed: CalendarCheck,
   rescheduled: RotateCw,
@@ -19,10 +21,17 @@ const statusIcons = {
 } satisfies Record<EventStatus, typeof CalendarClock>;
 
 const statusTones = {
+  confirmed: "success",
   upcoming: "info",
   completed: "success",
   rescheduled: "warning",
   cancelled: "error",
+} as const;
+
+const categoryTones = {
+  academic: "burgundy",
+  administrative: "neutral",
+  "cultural-sports": "gold",
 } as const;
 
 type LabelProps = {
@@ -54,12 +63,8 @@ export function EventCategoryBadge({
 }) {
   return (
     <Badge
-      tone="neutral"
-      className={
-        compact
-          ? "px-2 py-0.5 text-[10px] text-[var(--color-guinda)]"
-          : "text-[var(--color-guinda)]"
-      }
+      tone={categoryTones[category]}
+      className={compact ? "px-2 py-0.5 text-[10px]" : undefined}
     >
       {eventCategoryLabels[category]}
     </Badge>

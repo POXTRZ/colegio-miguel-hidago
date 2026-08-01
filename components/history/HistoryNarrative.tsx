@@ -3,6 +3,7 @@ import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
 import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import Section from "@/components/ui/Section";
+import { contactInfo } from "@/data/confirmed/contact";
 import { getHistoricalMedia } from "@/data/confirmed/media";
 
 export default function HistoryNarrative() {
@@ -19,7 +20,7 @@ export default function HistoryNarrative() {
             </h2>
             <div className="mt-8 flex items-center gap-3 border-t border-[var(--color-linea)] pt-5 text-sm font-bold text-[var(--color-guinda)]">
               <MapPin className="h-5 w-5" aria-hidden="true" />
-              Guerrero 215, Centro
+              {contactInfo.fullAddress}
             </div>
           </div>
 

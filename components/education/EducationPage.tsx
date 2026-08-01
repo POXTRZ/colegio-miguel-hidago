@@ -4,6 +4,7 @@ import {
   Church,
   HeartHandshake,
 } from "lucide-react";
+import EducationLevelsShowcase from "@/components/education/EducationLevelsShowcase";
 import SiteFooter from "@/components/layout/SiteFooter";
 import SiteHeader from "@/components/layout/SiteHeader";
 import {
@@ -16,16 +17,20 @@ import {
 } from "@/components/ui";
 import {
   confirmedActivities,
-  educationOffer,
   formationAreas,
 } from "@/data/confirmed/education-offer";
 import { facilityGroups } from "@/data/confirmed/facilities";
-import { getHistoricalMedia } from "@/data/confirmed/media";
+import {
+  currentChapelPhotography,
+  currentHeroPhotography,
+  currentMultipurposeRoomPhotography,
+  currentPrimaryEntrancePhotography,
+} from "@/data/confirmed/media";
 
 const formationIcons = [BookOpen, HeartHandshake, Church] as const;
 
 export default function EducationPage() {
-  const heroImage = getHistoricalMedia("alumnas-formacion");
+  const heroImage = currentHeroPhotography;
 
   return (
     <>
@@ -34,73 +39,88 @@ export default function EducationPage() {
         id="main-content"
         className="min-h-screen bg-[var(--color-fondo)] text-[var(--color-tinta)]"
       >
-        <section className="overflow-hidden border-b border-[var(--color-bordes)] bg-white pt-[var(--internal-hero-offset)]">
-          <Container size="2xl" className="grid gap-10 py-12 lg:grid-cols-[1fr_0.72fr] lg:items-center lg:gap-20 lg:py-14">
-            <div className="lg:py-6">
-              <Eyebrow>Oferta educativa</Eyebrow>
-              <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.04] text-[var(--color-azul-marino)] sm:text-5xl lg:text-6xl">
+        <section className="relative overflow-hidden bg-[var(--color-azul-marino)] pt-[var(--internal-hero-offset)] text-white">
+          <span
+            className="absolute inset-y-0 left-[7%] hidden w-px bg-white/10 lg:block"
+            aria-hidden="true"
+          />
+          <Container
+            size="2xl"
+            className="grid gap-8 py-10 md:py-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-12 lg:py-14 xl:gap-20 xl:py-16"
+          >
+            <div className="relative z-10 max-w-2xl lg:py-8">
+              <Eyebrow className="text-[var(--color-dorado-claro)]">
+                Oferta educativa
+              </Eyebrow>
+              <h1 className="mt-5 text-4xl font-semibold leading-[1.04] text-white sm:text-5xl lg:text-[3.4rem] xl:text-[4.25rem]">
                 Una trayectoria educativa de Preescolar a Preparatoria.
               </h1>
-              <p className="mt-7 max-w-xl text-lg leading-8 text-[var(--color-muted)]">
+              <p className="mt-6 max-w-xl text-base leading-7 text-white/72 sm:text-lg sm:leading-8">
                 Un acompañamiento formativo desde los primeros años hasta la
                 preparación universitaria, con una misma visión académica,
                 humana y franciscana.
               </p>
+              <div
+                className="mt-8 h-px w-20 bg-[var(--color-dorado)]"
+                aria-hidden="true"
+              />
             </div>
-            <div className="relative lg:translate-y-10">
-              {heroImage ? (
+            <div className="relative z-0 lg:py-3">
+              <div
+                className="absolute -bottom-4 -left-4 hidden h-24 w-24 border-b border-l border-[var(--color-dorado)]/70 sm:block"
+                aria-hidden="true"
+              />
+              <div className="bg-[var(--color-crema)] p-2 sm:p-3">
                 <ManagedImage
                   asset={heroImage}
-                  ratio="video"
-                  imageClassName="grayscale-[0.2]"
-                  sizes="(min-width: 1024px) 36vw, 100vw"
+                  ratio="auto"
+                  showCaption={false}
+                  imageClassName="aspect-[4/3] object-cover object-[50%_54%] md:aspect-[2/1] lg:aspect-[4/3]"
+                  sizes="(min-width: 1280px) 54vw, (min-width: 1024px) 52vw, 100vw"
                   priority
                 />
-              ) : null}
+              </div>
+              <p className="mt-4 max-w-lg border-l-2 border-[var(--color-dorado)] pl-4 text-xs leading-5 text-white/68">
+                {heroImage.caption}
+              </p>
             </div>
           </Container>
         </section>
 
-        <Section tone="white">
+        <Section tone="white" spacing="md">
           <Container size="2xl">
-            <SectionHeader
-              eyebrow="Trayecto académico"
-              title="Cada etapa tiene su propio ritmo."
-              description="Los grados y semestres mostrados corresponden a la oferta confirmada del Colegio."
-            />
-            <div className="border-t border-[var(--color-bordes)]">
-              {educationOffer.map((level, index) => (
-                <article
-                  id={level.id}
-                  key={level.id}
-                  className={`editorial-row grid scroll-mt-[calc(var(--site-header-height-compact)+1rem)] gap-6 border-b border-[var(--color-bordes)] py-10 md:grid-cols-[7rem_0.7fr_1.3fr] md:items-start lg:py-14 ${
-                    index % 2 ? "lg:ml-20" : ""
-                  }`}
-                >
-                  <span
-                    aria-hidden="true"
-                    className="font-display text-5xl text-[var(--color-dorado-texto)]"
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <p className="text-xs font-bold uppercase text-[var(--color-guinda)]">
-                      {level.duration}
-                    </p>
-                    <h2 className="mt-2 text-3xl font-semibold text-[var(--color-azul-marino)]">
-                      {level.name}
-                    </h2>
-                  </div>
-                  <p className="max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
-                    {level.description}
-                  </p>
-                </article>
-              ))}
+            <div className="grid gap-9 border-b border-[var(--color-bordes)] pb-10 md:grid-cols-[1.05fr_0.95fr] md:items-center md:gap-8 lg:gap-16 xl:gap-20">
+              <div className="max-w-3xl">
+                <Eyebrow>Trayecto académico</Eyebrow>
+                <h2 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight text-[var(--color-azul-marino)] sm:text-5xl">
+                  Cada etapa tiene su propio ritmo.
+                </h2>
+                <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--color-muted)] lg:text-lg lg:leading-8">
+                  Los grados y semestres mostrados corresponden a la oferta
+                  confirmada del Colegio. Cada nivel conserva una identidad
+                  propia dentro del mismo trayecto formativo.
+                </p>
+              </div>
+              <div className="relative bg-[var(--color-crema)] p-2 sm:p-3">
+                <ManagedImage
+                  asset={currentPrimaryEntrancePhotography}
+                  ratio="video"
+                  showCaption={false}
+                  imageClassName="object-cover object-center"
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                />
+                <p className="mt-3 border-l-2 border-[var(--color-dorado)] px-3 text-xs leading-5 text-[var(--color-muted)]">
+                  {currentPrimaryEntrancePhotography.caption}
+                </p>
+              </div>
+            </div>
+            <div className="mt-10 lg:mt-14">
+              <EducationLevelsShowcase />
             </div>
           </Container>
         </Section>
 
-        <Section tone="navy">
+        <Section tone="navy" spacing="md">
           <Container size="2xl">
             <SectionHeader
               eyebrow="Formación integral"
@@ -130,8 +150,8 @@ export default function EducationPage() {
           </Container>
         </Section>
 
-        <Section>
-          <Container size="2xl" className="grid gap-14 lg:grid-cols-2 lg:gap-24">
+        <Section tone="white" spacing="md">
+          <Container size="2xl" className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
             <div>
               <SectionHeader
                 eyebrow="Actividades confirmadas"
@@ -166,6 +186,18 @@ export default function EducationPage() {
                 Conocer las instalaciones
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Button>
+              <div className="mt-8 grid gap-5 sm:grid-cols-2">
+                <ManagedImage
+                  asset={currentMultipurposeRoomPhotography}
+                  ratio="video"
+                  sizes="(min-width: 1024px) 28vw, (min-width: 640px) 50vw, 100vw"
+                />
+                <ManagedImage
+                  asset={currentChapelPhotography}
+                  ratio="wide"
+                  sizes="(min-width: 1024px) 28vw, (min-width: 640px) 50vw, 100vw"
+                />
+              </div>
             </div>
           </Container>
         </Section>

@@ -1,110 +1,61 @@
+import {
+  currentCoveredCourtPhotography,
+  currentCourtyardDetailPhotography,
+} from "@/data/confirmed/media";
 import type { CalendarEvent } from "@/types/event";
+import type { MediaAsset } from "@/types/media";
+
+const mothersDayCover = {
+  ...currentCourtyardDetailPhotography,
+  caption: "Imagen provisional de un espacio actual del Colegio.",
+  status: "provisional",
+  context: "Recurso visual general para un evento demostrativo.",
+  replaceLater: true,
+} as const satisfies MediaAsset;
+
+const fathersDayCover = {
+  ...currentCoveredCourtPhotography,
+  caption: "Imagen provisional de una cancha actual del Colegio.",
+  status: "provisional",
+  context: "Recurso visual general para un evento demostrativo.",
+  replaceLater: true,
+} as const satisfies MediaAsset;
 
 export const demoEvents: CalendarEvent[] = [
   {
-    id: "inicio-verano",
-    slug: "curso-verano-regularizacion-demo",
-    title: "Curso de verano y regularización",
+    id: "dia-de-la-madre-demo",
+    slug: "dia-de-la-madre-demo",
+    title: "Día de la Madre",
     summary:
-      "Sesiones de apoyo académico y actividades formativas para reforzar aprendizajes clave.",
+      "Propuesta demostrativa de un encuentro de convivencia para reconocer a las madres de la comunidad educativa.",
     description:
-      "Programa demostrativo con grupos por nivel, diagnóstico inicial y actividades enfocadas en matemáticas, lectura, hábitos de estudio y convivencia.",
-    startDate: "2026-07-06",
-    time: "09:00",
-    location: "Aulas CMH",
-    category: "academic",
-    status: "completed",
-    educationLevel: ["primaria", "secundaria"],
-    media: [],
-    documents: [],
-    isDemo: true,
-  },
-  {
-    id: "junta-admisiones",
-    slug: "sesion-informativa-admisiones-demo",
-    title: "Sesión informativa de admisiones",
-    summary:
-      "Presentación del modelo educativo, secciones disponibles y pasos del proceso de inscripción.",
-    description:
-      "Ejemplo de sesión con recorrido por instalaciones, espacio de preguntas y revisión general de documentos requeridos por sección.",
-    startDate: "2026-07-10",
-    time: "17:00",
-    location: "Auditorio",
-    category: "administrative",
-    status: "completed",
-    educationLevel: ["todos"],
-    media: [],
-    documents: [],
-    isDemo: true,
-  },
-  {
-    id: "encuentro-pastoral",
-    slug: "encuentro-pastoral-educativa-demo",
-    title: "Encuentro de pastoral educativa",
-    summary:
-      "Jornada para fortalecer la identidad franciscana y el lema institucional.",
-    description:
-      "Ejemplo de jornada con oración comunitaria, trabajo por equipos sobre valores HFIC y un cierre orientado al compromiso de servicio.",
-    startDate: "2026-07-17",
-    time: "08:30",
-    location: "Capilla y patio central",
-    category: "pastoral",
-    status: "completed",
-    educationLevel: ["todos"],
-    media: [],
-    documents: [],
-    isDemo: true,
-  },
-  {
-    id: "torneo-fraternidad",
-    slug: "torneo-fraternidad-demo",
-    title: "Torneo de fraternidad",
-    summary:
-      "Actividad deportiva de convivencia con fútbol, básquetbol y voleibol.",
-    description:
-      "Ejemplo de encuentro con equipos por sección, participación familiar en juegos recreativos y reconocimiento al espíritu deportivo.",
-    startDate: "2026-07-24",
-    time: "16:00",
-    location: "Canchas deportivas",
-    category: "sports",
+      "Contenido provisional para probar la experiencia del calendario y la página individual. La propuesta contempla un momento de bienvenida, una presentación cultural y un espacio de convivencia familiar. La fecha, el programa y los detalles operativos requieren confirmación institucional antes de publicarse como oficiales.",
+    startDate: "2027-05-10",
+    time: "09:00 · horario provisional",
+    location: "Patio principal · por confirmar",
+    category: "cultural-sports",
     status: "upcoming",
     educationLevel: ["todos"],
+    cover: mothersDayCover,
     media: [],
     documents: [],
     isDemo: true,
   },
   {
-    id: "festival-comunidad",
-    slug: "festival-comunidad-cmh-demo",
-    title: "Festival de comunidad CMH",
+    id: "dia-del-padre-demo",
+    slug: "dia-del-padre-demo",
+    title: "Día del Padre",
     summary:
-      "Encuentro cultural y familiar para celebrar la vida escolar del Colegio Miguel Hidalgo.",
+      "Propuesta demostrativa de una jornada recreativa para las familias de la comunidad educativa.",
     description:
-      "Ejemplo de festival con presentaciones artísticas, muestras de danza, banda de guerra y actividades de convivencia por sección.",
-    startDate: "2026-08-07",
-    time: "18:00",
-    location: "Patio principal",
-    category: "cultural",
+      "Contenido provisional para probar agenda, filtros y navegación entre eventos. La propuesta considera actividades recreativas de convivencia y un cierre comunitario. La fecha, el horario, el lugar y el programa deberán validarse antes de cualquier publicación oficial.",
+    startDate: "2027-06-20",
+    time: "09:00 · horario provisional",
+    location: "Canchas del Colegio · por confirmar",
+    category: "cultural-sports",
     status: "upcoming",
     educationLevel: ["todos"],
-    media: [],
-    documents: [],
-    isDemo: true,
-  },
-  {
-    id: "inicio-ciclo",
-    slug: "inicio-ciclo-escolar-2026-2027-demo",
-    title: "Inicio de ciclo escolar 2026-2027",
-    summary:
-      "Bienvenida a estudiantes y familias para comenzar un nuevo ciclo de formación integral.",
-    description:
-      "Ejemplo de jornada de recepción por niveles, mensaje institucional e indicaciones generales de coordinación y servicios escolares.",
-    startDate: "2026-08-24",
-    time: "07:30",
-    location: "Colegio Miguel Hidalgo",
-    category: "academic",
-    status: "upcoming",
-    educationLevel: ["todos"],
+    cover: fathersDayCover,
     media: [],
     documents: [],
     isDemo: true,
